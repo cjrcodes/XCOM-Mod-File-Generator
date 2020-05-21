@@ -1,0 +1,93 @@
+Properties for files and their data
+
+    2 files to generate:
+
+        -  XComContent.ini (for config folder)
+        -  XComGame.int (for Localization folder)
+
+XComContent file properties:
+
+    XComContent header:
+
+        [XComGame.X2BodyPartTemplateManager]
+
+    Default body part template instance:
+
+        +BodyPartTemplateConfig=(PartType="", DLCName="",TemplateName="", ArchetypeName="", Gender=eGender_Male, bVeteran=false, ArmorTemplate="KevlarArmor", CharacterTemplate="Soldier")
+
+    Custom body part template instance:
+
+        +BodyPartTemplateConfig=(PartType="", DLCName="",TemplateName="", ArchetypeName="", Gender=, bVeteran=, ArmorTemplate="", CharacterTemplate="")
+
+    PartType: (Check List)
+        - Head
+        - Torso
+        - Arms
+        - Legs
+        - Shins
+        - LeftArm
+        - RightArm
+        - LeftForearm
+        - RightForearm
+
+
+    DLCName: (Text field)
+        - (Project name) (No spaces)
+
+    TemplateName: (Text field and/or include template)
+        - (Character name, Part Type, underscore, Armor Type) (No spaces)
+
+    ArchetypeName: (Text field, Text field,)
+        - (UPK Name, . , Archetypes (if included in UPK file), . , ARC_(PartType)_(Gender Initial) ) (No spaces)
+
+    Gender:
+        - eGender_Male
+        - eGender_Female
+
+    bCanUseOnCivilian:
+        - true
+        - false
+
+    bVeteran:
+        - true
+        - false
+
+    ArmorTemplate: (Not included for Head PartType template)
+        - KevlarArmor
+        - LightPlatedArmor
+        - MediumPlatedArmor
+        - HeavyPlatedArmor
+        - LightPoweredArmor
+        - MediumPoweredArmor
+        - HeavyPoweredArmor
+
+        - ReaperArmor
+        - PlatedReaperArmor
+        - PoweredReaperArmor
+
+        - TemplarArmor
+        - PlatedTemplarArmor
+        - PoweredTemplarArmor
+
+        - SkirmisherArmor
+        - PlatedSkirmisherArmor
+        - PoweredSkirmisherArmor
+
+    CharacterTemplate: (Not included for Head PartType template)
+        - Soldier
+        - ReaperSoldier
+        - TemplarSoldier
+        - SkirmisherSoldier
+
+    Number of templates generated:
+        - # of enabled PartTypes * # of enabled ArmorTemplates
+
+XComGame file properties:
+
+    - Default body part template instance:
+            [(TemplateName) X2BodyPartTemplate]
+            DisplayName="(TemplateName)"
+
+    - Custom body part template instance:
+            [(Insert) X2BodyPartTemplate]
+            DisplayName=""
