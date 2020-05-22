@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="script.js"></script>
     <title>XCOM Mod File Generator</title>
 </head>
@@ -19,6 +20,8 @@
         </div>
     </header>
 
+    
+
     <div id="main">
 
 
@@ -29,57 +32,60 @@
                 <div class="grid-item">
                     <div id="parttypes-form">
                         <h2>Part types</h2>
-
-                        <input type="button" value="Select All">
-                        <input type="button" value="Deselect All">
+                        <input type="button" id="pt-SelectAll" value="Select All" onclick="SelectAllPTs()">
+                        <input type="button" value="Deselect All" onclick="DeselectAllPTs()">
                         <br>
 
                         <label>Default (Head, Torso, Arms, Legs)</label>
-                        <input type="checkbox" name="pt-setting" value="pt-default"><br>
+                        <input type="checkbox" id="pt-DefaultSetting" value="pt-default" onchange="DefaultPTsCheck()"><br>
 
-                        <label>Head Props Only</label>
-                        <input type="checkbox" name="pt-setting" value="pt-headpropsonly"> <br>
+                        <label>Head Props</label>
+                        <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly" onchange="HeadPropsPTsCheck()"> <br>
 
-                        <label>Body Only</label>
-                        <input type="checkbox" name="pt-setting" value="pt-bodyonly"><br>
+                        <label>Body</label>
+                        <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly" onchange="BodyPTsCheck()"><br>
 
-                        <label>Deselect All</label>
-                        <input type="checkbox" name="pt-setting" value="pt-deselectall">
+                        <label>Body Extras</label>
+                        <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly" onchange="BodyExtrasPTsCheck()"><br>
+
+                        
 
 
                         <h3>Head</h3>
-                        <input type="checkbox" name="Head" value="pt-head">
+                        <input type="checkbox" id="pt-Head" value="pt-head">
                         <label for="Head">Head</label><br>
 
                         <h3>Voice</h3>
 
-                        <input type="checkbox" name="Voice" value="pt-voice">
+                        <input type="checkbox" id="pt-Voice" value="pt-voice">
                         <label for="Voice">Voice</label><br>
 
                         <h3>Head props</h3>
-                        <input type="checkbox" name="Helmets" value="pt-helmets">
+                        <input type="checkbox" id="pt-Helmets" value="pt-helmets">
                         <label for="Helmets">Helmets</label><br>
-                        <input type="checkbox" name="FacePropsUpper" value="pt-facepropsupper">
+                        <input type="checkbox" id="pt-FacePropsUpper" value="pt-facepropsupper">
                         <label for="FacePropsUpper">FacePropsUpper</label><br>
-                        <input type="checkbox" name="FacePropsLower" value="pt-facepropslower">
+                        <input type="checkbox" id="pt-FacePropsLower" value="pt-facepropslower">
                         <label for="FacePropsLower">FacePropsLower</label><br>
 
                         <h3>Body</h3>
-                        <input type="checkbox" name="Torso" value="pt-torso">
+                        <input type="checkbox" id="pt-Torso" value="pt-torso">
                         <label for="Torso">Torso</label><br>
-                        <input type="checkbox" name="Arms" value="pt-arms">
+                        <input type="checkbox" id="pt-Arms" value="pt-arms">
                         <label for="Arms">Arms</label><br>
-                        <input type="checkbox" name="Legs" value="pt-legs">
+                        <input type="checkbox" id="pt-Legs" value="pt-legs">
                         <label for="Legs">Legs</label><br>
-                        <input type="checkbox" name="Shins" value="pt-shins">
+
+                        <h3>Body Extras</h3>
+                        <input type="checkbox" id="pt-Shins" value="pt-shins">
                         <label for="Shins">Shins</label><br>
-                        <input type="checkbox" name="LeftArm" value="pt-leftarm">
-                        <label for="head">LeftArm</label><br>
-                        <input type="checkbox" name="RightArm" value="pt-rightarm">
-                        <label for="head">RightArm</label><br>
-                        <input type="checkbox" name="LeftForeArm" value="pt-leftforearm">
+                        <input type="checkbox" id="pt-LeftArm" value="pt-leftarm">
+                        <label for="pt-LeftArm">LeftArm</label><br>
+                        <input type="checkbox" id="pt-RightArm" value="pt-rightarm">
+                        <label for="pt-RightArm">RightArm</label><br>
+                        <input type="checkbox" id="pt-LeftForeArm" value="pt-leftforearm">
                         <label for="LeftForeArm">LeftForeArm</label><br>
-                        <input type="checkbox" name="RightForeArm" value="pt-rightforearm">
+                        <input type="checkbox" id="pt-RightForeArm" value="pt-rightforearm">
                         <label for="RightForeArm">RightForeArm</label><br>
                     </div>
                 </div>
@@ -213,24 +219,24 @@
                     <div id="armortemplates-form">
                         <h2>Armor Templates</h2>
 
-                        <label>Select All</label>
-                        <input type="checkbox" name="at-SelectAll" value="at-selectall"><br>
+                        <input type="button" value="Select All">
+                        <input type="button" value="Deselect All">
+                        <br>
 
-                        <label>Soldier Only</label>
+                        <label>Soldier</label>
                         <input type="checkbox" name="at-SoldierOnly" value="at-soldieronly"><br>
 
-                        <label>Reaper Only</label>
+                        <label>Reaper</label>
                         <input type="checkbox" name="at-ReaperOnly" value="at-reaperonly"> <br>
 
-                        <label>Templar Only</label>
+                        <label>Templar</label>
                         <input type="checkbox" name="at-TemplarOnly" value="at-templaronly"><br>
 
-                        <label>Skirmisher Only</label>
+                        <label>Skirmisher</label>
                         <input type="checkbox" name="at-SkirmisherOnly" value="at-skirmisheronly"><br>
 
 
-                        <label>Deselect All</label>
-                        <input type="checkbox" name="at-DeselectAll" value="at-deselectall">
+                    
 
                         <h3>Soldier</h3>
                         <input type="checkbox" name="KevlarArmor" value="at-kevlar">
@@ -279,8 +285,9 @@
                     <div id="charactertemplates-form">
                         <h2>Character Templates</h2>
 
-                        <label>Select All</label>
-                        <input type="checkbox" name="ct-SelectAll" value="ct-selectall"><br>
+                        <input type="button" value="Select All">
+                        <input type="button" value="Deselect All">
+                        <br>
 
                         <label>Soldier</label>
                         <input type="checkbox" name="ct-Soldier" value="ct-soldier"><br>
@@ -294,8 +301,6 @@
                         <label>SkirmisherSoldier</label>
                         <input type="checkbox" name="ct-SkirmisherSolider" value="ct-skirmisher"><br>
 
-                        <label>Deselect All</label>
-                        <input type="checkbox" name="ct-DeselectAll" value="ct-deselectall"><br>
                     </div>
                 </div>
 
