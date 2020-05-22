@@ -19,17 +19,59 @@ XComContent file properties:
 
         +BodyPartTemplateConfig=(PartType="", DLCName="",TemplateName="", ArchetypeName="", Gender=, bVeteran=, ArmorTemplate="", CharacterTemplate="")
 
-    PartType: (Check List)
-        - Head
-        - Torso
-        - Arms
-        - Legs
-        - Shins
-        - LeftArm
-        - RightArm
-        - LeftForearm
-        - RightForearm
+    PartType: (Check List) (Split by different template configs) (13 part types, head and voice only need 1 line, thus 11 need different armor types)
+        (Head)
+            - Head
+            Default Head part
+                +BodyPartTemplateConfig=(PartType="Head", DLCName="ProjectName",TemplateName="CHARACTERNAME", ArchetypeName="UPKName.Archetypes.ARC_HEAD_M", Gender=eGender_Male, bCanUseOnCivilian=false, bVeteran=false)
 
+            Blank Head part
+                +BodyPartTemplateConfig=(PartType="Head", DLCName="",TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=)
+
+        (Voice)
+            - Voice
+
+            Default Voice part
+                +BodyPartTemplateConfig=(PartType="Voice", Language="english", Gender=eGender_Male, TemplateName="CHARACTERNAME_VOICE", ArchetypeName="UPK.ARC_VOICE_GENDERINITIAL")
+
+            Basic Voice part
+                +BodyPartTemplateConfig=(PartType="Voice", Language="", Gender=, TemplateName="", ArchetypeName="")
+
+        (Head Props)
+            - Helmets
+            - FacePropsUpper
+            - FacePropsLower
+
+            Default Head Prop part
+                +BodyPartTemplateConfig=(PartType="Helmets/FacePropsUpper/FacePropsLower", DLCName="ProjectName", TemplateName="CHARACTERNAME_PARTTYPE_ARMORTYPE_GENDER", ArchetypeName="UPKName.Archetypes.ARC_PART_GENDERINITIAL", Gender=eGender_Male, bCanUseOnCivilian=false, bVeteran=false, bAnyArmor=true)
+
+            Basic Head Prop part
+                +BodyPartTemplateConfig=(PartType="Helmets/FacePropsUpper/FacePropsLower", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, bAnyArmor=)
+
+            Blank Head Prop part
+                +BodyPartTemplateConfig=(PartType="", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, bAnyArmor=)
+
+        (Body)
+            - Torso
+            - Arms
+            - Legs
+            - Shins
+            - LeftArm
+            - RightArm
+            - LeftForearm
+            - RightForearm
+        
+            Default Body part
+                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearm", DLCName="ProjectName", TemplateName="CHARACTERNAME_PARTTYPE_ARMORTYPE_GENDER", ArchetypeName="UPKName.Archetypes.ARC_PART_GENDERINITIAL", Gender=eGender_Male, bCanUseOnCivilian=false, bVeteran=false, CharacterTemplate=Soldier, ArmorTemplate=KevlarArmor)
+
+            Basic Body part
+                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearm", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)    
+
+            Blank Body part
+                +BodyPartTemplateConfig=(PartType="", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)
+
+    Language: (Text field) (For Voice only)
+        - English
 
     DLCName: (Text field)
         - (Project name) (No spaces)
@@ -40,7 +82,7 @@ XComContent file properties:
     ArchetypeName: (Text field, Text field,)
         - (UPK Name, . , Archetypes (if included in UPK file), . , ARC_(PartType)_(Gender Initial) ) (No spaces)
 
-    Gender:
+    Gender: (Check list) (2 genders)
         - eGender_Male
         - eGender_Female
 
@@ -52,35 +94,36 @@ XComContent file properties:
         - true
         - false
 
-    ArmorTemplate: (Not included for Head PartType template)
-        - KevlarArmor
-        - LightPlatedArmor
-        - MediumPlatedArmor
-        - HeavyPlatedArmor
-        - LightPoweredArmor
-        - MediumPoweredArmor
-        - HeavyPoweredArmor
+    ArmorTemplate: (Not included for Head PartType template) (16 types of armor)
+        (Soldier, 7)
+            - KevlarArmor
+            - LightPlatedArmor
+            - MediumPlatedArmor
+            - HeavyPlatedArmor
+            - LightPoweredArmor
+            - MediumPoweredArmor
+            - HeavyPoweredArmor
 
-        - ReaperArmor
-        - PlatedReaperArmor
-        - PoweredReaperArmor
+        (Reaper, 3)
+            - ReaperArmor
+            - PlatedReaperArmor
+            - PoweredReaperArmor
 
-        - TemplarArmor
-        - PlatedTemplarArmor
-        - PoweredTemplarArmor
+        (Templar, 3)
+            - TemplarArmor
+            - PlatedTemplarArmor
+            - PoweredTemplarArmor
 
-        - SkirmisherArmor
-        - PlatedSkirmisherArmor
-        - PoweredSkirmisherArmor
+        (Skirmisher,3)
+            - SkirmisherArmor
+            - PlatedSkirmisherArmor
+            - PoweredSkirmisherArmor
 
     CharacterTemplate: (Not included for Head PartType template)
         - Soldier
         - ReaperSoldier
         - TemplarSoldier
         - SkirmisherSoldier
-
-    Number of templates generated:
-        - # of enabled PartTypes * # of enabled ArmorTemplates
 
 XComGame file properties:
 
@@ -91,3 +134,7 @@ XComGame file properties:
     - Custom body part template instance:
             [(Insert) X2BodyPartTemplate]
             DisplayName=""
+
+Number of templates generated:
+    - # of enabled PartTypes * # of enabled ArmorTemplates * # of enabled genders
+    - 10 * 16 * 2 = 320 maximum
