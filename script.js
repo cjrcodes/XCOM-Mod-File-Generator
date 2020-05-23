@@ -1,3 +1,6 @@
+//Part Types
+
+
 //Part Type Settings
 let ptSettings = ["pt-DefaultSetting", "pt-HeadPropsSetting", "pt-BodyOnlySetting", "pt-BodyExtrasOnlySetting"];
 
@@ -15,6 +18,28 @@ let bodyExtrasPTs = ["pt-Shins", "pt-LeftArm", "pt-RightArm", "pt-LeftForeArm", 
 
 //Collection of all Parts Types, excluding Voice
 let ptCollection = [ptSettings, defaultPTs, headPropsPTs, bodyPTs, bodyExtrasPTs];
+
+
+//Armor Templates
+
+
+//Armor Template Settings
+let atSettings = ["at-SoldierOnly", "at-ReaperOnly", "at-TemplarOnly", "at-SkirmisherOnly"];
+
+//Soldier Armor Templates
+let soldierATs = ["at-KevlarArmor", "at-LightPlatedArmor", "at-MediumPlatedArmor", "at-HeavyPlatedArmor", "at-LightPoweredArmor", "at-MediumPoweredArmor", "at-HeavyPoweredArmor"];
+
+//Reaper Armor Templates
+let reaperATs = ["at-ReaperArmor", "at-PlatedReaperArmor", "at-PoweredReaperArmor"];
+
+//Templar Armor Templates
+let templarATs = ["at-TemplarArmor", "at-PlatedTemplarArmor", "at-PoweredTemplarArmor"];
+
+//Skirmisher Armor Templates
+let skirmisherATs = ["at-SkirmisherArmor", "at-PlatedSkirmisherArmor", "at-PoweredSkirmisherArmor"];
+
+//Collection of all Armor Templates
+let atCollection = [atSettings, soldierATs, reaperATs, templarATs, skirmisherATs];
 
 //Select all Part Types
 function SelectAllPTs() {
@@ -123,3 +148,26 @@ else{
         
 }
 
+//Select all Armor Templates
+function SelectAllATs(){
+    var i;
+    var j;
+    for(i = 0; i < atCollection.length; i++){
+        for(j = 0; j < atCollection[i].length; j++){
+            document.getElementById(atCollection[i][j]).checked = true;
+        }
+    }
+
+}
+
+//Deselect all Armor Templates
+function DeselectAllATs(){
+    var i;
+    var j;
+    for(i = 0; i < atCollection.length; i++){
+        for(j = 0; j < atCollection[i].length; j++){
+            document.getElementById(atCollection[i][j]).checked = false;
+        }
+    }
+
+}
