@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta id="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="script.js"></script>
     <title>XCOM Mod File Generator</title>
 </head>
@@ -20,14 +20,23 @@
         </div>
     </header>
 
-    
+
 
     <div id="main">
 
 
-        <form>
+        <form onsubmit="GenerateFiles()">
             <div class="properties-container">
                 <label id="properties-label">XCOMContent</label>
+
+                <div class="grid-item">
+                    <div id="comment/displayname">
+                        <label for="Comment/DisplayName">Comment/DisplayName</label><br>
+                        <input type="text" id="Comment/DisplayName" value=""
+                            placeholder="Ex. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Ex. &#34;Soldier&#34; = Soldier Legs'">
+                    </div>
+                </div>
 
                 <div class="grid-item">
                     <div id="parttypes-form">
@@ -37,18 +46,22 @@
                         <br>
 
                         <label>Default (Head, Torso, Arms, Legs)</label>
-                        <input type="checkbox" id="pt-DefaultSetting" value="pt-default" onchange="DefaultPTsCheck()"><br>
+                        <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
+                            onchange="DefaultPTsCheck()"><br>
 
                         <label>Head Props</label>
-                        <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly" onchange="HeadPropsPTsCheck()"> <br>
+                        <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
+                            onchange="HeadPropsPTsCheck()"> <br>
 
                         <label>Body</label>
-                        <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly" onchange="BodyPTsCheck()"><br>
+                        <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly"
+                            onchange="BodyPTsCheck()"><br>
 
                         <label>Body Extras</label>
-                        <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly" onchange="BodyExtrasPTsCheck()"><br>
+                        <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
+                            onchange="BodyExtrasPTsCheck()"><br>
 
-                        
+
 
 
                         <h3>Head</h3>
@@ -94,7 +107,7 @@
                 <div class="grid-item">
                     <div id="language">
                         <label for="Language">Language (For Voice only)</label><br>
-                        <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
+                        <input type="text" id="prop-Language" value="english" placeholder="Default is &#34;english&#34;"
                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Default is &#34;english&#34;'">
                     </div>
                 </div>
@@ -102,40 +115,40 @@
                 <br>
 
                 <div class="grid-item">
-                    <div id="dlcid">
-                        <label for="DLCid">DLCid</label><br>
-                        <input type="text" id="DLCid" value="" placeholder="Default is the project id, no spaces"
-                            onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Default is the project id, no spaces'">
+                    <div id="dlcname">
+                        <label for="DLCName">DLCName</label><br>
+                        <input type="text" id="prop-DLCName" value=""
+                            placeholder="Default is the project name, no spaces" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Default is the project name, no spaces'">
                     </div>
                 </div>
 
                 <br>
 
                 <div class="grid-item">
-                    <div id="templateid">
-                        <label for="Templateid">Templateid</label><br>
-                        <input type="text" id="Templateid" value="" placeholder="Character/Mod id, no spaces"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Character/Mod id, no spaces'">
+                    <div id="templatename">
+                        <label for="TemplateName">TemplateName</label><br>
+                        <input type="text" id="prop-TemplateName" value="" placeholder="Character/Mod name, no spaces"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Character/Mod name, no spaces'">
                     </div>
                 </div>
 
                 <br>
 
                 <div class="grid-item">
-                    <div id="archetypeid-upk">
-                        <label for="Archetypeid-upk">Archetypeid (UPK id)</label><br>
-                        <input type="text" id="Archetypeid-upk" value="">
+                    <div id="archetypename-upk">
+                        <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label><br>
+                        <input type="text" id="prop-ArchetypeName-upk" value="">
                     </div>
                 </div>
 
                 <br>
 
                 <div class="grid-item">
-                    <div id="archetypeid-arcfolderid">
-                        <label for="Archetypeid-arcfolderid">Archetypeid (Archetype folder
-                            id)</label><br>
-                        <input type="text" id="Archetypeid-folder" value=""
+                    <div id="archetypename-arcfoldername">
+                        <label for="ArchetypeName-folder">ArchetypeName (Archetype Folder
+                            Name)</label><br>
+                        <input type="text" id="prop-ArchetypeName-folder" value=""
                             placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = '&#34;Archetypes&#34; is standard'">
                     </div>
@@ -143,10 +156,10 @@
                 <br>
 
                 <div class="grid-item">
-                    <div id="archetypeid-customid">
-                        <label for="Archetypeid-customid">Archetypeid (Custom id appended to all
+                    <div id="archetypename-customname">
+                        <label for="ArchetypeName-customname">ArchetypeName (Custom name appended to all
                             parts)</label><br>
-                        <input type="text" id="Archetypeid-folder" value=""
+                        <input type="text" id="prop-ArchetypeName-customname" value=""
                             placeholder="Ex. &#34;TINT&#34; = TorsoTINT" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Ex. &#34;TINT&#34; = TorsoTINT'">
                     </div>
@@ -156,14 +169,14 @@
 
                 <div class="grid-item">
                     <div id="archetypeid-customid">
-                        <label for="cars">Arc and append type</label><br>
+                        <label for="arc-appendtype">Arc and append type</label><br>
 
-                        <select id="arc-appendtype" id="arcappendtype">
+                        <select name=" ArchetypeAppendType" id="ArchetypeAppendType">
                             <option value="arc-before">Before (Ex. ARC_TINTTORSO_M)</option>
                             <option value="arc-after" selected="selected">After (Ex. ARC_TORSOTINT_M)</option>
-                            <option value="arc-customonly">Custom (Ex. UPKid.Archetypes.TINT)</option>
+                            <option value="arc-customonly">Custom (Ex. UPKName.Archetypes.TINT)</option>
 
-                        </select>
+                            </select>
 
                     </div>
                 </div>
@@ -182,7 +195,7 @@
                 <div class="grid-item">
                     <div id="bcilivian">
                         <h3>bCanUseOnCivilian (False is default)</h3>
-                        <select id="bCivilian" id="bcilivian">
+                        <select id="bCivilian">
                             <option value="bCivilian-t">True</option>
                             <option value="bCivilian-f" selected="selected">False</option>
                             <option value="bCivilian-n">None</option>
@@ -206,7 +219,7 @@
                 <div class="grid-item">
                     <div id="banyarmor">
                         <h3>bAnyArmor (True is default, For Head Props only)</h3>
-                        <select id="bAnyArmor" id="b-anyarmor">
+                        <select id="bAnyArmor">
                             <option value="bAnyArmor-t" selected="selected">True</option>
                             <option value="bAnyArmor-f">False</option>
                             <option value="bAnyArmor-n">None</option>
@@ -224,19 +237,22 @@
                         <br>
 
                         <label>Soldier</label>
-                        <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly"><br>
+                        <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly"
+                            onclick="SoldierATsCheck()"><br>
 
                         <label>Reaper</label>
-                        <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly"> <br>
+                        <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly" onclick="ReaperATsCheck()"> <br>
 
                         <label>Templar</label>
-                        <input type="checkbox" id="at-TemplarOnly" value="at-templaronly"><br>
+                        <input type="checkbox" id="at-TemplarOnly" value="at-templaronly"
+                            onclick="TemplarATsCheck()"><br>
 
                         <label>Skirmisher</label>
-                        <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"><br>
+                        <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
+                            onclick="SkirmisherATsCheck()"><br>
 
 
-                    
+
 
                         <h3>Soldier</h3>
                         <input type="checkbox" id="at-KevlarArmor" value="at-kevlar">
@@ -281,6 +297,7 @@
                     </div>
                 </div>
                 <br>
+                <!--
                 <div class="grid-item">
                     <div id="charactertemplates-form">
                         <h2>Character Templates</h2>
@@ -303,22 +320,24 @@
 
                     </div>
                 </div>
-
+                -->
 
 
             </div>
-    
-    <div class="properties-container">
-        <label id="properties-label">XCOMGame</label>
-        <h3>DisplayName</h3>
-                        <select id="DisplayName" id="displayname">
-                            <option value="DisplayName-t" selected="selected">Copy Generated Template</option>
-                            <option value="DisplayName-f">Leave Blank</option>
-                        </select>
-    </div>
-    
-    <input type="submit" value="Generate Files">
-    </form>
+
+            <div class="properties-container">
+                <label id="properties-label">XCOMGame</label>
+                <h3>DisplayName</h3>
+                <select id="DisplayName">
+                    <option value="DisplayName-commentname" selected="selected">Comment Name (Ex. DisplayName = "Soldier
+                        Legs")</option>
+                    <option value="DisplayName-templatename">Template Name (Ex. DisplayName = "SoldierLegs_KV")</option>
+                    <option value="DisplayName-blank">Leave Blank</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Generate Files">
+        </form>
     </div>
 
 </body>
