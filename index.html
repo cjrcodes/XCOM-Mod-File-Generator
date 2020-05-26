@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="script.js"></script>
+
     <title>XCOM Mod File Generator</title>
 </head>
 
@@ -31,8 +32,8 @@
 
                 <div class="grid-item">
                     <div id="comment/displayname">
-                        <label for="Comment/DisplayName">Comment/DisplayName</label><br>
-                        <input type="text" id="Comment/DisplayName" value=""
+                        <label for="CommentName">Comment/DisplayName</label><br>
+                        <input type="text" id="CommentName" value=""
                             placeholder="Ex. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Ex. &#34;Soldier&#34; = Soldier Legs'">
                     </div>
@@ -63,43 +64,52 @@
 
 
 
+                        <div id="PartTypes">
+                            <h3>Head</h3>
+                            <input type="checkbox" name="PartType" id="pt-Head" value="Head">
+                            <label for="pt-Head">Head</label><br>
 
-                        <h3>Head</h3>
-                        <input type="checkbox" id="pt-Head" value="pt-head">
-                        <label for="Head">Head</label><br>
+                            <h3>Voice</h3>
 
-                        <h3>Voice</h3>
+                            <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
+                            <label for="pt-Voice">Voice</label><br>
 
-                        <input type="checkbox" id="pt-Voice" value="pt-voice">
-                        <label for="Voice">Voice</label><br>
+                            <h3>Head props</h3>
+                            <div id="HeadProps">
+                                <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
+                                <label for="pt-Helmets">Helmets</label><br>
+                                <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsPpper">
+                                <label for="pt-FacePropsUpper">FacePropsUpper</label><br>
+                                <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower">
+                                <label for="pt-FacePropsLower">FacePropsLower</label><br>
+                            </div>
 
-                        <h3>Head props</h3>
-                        <input type="checkbox" id="pt-Helmets" value="pt-helmets">
-                        <label for="Helmets">Helmets</label><br>
-                        <input type="checkbox" id="pt-FacePropsUpper" value="pt-facepropsupper">
-                        <label for="FacePropsUpper">FacePropsUpper</label><br>
-                        <input type="checkbox" id="pt-FacePropsLower" value="pt-facepropslower">
-                        <label for="FacePropsLower">FacePropsLower</label><br>
+                            <h3>Body</h3>
+                            <div id="Body/BodyExtras">
+                                <input type="checkbox" name="PartType" id="pt-Torso" value="Torso">
+                                <label for="pt-Torso">Torso</label><br>
+                                <input type="checkbox" name="PartType" id="pt-Arms" value="Arms">
+                                <label for="pt-Arms">Arms</label><br>
+                                <input type="checkbox" name="PartType" id="pt-Legs" value="Legs">
+                                <label for="pt-Legs">Legs</label><br>
 
-                        <h3>Body</h3>
-                        <input type="checkbox" id="pt-Torso" value="pt-torso">
-                        <label for="Torso">Torso</label><br>
-                        <input type="checkbox" id="pt-Arms" value="pt-arms">
-                        <label for="Arms">Arms</label><br>
-                        <input type="checkbox" id="pt-Legs" value="pt-legs">
-                        <label for="Legs">Legs</label><br>
-
-                        <h3>Body Extras</h3>
-                        <input type="checkbox" id="pt-Shins" value="pt-shins">
-                        <label for="Shins">Shins</label><br>
-                        <input type="checkbox" id="pt-LeftArm" value="pt-leftarm">
-                        <label for="pt-LeftArm">LeftArm</label><br>
-                        <input type="checkbox" id="pt-RightArm" value="pt-rightarm">
-                        <label for="pt-RightArm">RightArm</label><br>
-                        <input type="checkbox" id="pt-LeftForeArm" value="pt-leftforearm">
-                        <label for="LeftForeArm">LeftForeArm</label><br>
-                        <input type="checkbox" id="pt-RightForeArm" value="pt-rightforearm">
-                        <label for="RightForeArm">RightForeArm</label><br>
+                                <h3>Body Extras</h3>
+                                <input type="checkbox" name="PartType" id="pt-Shins" value="Shins">
+                                <label for="pt-Shins">Shins</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftArm" value="LeftArm">
+                                <label for="pt-LeftArm">LeftArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightArm" value="RightArm">
+                                <label for="pt-RightArm">RightArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftForeArm" value="LeftForeArm">
+                                <label for="pt-LeftForeArm">LeftForeArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightForeArm" value="RightForeArm">
+                                <label for="pt-RightForeArm">RightForeArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftArmDeco" value="LeftArmDeco">
+                                <label for="pt-LeftArmDeco">LeftArmDeco</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightArmDeco" value="RightArmDeco">
+                                <label for="pt-RightArmDeco">RightArmDeco</label><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -137,7 +147,7 @@
 
                 <div class="grid-item">
                     <div id="archetypename-upk">
-                        <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label><br>
+                        <label for="prop-ArchetypeName-upk">ArchetypeName (UPK Name)</label><br>
                         <input type="text" id="prop-ArchetypeName-upk" value="">
                     </div>
                 </div>
@@ -146,7 +156,7 @@
 
                 <div class="grid-item">
                     <div id="archetypename-arcfoldername">
-                        <label for="ArchetypeName-folder">ArchetypeName (Archetype Folder
+                        <label for="prop-ArchetypeName-folder">ArchetypeName (Archetype Folder
                             Name)</label><br>
                         <input type="text" id="prop-ArchetypeName-folder" value=""
                             placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
@@ -156,8 +166,8 @@
                 <br>
 
                 <div class="grid-item">
-                    <div id="archetypename-customname">
-                        <label for="ArchetypeName-customname">ArchetypeName (Custom name appended to all
+                    <div id="prop-archetypename-customname">
+                        <label for="prop-ArchetypeName-customname">ArchetypeName (Custom name appended to all
                             parts)</label><br>
                         <input type="text" id="prop-ArchetypeName-customname" value=""
                             placeholder="Ex. &#34;TINT&#34; = TorsoTINT" onfocus="this.placeholder = ''"
@@ -168,15 +178,15 @@
 
 
                 <div class="grid-item">
-                    <div id="archetypeid-customid">
+                    <div id="archetypename-appendtype">
                         <label for="arc-appendtype">Arc and append type</label><br>
 
-                        <select name=" ArchetypeAppendType" id="ArchetypeAppendType">
+                        <select name="ArchetypeAppendType" id="ArchetypeAppendType">
                             <option value="arc-before">Before (Ex. ARC_TINTTORSO_M)</option>
                             <option value="arc-after" selected="selected">After (Ex. ARC_TORSOTINT_M)</option>
-                            <option value="arc-customonly">Custom (Ex. UPKName.Archetypes.TINT)</option>
+                            <option value="arc-custom">Custom (Ex. UPKName.Archetypes.TINT)</option>
 
-                            </select>
+                        </select>
 
                     </div>
                 </div>
@@ -185,9 +195,9 @@
                 <div class="grid-item">
                     <div id="gender">
                         <h3>Gender</h3>
-                        <input type="checkbox" id="GenderM" value="gender-m">
+                        <input type="checkbox" id="GenderM" value="eGender_Male">
                         <label for="GenderM">Male</label><br>
-                        <input type="checkbox" id="GenderF" value="gender-f">
+                        <input type="checkbox" id="GenderF" value="eGender_Female">
                         <label for="GenderF">Female</label><br>
                     </div>
                 </div>
@@ -196,9 +206,9 @@
                     <div id="bcilivian">
                         <h3>bCanUseOnCivilian (False is default)</h3>
                         <select id="bCivilian">
-                            <option value="bCivilian-t">True</option>
-                            <option value="bCivilian-f" selected="selected">False</option>
-                            <option value="bCivilian-n">None</option>
+                            <option value="true">True</option>
+                            <option value="false" selected="selected">False</option>
+                            <option value="">None</option>
 
                         </select>
                     </div>
@@ -208,9 +218,9 @@
                     <div id="bveteran">
                         <h3>bVeteran (False is default)</h3>
                         <select id="bVeteran" id="bveteran">
-                            <option value="bVeteran-t">True</option>
-                            <option value="bVeteran-f" selected="selected">False</option>
-                            <option value="bVeteran-n">None</option>
+                            <option value="true">True</option>
+                            <option value="false" selected="selected">False</option>
+                            <option value="">None</option>
 
                         </select>
                     </div>
@@ -220,9 +230,9 @@
                     <div id="banyarmor">
                         <h3>bAnyArmor (True is default, For Head Props only)</h3>
                         <select id="bAnyArmor">
-                            <option value="bAnyArmor-t" selected="selected">True</option>
-                            <option value="bAnyArmor-f">False</option>
-                            <option value="bAnyArmor-n">None</option>
+                            <option value="true" selected="selected">True</option>
+                            <option value="false">False</option>
+                            <option value="">None</option>
 
                         </select>
                     </div>
@@ -255,45 +265,45 @@
 
 
                         <h3>Soldier</h3>
-                        <input type="checkbox" id="at-KevlarArmor" value="at-kevlar">
-                        <label for="KevlarArmor">KevlarArmor</label><br>
-                        <input type="checkbox" id="at-LightPlatedArmor" value="at-lightplated">
-                        <label for="LightPlatedArmor">LightPlatedArmor</label><br>
-                        <input type="checkbox" id="at-MediumPlatedArmor" value="at-mediumplated">
-                        <label for="MediumPlatedArmor">MediumPlatedArmor</label><br>
-                        <input type="checkbox" id="at-HeavyPlatedArmor" value="at-heavyplated">
-                        <label for="HeavyPlatedArmor">HeavyPlatedArmor</label><br>
-                        <input type="checkbox" id="at-LightPoweredArmor" value="at-lightpowered">
-                        <label for="LightPoweredArmor">LightPoweredArmor</label><br>
-                        <input type="checkbox" id="at-MediumPoweredArmor" value="at-mediumpowered">
-                        <label for="MediumPoweredArmor">MediumPoweredArmor</label><br>
-                        <input type="checkbox" id="at-HeavyPoweredArmor" value="at-heavypowered">
-                        <label for="HeavyPoweredArmor">HeavyPoweredArmor</label><br>
+                        <input type="checkbox" id="at-KevlarArmor" value="KevlarArmor">
+                        <label for="at-KevlarArmor">KevlarArmor</label><br>
+                        <input type="checkbox" id="at-LightPlatedArmor" value="LightPlatedArmor">
+                        <label for="at-LightPlatedArmor">LightPlatedArmor</label><br>
+                        <input type="checkbox" id="at-MediumPlatedArmor" value="MediumPlatedArmor">
+                        <label for="at-MediumPlatedArmor">MediumPlatedArmor</label><br>
+                        <input type="checkbox" id="at-HeavyPlatedArmor" value="HeavyPlatedArmor">
+                        <label for="at-HeavyPlatedArmor">HeavyPlatedArmor</label><br>
+                        <input type="checkbox" id="at-LightPoweredArmor" value="LightPoweredArmor">
+                        <label for="at-LightPoweredArmor">LightPoweredArmor</label><br>
+                        <input type="checkbox" id="at-MediumPoweredArmor" value="MediumPoweredArmor">
+                        <label for="at-MediumPoweredArmor">MediumPoweredArmor</label><br>
+                        <input type="checkbox" id="at-HeavyPoweredArmor" value="HeavyPoweredArmor">
+                        <label for="at-HeavyPoweredArmor">HeavyPoweredArmor</label><br>
 
                         <h3>Reaper</h3>
 
-                        <input type="checkbox" id="at-ReaperArmor" value="at-reaper">
-                        <label for="ReaperArmor">ReaperArmor</label><br>
-                        <input type="checkbox" id="at-PlatedReaperArmor" value="at-platedreaper">
-                        <label for="PlatedReaperArmor">PlatedReaperArmor</label><br>
-                        <input type="checkbox" id="at-PoweredReaperArmor" value="at-poweredreaper">
-                        <label for="PoweredReaperArmor">PoweredReaperArmor</label><br>
+                        <input type="checkbox" id="at-ReaperArmor" value="ReaperArmor">
+                        <label for="at-ReaperArmor">ReaperArmor</label><br>
+                        <input type="checkbox" id="at-PlatedReaperArmor" value="PlatedReaperArmor">
+                        <label for="at-PlatedReaperArmor">PlatedReaperArmor</label><br>
+                        <input type="checkbox" id="at-PoweredReaperArmor" value="PoweredReaperArmor">
+                        <label for="at-PoweredReaperArmor">PoweredReaperArmor</label><br>
 
                         <h3>Templar</h3>
-                        <input type="checkbox" id="at-TemplarArmor" value="at-reaper">
-                        <label for="ReaperArmor">TemplarArmor</label><br>
-                        <input type="checkbox" id="at-PlatedTemplarArmor" value="at-platedreaper">
-                        <label for="PlatedReaperArmor">PlatedTemplarArmor</label><br>
-                        <input type="checkbox" id="at-PoweredTemplarArmor" value="at-poweredreaper">
-                        <label for="PoweredReaperArmor">PoweredTemplarArmor</label><br>
+                        <input type="checkbox" id="at-TemplarArmor" value="TemplarArmor">
+                        <label for="at-TemplarArmor">TemplarArmor</label><br>
+                        <input type="checkbox" id="at-PlatedTemplarArmor" value="PlatedTemplarArmor">
+                        <label for="at-PlatedTemplarArmor">PlatedTemplarArmor</label><br>
+                        <input type="checkbox" id="at-PoweredTemplarArmor" value="PoweredTemplarArmor">
+                        <label for="at-PoweredTemplarArmor">PoweredTemplarArmor</label><br>
 
                         <h3>Skirmisher</h3>
-                        <input type="checkbox" id="at-SkirmisherArmor" value="at-reaper">
-                        <label for="ReaperArmor">SkirmisherArmor</label><br>
-                        <input type="checkbox" id="at-PlatedSkirmisherArmor" value="at-platedreaper">
-                        <label for="PlatedReaperArmor">PlatedSkirmisherArmor</label><br>
-                        <input type="checkbox" id="at-PoweredSkirmisherArmor" value="at-poweredreaper">
-                        <label for="PoweredReaperArmor">PoweredSkirmisherArmor</label><br>
+                        <input type="checkbox" id="at-SkirmisherArmor" value="SkirmisherArmor">
+                        <label for="at-SkirmisherArmor">SkirmisherArmor</label><br>
+                        <input type="checkbox" id="at-PlatedSkirmisherArmor" value="PlatedSkirmisherArmor">
+                        <label for="at-PlatedSkirmisherArmor">PlatedSkirmisherArmor</label><br>
+                        <input type="checkbox" id="at-PoweredSkirmisherArmor" value="PoweredSkirmisherArmor">
+                        <label for="at-PoweredSkirmisherArmor">PoweredSkirmisherArmor</label><br>
                     </div>
                 </div>
                 <br>
@@ -329,15 +339,20 @@
                 <label id="properties-label">XCOMGame</label>
                 <h3>DisplayName</h3>
                 <select id="DisplayName">
-                    <option value="DisplayName-commentname" selected="selected">Comment Name (Ex. DisplayName = "Soldier
+                    <option value="CommentName" selected="selected">Comment Name (Ex. DisplayName = "Soldier
                         Legs")</option>
-                    <option value="DisplayName-templatename">Template Name (Ex. DisplayName = "SoldierLegs_KV")</option>
-                    <option value="DisplayName-blank">Leave Blank</option>
+                    <option value="TemplateName">Template Name (Ex. DisplayName = "SoldierLegs_KV")</option>
+                    <option value="">Leave Blank</option>
                 </select>
             </div>
 
-            <input type="submit" value="Generate Files">
-        </form>
+            <button type="button" id="btnGenerate" onclick="GenerateFiles()">Generate Files</button>
+
+            <a href="XComContentBASE.ini" id="xcom-content-file" download>XCOMContent
+
+
+    </div>
+    </form>
     </div>
 
 </body>

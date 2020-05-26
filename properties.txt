@@ -19,7 +19,7 @@ XComContent file properties:
 
         +BodyPartTemplateConfig=(PartType="", DLCName="",TemplateName="", ArchetypeName="", Gender=, bVeteran=, ArmorTemplate="", CharacterTemplate="")
 
-    PartType: (Check List) (Split by different template configs) (13 part types, head and voice only need 1 line, thus 11 need different armor types)
+    PartType: (Check List) (Split by different template configs) (13 part types, head, voice, and head props only need 1 line, thus 11 need different armor types)
         (Head)
             - Head
             Default Head part
@@ -60,12 +60,14 @@ XComContent file properties:
             - RightArm
             - LeftForearm
             - RightForearm
+            - LeftArmDeco
+            - RightArmDeco
         
             Default Body part
-                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearm", DLCName="ProjectName", TemplateName="CHARACTERNAME_PARTTYPE_ARMORTYPE_GENDER", ArchetypeName="UPKName.Archetypes.ARC_PART_GENDERINITIAL", Gender=eGender_Male, bCanUseOnCivilian=false, bVeteran=false, CharacterTemplate=Soldier, ArmorTemplate=KevlarArmor)
+                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearm/LeftArmDeco/RightArmDeco", DLCName="ProjectName", TemplateName="CHARACTERNAME_PARTTYPE_ARMORTYPE_GENDER", ArchetypeName="UPKName.Archetypes.ARC_PART_GENDERINITIAL", Gender=eGender_Male, bCanUseOnCivilian=false, bVeteran=false, CharacterTemplate=Soldier, ArmorTemplate=KevlarArmor)
 
             Basic Body part
-                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearm", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)    
+                +BodyPartTemplateConfig=(PartType="Torso/Arms/Legs/Shins/LeftArm/RightArm/LeftForearm/RightForearmLeftArmDeco/RightArmDeco", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)    
 
             Blank Body part
                 +BodyPartTemplateConfig=(PartType="", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)
@@ -138,3 +140,62 @@ XComGame file properties:
 Number of templates generated:
     - # of enabled PartTypes * # of enabled ArmorTemplates * # of enabled genders
     - 10 * 16 * 2 = 320 maximum
+    - Head = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
+    - Voice = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
+    - Head Props = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
+    - Body/Body Extras = 1 minimum (No genders, 1 gender), 320 maximum (both genders selected, all body/body extra parts selected, all armor templates selected)
+
+Values in Array form (None filled in):
+    Comment Name/Display Name
+        (0)commentName: 
+    Part Types
+        (1)pt-Head: false :
+        (2)pt-Torso: false :
+        (3)pt-Arms: false :
+        (4)pt-Legs: false :
+        (5)pt-Helmets: false :
+        (6)pt-FacePropsUpper: false :
+        (7)pt-FacePropsLower: false :
+        (8)pt-Shins: false :
+        (9)pt-LeftArm: false :
+        (10)pt-RightArm: false :
+        (11)pt-LeftForeArm: false :
+        (12)pt-RightForeArm: false :
+        (13)pt-LeftArmDeco: false :
+        (14)pt-RightArmDeco: false :
+        (15)pt-Voice: false :338:13
+    Text Input Properties 
+        (16)prop-Language: english :
+        (17)prop-DLCName: :
+        (18)prop-TemplateName: :
+        (19)prop-ArchetypeName-upk: :
+        (20)prop-ArchetypeName-folder: :
+        (21)prop-ArchetypeName-customname: :
+    Archetype Append Type 
+        (22)arc-after :
+    Gender Selection 
+        (23)GenderM: false :
+        (24)GenderF: false :
+    Can Use On Civilian 
+        (25)bCivilian-f :
+    Veteran 
+        (26)bVeteran-f :
+    Any Armor 
+        (27)bAnyArmor-t :
+    Armor Templates 
+        (28)at-KevlarArmor: false :
+        (29)at-LightPlatedArmor: false :
+        (30)at-MediumPlatedArmor: false :
+        (31)at-HeavyPlatedArmor: false :
+        (32)at-LightPoweredArmor: false :
+        (33)at-MediumPoweredArmor: false :
+        (34)at-HeavyPoweredArmor: false :
+        (35)at-ReaperArmor: false :
+        (36)at-PlatedReaperArmor: false :
+        (37)at-PoweredReaperArmor: false :
+        (38)at-TemplarArmor: false :
+        (39)at-PlatedTemplarArmor: false :
+        (40)at-PoweredTemplarArmor: false :
+        (41)at-SkirmisherArmor: false :
+        (42)at-PlatedSkirmisherArmor: false :
+        (43)at-PoweredSkirmisherArmor: false
