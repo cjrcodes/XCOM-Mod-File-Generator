@@ -68,7 +68,8 @@ body {
 }
 
 label {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: medium;
+  font-family: 'Teko', sans-serif;
 }
 
 #XComContentHeader {
@@ -97,6 +98,12 @@ h3 {
 input[type=text] {
   text-align: center;
   width: 230px;
+}
+
+input[type=button] {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
 }
 
 /*Center placeholder text for all browsers*/
@@ -133,5 +140,14 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+footer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Maven Pro', sans-serif;
 }
 /*# sourceMappingURL=style.css.map */

@@ -648,7 +648,7 @@ function GenerateFiles() {
 
                     //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
                     if (displayNameType == "CommentName" && commentName != "") {
-                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + displayNameLineEnding;
                     } else if (displayNameType == "TemplateName") {
                         DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + displayNameLineEnding;
                     } else if (displayNameType == "Blank") {
@@ -674,7 +674,7 @@ function GenerateFiles() {
 
                         //DisplayName behavior, similar to above
                         if (displayNameType == "CommentName" && commentName != "") {
-                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + displayNameLineEnding;
                         } else if (displayNameType == "TemplateName") {                            
                             DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) +  displayNameLineEnding;
                         } else if (displayNameType == "Blank") {
@@ -728,7 +728,7 @@ function GenerateFiles() {
 
                 //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
             if (displayNameType == "CommentName" && commentName != "" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
-                DisplayName += commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                DisplayName += commentName + " " + PartTypesEnabled[i] + " " + displayNameLineEnding;
             } else if (displayNameType == "TemplateName" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
 
                 DisplayName += templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + displayNameLineEnding;
@@ -786,7 +786,7 @@ function GenerateFiles() {
 
                     //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
                     if (displayNameType == "CommentName" && commentName != "") {
-                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + displayNameLineEnding;
                     } else if (displayNameType == "TemplateName") {
                         DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + displayNameLineEnding;
                     } else if (displayNameType == "Blank") {
@@ -812,7 +812,7 @@ function GenerateFiles() {
 
                         //DisplayName behavior, similar to above
                         if (displayNameType == "CommentName" && commentName != "") {
-                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + displayNameLineEnding;
                         } else if (displayNameType == "TemplateName") {                            
                             DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag + displayNameLineEnding;
                         } else if (displayNameType == "Blank") {
