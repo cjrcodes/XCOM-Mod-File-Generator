@@ -67,6 +67,22 @@ body {
   }
 }
 
+label {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#XComContentHeader {
+  font-family: 'Work Sans', sans-serif;
+}
+
+h2 {
+  font-family: 'Rubik', sans-serif;
+}
+
+h3 {
+  font-family: 'Work Sans', sans-serif;
+}
+
 .properties-container {
   display: -ms-grid;
   display: grid;
@@ -76,10 +92,6 @@ body {
   max-width: 60%;
   padding: 50px;
   margin: auto;
-}
-
-.properties-container #parttypes-form {
-  background-color: #00767a;
 }
 
 input[type=text] {
@@ -114,6 +126,7 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
 }
 
 #DisplayName {
