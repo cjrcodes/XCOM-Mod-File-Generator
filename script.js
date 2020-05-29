@@ -23,7 +23,19 @@ var LightPoweredArmor = new ArmorTemplate("LightPoweredArmor", "Solider", "LPO")
 var MediumPoweredArmor = new ArmorTemplate("MediumPoweredArmor", "Solider", "MPO");
 var HeavyPoweredArmor = new ArmorTemplate("HeavyPoweredArmor", "Solider", "HPO");
 
-var ArmorTemplates = [KevlarArmor, LightPlatedArmor, MediumPlatedArmor, HeavyPlatedArmor, LightPoweredArmor, MediumPoweredArmor, HeavyPoweredArmor];
+var ReaperArmor = new ArmorTemplate("ReaperArmor", "Reaper", "RA");
+var PlatedReaperArmor = new ArmorTemplate("PlatedReaperArmor", "Reaper", "PLR");
+var PoweredReaperArmor = new ArmorTemplate("PoweredReaperArmor", "Reaper", "POR");
+
+var TemplarArmor = new ArmorTemplate("TemplarArmor", "Templar", "TA");
+var PlatedTemplarArmor = new ArmorTemplate("PlatedTemplarArmor", "Templar", "PLT");
+var PoweredTemplarArmor = new ArmorTemplate("PoweredTemplarArmor", "Templar", "POT");
+
+var SkirmisherArmor = new ArmorTemplate("SkirmisherArmor", "Skirmisher", "SA");
+var PlatedSkirmisherArmor = new ArmorTemplate("PlatedSkirmisherArmor", "Skirmisher", "PLS");
+var PoweredSkirmisherArmor = new ArmorTemplate("PoweredSkirmisherArmor", "Skirmisher", "POS");
+
+var ArmorTemplates = [KevlarArmor, LightPlatedArmor, MediumPlatedArmor, HeavyPlatedArmor, LightPoweredArmor, MediumPoweredArmor, HeavyPoweredArmor, ReaperArmor, PlatedReaperArmor, PoweredReaperArmor, TemplarArmor, PlatedTemplarArmor, PoweredTemplarArmor, SkirmisherArmor, PlatedSkirmisherArmor, PoweredSkirmisherArmor];
 
 //Head Template Config
 let headTC = "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"\",TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_, bCanUseOnCivilian=, bVeteran=)";
@@ -86,7 +98,7 @@ let skirmisherATs = ["at-SkirmisherArmor", "at-PlatedSkirmisherArmor", "at-Power
 let atCollection = [atSettings, soldierATs, reaperATs, templarATs, skirmisherATs];
 
 //Text input properties
-let textInputProperties = ["prop-Language", "prop-DLCName", "prop-TemplateName", "prop-ArchetypeName-upk", "prop-ArchetypeName-folder", "prop-ArchetypeName-customname"];
+let textInputProperties = ["Language", "DLCName", "TemplateName", "ArchetypeName-upk", "ArchetypeName-folder", "ArchetypeName-customname"];
 
 //Gender Select
 let genderSelect = ["GenderM", "GenderF"];
@@ -399,7 +411,7 @@ function ReportFormValues() {
     z++;
     //Gender Select
     console.log("   Gender Selection");
-
+    var g = 0;
     for (j = 0; j < genderSelect.length; j++) {
         indexCounter++;
 
@@ -407,7 +419,8 @@ function ReportFormValues() {
         valuesArray[indexCounter] = document.getElementById(genderSelect[j]).checked;
 
         if (document.getElementById(genderSelect[j]).checked == true) {
-            GendersEnabled[j] = document.getElementById(genderSelect[j]).value;
+            GendersEnabled[g] = document.getElementById(genderSelect[j]).value;
+            g++;
         }
 
     }
@@ -461,6 +474,56 @@ function ReportFormValues() {
 
 }
 
+function HasArmorTemplate(pt) {
+
+    var nonArmorParts = ["Head", "Voice", "Helmets", "FacePropsUpper", "FacePropsLower"];
+    var i;
+    console.log(pt);
+
+    for (i = 0; i < nonArmorParts.length; i++) {
+        console.log("Comparing " + nonArmorParts[i] + " to " + pt);
+        if (nonArmorParts[i] == pt) {
+            console.log(pt + " does not have ATs");
+            return false;
+        }
+    }
+    console.log(pt + " has ATs");
+
+    return true;
+}
+
+function GetArmorAbbreviation(armorTemplate) {
+    var i;
+    for (i = 0; i < ArmorTemplates.length; i++) {
+        if (ArmorTemplates[i].atName == armorTemplate) {
+            return ArmorTemplates[i].atAbbreviation;
+        }
+    }
+
+    return "";
+}
+
+function GetArmorCharacterTemplate(armorTemplate) {
+    var i;
+    for (i = 0; i < ArmorTemplates.length; i++) {
+        if (ArmorTemplates[i].atName == armorTemplate) {
+            return ArmorTemplates[i].characterTemplate;
+        }
+    }
+
+    return "";
+}
+
+function GetArmorTemplate(armorTemplate) {
+    var i;
+    for (i = 0; i < ArmorTemplates.length; i++) {
+        if (ArmorTemplates[i].atName == armorTemplate) {
+            return ArmorTemplates[i].atName;
+        }
+    }
+
+    return "";
+}
 
 function GenerateFiles() {
     console.clear();
@@ -487,95 +550,155 @@ function GenerateFiles() {
     var XComContent = XComContentHeader;
     var XComGame = XComGameHeader;
     ReportFormValues();
+    var commentName = document.getElementById("CommentName").value;
+    var language = document.getElementById("Language").value;
+    var dlcName = document.getElementById("DLCName").value;
+    var templateName = document.getElementById("TemplateName").value;
+    var arcNameUPK = document.getElementById("ArchetypeName-upk").value;
+    var arcNameFolder = document.getElementById("ArchetypeName-folder").value;
+    var arcNameCustomName = document.getElementById("ArchetypeName-customname").value;
+    var arcAppendType = document.getElementById("ArchetypeAppendType").value;
+    var useOnCivilian = document.getElementById("bCivilian").value;
+    var useOnVeteran = document.getElementById("bVeteran").value;
+    var useAnyArmor = document.getElementById("bAnyArmor").value;
+    var displayNameType = document.getElementById("DisplayName").value;
+    var displayNameLineEnding = document.getElementById("DisplayName-LineEnding").value;
+
     var i;
     var j;
     var k;
     var ArcName;
     var DisplayName;
+    //No genders selected
     if (GendersEnabled.length == 0) {
 
+        //Loop through all enabled part types
         for (i = 0; i < PartTypesEnabled.length; i++) {
             ArcName = "";
             DisplayName = "";
 
-            if (SelectionProperties[0] == "arc-after") {
-                ArcName += "ARC_" + PartTypesEnabled[i] + PropertiesText[6];
-            } else if (SelectionProperties[0] == "arc-before") {
-                ArcName += "ARC_" + PropertiesText[6] + PartTypesEnabled[i];
+            //ArchetypeName Append type, used only for custom name to append to part name, specified before, after, or custom entirely
+            if (arcAppendType == "after") {
+                ArcName = "ARC_" + PartTypesEnabled[i] + arcNameCustomName;
+            } else if (arcAppendType == "before") {
+                ArcName = "ARC_" + arcNameCustomName + PartTypesEnabled[i];
             } else {
-                ArcName += PropertiesText[6];
+                ArcName = arcNameCustomName;
             }
 
-            if (SelectionProperties[4] == "CommentName" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
-                DisplayName += PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6];
-            } else if (SelectionProperties[4] == "TemplateName" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
 
-                DisplayName += PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6];
-            } else if (SelectionProperties[4] == "Blank" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
+
+            //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+            if (displayNameType == "CommentName" && commentName != "" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
+                DisplayName += commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + displayNameLineEnding;
+            } else if (displayNameType == "TemplateName" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
+
+                DisplayName += templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " " + displayNameLineEnding;
+            } else if (displayNameType == "Blank") {
 
                 DisplayName += "";
             } else {
-                XComGame += "[" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
+                if (HasArmorTemplate(PartTypesEnabled[i]) == false) {
+                    //console.log(PartTypesEnabled[i] + " does not have an armor template.");
+                    //XComGame += "[" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
 
-                DisplayName += PartTypesEnabled[i];
+                    DisplayName += PartTypesEnabled[i] + " " + displayNameLineEnding;
+
+                }
+
+
             }
+
+
+            //Lines for Head, no gender
             if (PartTypesEnabled[i] == "Head") {
-                XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + "\n";
-                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + PropertiesText[2] + "\",TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[1] + ")\n\n";
 
-                XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
-            } else if (PartTypesEnabled[i] == "Voice") {
-                XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + "\n";
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ")\n\n";
 
-                XComContent += "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"" + PropertiesText[1] + "\", Gender=eGender_, TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\")\n\n";
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
                 XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
 
-            } else if (PartTypesEnabled[i] == "Helmets" || PartTypesEnabled[i] == "FacePropsUpper" || PartTypesEnabled[i] == "FacePropsLower") {
-                XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + "\n";
+            }
+            //Lines for Voice, no gender
+            else if (PartTypesEnabled[i] == "Voice") {
 
-                XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", bAnyArmor=" + SelectionProperties[3] + ")\n\n";
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"" + language + "\", Gender=eGender_, TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\")\n\n";
+
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
                 XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
 
-            } else {
+            }
+
+            //Lines for Head Props, no gender
+            else if (PartTypesEnabled[i] == "Helmets" || PartTypesEnabled[i] == "FacePropsUpper" || PartTypesEnabled[i] == "FacePropsLower") {
+
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", bAnyArmor=" + useAnyArmor + ")\n\n";
+
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+                XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+            }
+            //Lines for Body, Body Extra, no gender
+            else {
+                //Checks if there are no armors selected
                 if (ArmorsEnabled.length == 0) {
-                    XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + "\n";
+                    DisplayName = "";
 
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", CharacterTemplate=, ArmorTemplate=)\n\n";
+                    //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+                    if (displayNameType == "CommentName" && commentName != "") {
+                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                    } else if (displayNameType == "TemplateName") {
+                        DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + displayNameLineEnding;
+                    } else if (displayNameType == "Blank") {
+                        DisplayName = "";
+                    } else {
+                            //console.log(PartTypesEnabled[i] + " does not have an armor template.");
+                            //XComGame += "[" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+                            DisplayName += PartTypesEnabled[i] + " " + displayNameLineEnding;
+                        }
+                    
+                    XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
+                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=, ArmorTemplate=)\n\n";
+
+                    XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
                     XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
-
-                } else {
+                }
+                //There are armors selected
+                else {
+                    //Loop through all armors
                     for (k = 0; k < ArmorsEnabled.length; k++) {
-                        if (SelectionProperties[4] == "CommentName" && PropertiesText[0] != "") {
-                            XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] +  ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation +" X2BodyPartTemplate]\n";
-                            DisplayName += PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6];
-                        } else if (SelectionProperties[4] == "TemplateName" && PropertiesText[0] != "") {
-                            XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] +  ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation + " X2BodyPartTemplate]\n";
-            
-                            DisplayName += PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] +  ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation;
-                        } else if (SelectionProperties[4] == "Blank" && PropertiesText[0] != "") {
-                            XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
-            
-                            DisplayName += "";
+                        DisplayName = "";
+
+
+                        //DisplayName behavior, similar to above
+                        if (displayNameType == "CommentName" && commentName != "") {
+                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                        } else if (displayNameType == "TemplateName") {                            
+                            DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) +  displayNameLineEnding;
+                        } else if (displayNameType == "Blank") {
+                            DisplayName = "";
                         } else {
-                            XComGame += "[" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
-            
-                            DisplayName += PartTypesEnabled[i];
+                            DisplayName = PartTypesEnabled[i] + displayNameLineEnding;
                         }
 
-                        XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + " " + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation + "\n";
-
-                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "_" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=eGender_" + ", bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", CharacterTemplate=" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].characterTemplate + ", ArmorTemplate=" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atName + ")\n\n";
+                        XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GetArmorAbbreviation(ArmorsEnabled[k]) + "\n";
+                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=" + GetArmorCharacterTemplate(ArmorsEnabled[k]) + ", ArmorTemplate=" + GetArmorTemplate(ArmorsEnabled[k]) + ")\n\n";
+                        
+                        XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + " X2BodyPartTemplate]\n";
                         XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
                     }
                 }
             }
         }
-    } else {
+    }
+    //At least one gender is selected
+    else {
         var GenderTag;
         var GenderLabel;
+        //Loop through selected genders
         for (j = 0; j < GendersEnabled.length; j++) {
             GenderTag = "";
             GenderLabel = "";
@@ -587,68 +710,123 @@ function GenerateFiles() {
                 GenderTag = "_F";
                 GenderLabel = "Female";
             }
+
+            //Loop through selected part types
             for (i = 0; i < PartTypesEnabled.length; i++) {
                 ArcName = "";
                 DisplayName = "";
 
-
-
-
-                if (SelectionProperties[0] == "arc-after") {
-                    ArcName += "ARC_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag;
-                } else if (SelectionProperties[0] == "arc-before") {
-                    ArcName += "ARC_" + PropertiesText[6] + PartTypesEnabled[i] + GenderTag;
+                //Archetype append type, similar to above
+                if (arcAppendType == "after") {
+                    ArcName = "ARC_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag;
+                } else if (arcAppendType == "before") {
+                    ArcName = "ARC_" + arcNameCustomName + PartTypesEnabled[i] + GenderTag;
                 } else {
-                    ArcName += PropertiesText[6];
+                    ArcName = arcNameCustomName;
                 }
 
-                if (SelectionProperties[4] == "CommentName" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                    XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + " X2BodyPartTemplate]\n";
-                    DisplayName += PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6];
-                } else if (SelectionProperties[4] == "TemplateName" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                    XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + " X2BodyPartTemplate]\n";
 
-                    DisplayName += PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag;
-                } else if (SelectionProperties[4] == "Blank" && PropertiesText[0] != "" && ArmorTemplates[ArmorsEnabled.indexOf(PartTypesEnabled[i])] == "") {
-                    XComGame += "[" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + " X2BodyPartTemplate]\n";
 
-                    DisplayName += "";
-                } else {
-                    XComGame += "[" + PartTypesEnabled[i] + PropertiesText[6] + " X2BodyPartTemplate]\n";
+                //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+            if (displayNameType == "CommentName" && commentName != "" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
+                DisplayName += commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+            } else if (displayNameType == "TemplateName" && HasArmorTemplate(PartTypesEnabled[i]) == false) {
 
-                    DisplayName += PartTypesEnabled[i];
+                DisplayName += templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + displayNameLineEnding;
+            } else if (displayNameType == "Blank") {
+
+                DisplayName += "";
+            } else {
+                if (HasArmorTemplate(PartTypesEnabled[i]) == false) {
+                    //console.log(PartTypesEnabled[i] + " does not have an armor template.");
+                    //XComGame += "[" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+
+                    DisplayName += PartTypesEnabled[i] + " " + displayNameLineEnding;
+
                 }
-                if (PartTypesEnabled[i] == "Head") {
-                    XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + GenderLabel + "\n";
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + PropertiesText[2] + "\",TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + "_" + GenderTag + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[1] + ")\n\n";
 
-                    XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
-                } else if (PartTypesEnabled[i] == "Voice") {
-                    XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + GenderLabel + "\n";
 
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"" + PropertiesText[1] + "\", Gender=" + GendersEnabled[j] + ", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\")\n\n";
-                    XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+            }
 
-                } else if (PartTypesEnabled[i] == "Helmets" || PartTypesEnabled[i] == "FacePropsUpper" || PartTypesEnabled[i] == "FacePropsLower") {
-                    XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + GenderLabel + "\n";
 
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", bAnyArmor=" + SelectionProperties[3] + ")\n\n";
-                    XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+            //Lines for Head, gender selected
+            if (PartTypesEnabled[i] == "Head") {
 
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " +  GenderLabel +"\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName +"\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ")\n\n";
+
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
+                XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+            }
+            //Lines for Voice, gender selected
+            else if (PartTypesEnabled[i] == "Voice") {
+
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GenderLabel + "\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"" + language + "\", Gender=" + GendersEnabled[j] + ", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName  + "\")\n\n";
+
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
+                XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+            }
+
+            //Lines for Head Props, gender selected
+            else if (PartTypesEnabled[i] == "Helmets" || PartTypesEnabled[i] == "FacePropsUpper" || PartTypesEnabled[i] == "FacePropsLower") {
+
+                XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GenderLabel +"\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", bAnyArmor=" + useAnyArmor + ")\n\n";
+
+                XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
+                XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+            
                 } else {
+                    //Body, body extra, no armors, genders selected
                     if (ArmorsEnabled.length == 0) {
-                        XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + GenderLabel + "\n";
+                        DisplayName = "";
 
-                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", CharacterTemplate=, ArmorTemplate=)\n\n";
-                        XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+                    //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+                    if (displayNameType == "CommentName" && commentName != "") {
+                        DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                    } else if (displayNameType == "TemplateName") {
+                        DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + displayNameLineEnding;
+                    } else if (displayNameType == "Blank") {
+                        DisplayName = "";
+                    } else {
+                            //console.log(PartTypesEnabled[i] + " does not have an armor template.");
+                            //XComGame += "[" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+                            DisplayName += PartTypesEnabled[i] + " " + displayNameLineEnding;
+                        }
+                    
+                    XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GenderLabel +"\n";
+                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=, ArmorTemplate=)\n\n";
+
+                    XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
+                    XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
 
                     } else {
+                        //Armors selected, genders selected
                         for (k = 0; k < ArmorsEnabled.length; k++) {
 
-                            XComContent += ";" + PropertiesText[0] + " " + PartTypesEnabled[i] + " " + PropertiesText[6] + GenderLabel + " " + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation + "\n";
+                            DisplayName = "";
 
-                            XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + PropertiesText[2] + "\", TemplateName=\"" + PropertiesText[3] + "_" + PartTypesEnabled[i] + PropertiesText[6] + GenderTag + "_" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atAbbreviation + "\", ArchetypeName=\"" + PropertiesText[4] + "." + PropertiesText[5] + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + SelectionProperties[1] + ", bVeteran=" + SelectionProperties[2] + ", CharacterTemplate=" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].characterTemplate + ", ArmorTemplate=" + ArmorTemplates[ArmorsEnabled.indexOf(ArmorsEnabled[k])].atName + ")\n\n";
-                            XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+                        //DisplayName behavior, similar to above
+                        if (displayNameType == "CommentName" && commentName != "") {
+                            DisplayName = commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + displayNameLineEnding;
+                        } else if (displayNameType == "TemplateName") {                            
+                            DisplayName = templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag + displayNameLineEnding;
+                        } else if (displayNameType == "Blank") {
+                            DisplayName = "";
+                        } else {
+                            DisplayName = PartTypesEnabled[i] + displayNameLineEnding;
+                        }
+
+                        XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GetArmorAbbreviation(ArmorsEnabled[k]) + " " + GenderLabel +"\n";
+                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=" + GetArmorCharacterTemplate(ArmorsEnabled[k]) + ", ArmorTemplate=" + GetArmorTemplate(ArmorsEnabled[k]) + ")\n\n";
+                        
+                        XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag +" X2BodyPartTemplate]\n";
+                        XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
                         }
                     }
                 }
