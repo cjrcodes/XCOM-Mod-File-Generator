@@ -40,7 +40,6 @@ var ArmorTemplates = [KevlarArmor, LightPlatedArmor, MediumPlatedArmor, HeavyPla
 //Head Template Config
 let headTC = "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"\",TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_, bCanUseOnCivilian=, bVeteran=)";
 
-console.log(headTC);
 //Voice Template Config
 let voiceTC = "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"\", Gender=eGender_, TemplateName=\"\", ArchetypeName=\"\")";
 
@@ -835,7 +834,14 @@ function GenerateFiles() {
             }
         }
     }
-
+    
     console.log(XComContent);
     console.log(XComGame);
+
+    var blob = new Blob([XComContent], {type: "text/plain;charset=utf-8"});
+   saveAs(blob, "XComContent.ini");
+
+   var blob2 = new Blob([XComGame], {type: "text/plain;charset=utf-8"});
+   saveAs(blob2, "XComGame.int");
+    
 }
