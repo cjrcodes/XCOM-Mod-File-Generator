@@ -1,6 +1,6 @@
 body {
-  background: -webkit-gradient(linear, right top, left top, from(#004043), color-stop(#00f3ff), to(#007b89));
-  background: linear-gradient(270deg, #004043, #00f3ff, #007b89);
+  background: -webkit-gradient(linear, right top, left top, from(#004043), color-stop(#00f3ff), color-stop(#00b2c2), to(#005789));
+  background: linear-gradient(270deg, #004043, #00f3ff, #00b2c2, #005789);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
