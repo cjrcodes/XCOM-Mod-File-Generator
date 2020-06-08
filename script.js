@@ -660,7 +660,7 @@ function GenerateFiles() {
                         }
                     
                     XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=, ArmorTemplate=)\n\n";
+                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=\"\", ArmorTemplate=\"\")\n\n";
 
                     XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
                     XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
@@ -684,7 +684,7 @@ function GenerateFiles() {
                         }
 
                         XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GetArmorAbbreviation(ArmorsEnabled[k]) + "\n";
-                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", ArmorTemplate=" + GetArmorTemplate(ArmorsEnabled[k])  + ", CharacterTemplate=" +  GetArmorCharacterTemplate(ArmorsEnabled[k]) + ")\n\n";
+                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", ArmorTemplate=\"" + GetArmorTemplate(ArmorsEnabled[k])  + "\", CharacterTemplate=\"" +  GetArmorCharacterTemplate(ArmorsEnabled[k]) + "\")\n\n";
                         
                         XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + " X2BodyPartTemplate]\n";
                         XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
@@ -798,7 +798,7 @@ function GenerateFiles() {
                         }
                     
                     XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GenderLabel +"\n";
-                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=, ArmorTemplate=)\n\n";
+                    XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=\"\", ArmorTemplate=\"\")\n\n";
 
                     XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
                     XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
@@ -822,7 +822,7 @@ function GenerateFiles() {
                         }
 
                         XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " + GetArmorAbbreviation(ArmorsEnabled[k]) + " " + GenderLabel +"\n";
-                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", ArmorTemplate=" + GetArmorTemplate(ArmorsEnabled[k])  + ", CharacterTemplate=" +  GetArmorCharacterTemplate(ArmorsEnabled[k])  + ")\n\n";
+                        XComContent += "+BodyPartTemplateConfig=(PartType=\"" + PartTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", ArmorTemplate=\"" + GetArmorTemplate(ArmorsEnabled[k])  + "\", CharacterTemplate=\"" +  GetArmorCharacterTemplate(ArmorsEnabled[k])  + "\")\n\n";
                         
                         XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "_" + GetArmorAbbreviation(ArmorsEnabled[k]) + GenderTag +" X2BodyPartTemplate]\n";
                         XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
