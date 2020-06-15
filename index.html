@@ -6,11 +6,13 @@
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&family=Rubik:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&family=Rubik:ital,wght@1,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@600&display=swap" rel="stylesheet">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" async>
     </script>
     <script src="FileSaver.js" type="module" async>
     </script>
@@ -35,156 +37,145 @@
 
 
         <form onsubmit="GenerateFiles()">
+
+            <div id="comment/displayname" class="single-element">
+                <h2 id="fileheader">XCOMContent</h2>
+
+                <label for="CommentName">Comment/DisplayName</label><br>
+                <input type="text" id="CommentName" value="" placeholder="Ex. &#34;Soldier&#34; = Soldier Legs"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ex. &#34;Soldier&#34; = Soldier Legs'">
+            </div>
             <div class="properties-container">
-                <h2 id="XComContentHeader">XCOMContent</h2>
 
-                <div class="grid-item">
-                    <div id="comment/displayname">
-                        <label for="CommentName">Comment/DisplayName</label><br>
-                        <input type="text" id="CommentName" value="" placeholder="Ex. &#34;Soldier&#34; = Soldier Legs"
-                            onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Ex. &#34;Soldier&#34; = Soldier Legs'">
-                    </div>
-                </div>
+                <div class="grid-item" id="parttypes-form">
 
-                <div class="grid-item">
-                    <div id="parttypes-form">
-                        <h2>Part types</h2>
-                        <input type="button" id="pt-SelectAll" value="Select All" onclick="SelectAllPTs()">
-                        <input type="button" value="Deselect All" onclick="DeselectAllPTs()">
-                        <br>
+                    <h2>Part types</h2>
+                    <input type="button" id="pt-SelectAll" value="Select All" onclick="SelectAllPTs()">
+                    <input type="button" value="Deselect All" onclick="DeselectAllPTs()">
+                    <br>
 
-                        <label>Default (Head, Torso, Arms, Legs)</label>
-                        <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
-                            onchange="DefaultPTsCheck()"><br>
+                    <label for="pt-DefaultSetting">Default (Head, Torso, Arms, Legs)</label>
+                    <input type="checkbox" id="pt-DefaultSetting" value="pt-default" onchange="DefaultPTsCheck()"><br>
 
-                        <label>Head Props</label>
-                        <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
-                            onchange="HeadPropsPTsCheck()"> <br>
+                    <label for="pt-HeadPropsSetting">Head Props</label>
+                    <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
+                        onchange="HeadPropsPTsCheck()"> <br>
 
-                        <label>Body</label>
-                        <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly"
-                            onchange="BodyPTsCheck()"><br>
+                    <label for="pt-BodyOnlySetting">Body</label>
+                    <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly" onchange="BodyPTsCheck()"><br>
 
-                        <label>Body Extras</label>
-                        <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
-                            onchange="BodyExtrasPTsCheck()"><br>
+                    <label for="pt-BodyExtrasOnlySetting">Body Extras</label>
+                    <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
+                        onchange="BodyExtrasPTsCheck()"><br>
 
 
 
-                        <div id="PartTypes">
-                            <h3>Head</h3>
-                            <input type="checkbox" name="PartType" id="pt-Head" value="Head">
-                            <label for="pt-Head">Head</label><br>
+                    <div id="parttypes-section">
+                        <h3>Head</h3>
+                        <input type="checkbox" name="PartType" id="pt-Head" value="Head">
+                        <label for="pt-Head">Head</label><br>
 
-                            <h3>Voice</h3>
+                        <h3>Voice</h3>
 
-                            <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
-                            <label for="pt-Voice">Voice</label><br>
+                        <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
+                        <label for="pt-Voice">Voice</label><br>
 
-                            <h3>Head props</h3>
-                            <div id="HeadProps">
-                                <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
-                                <label for="pt-Helmets">Helmets</label><br>
-                                <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper">
-                                <label for="pt-FacePropsUpper">FacePropsUpper</label><br>
-                                <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower">
-                                <label for="pt-FacePropsLower">FacePropsLower</label><br>
-                            </div>
+                        <h3>Head props</h3>
+                        <div id="HeadProps">
+                            <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
+                            <label for="pt-Helmets">Helmets</label><br>
+                            <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper">
+                            <label for="pt-FacePropsUpper">FacePropsUpper</label><br>
+                            <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower">
+                            <label for="pt-FacePropsLower">FacePropsLower</label><br>
+                        </div>
 
-                            <h3>Body</h3>
-                            <div id="Body/BodyExtras">
-                                <input type="checkbox" name="PartType" id="pt-Torso" value="Torso">
-                                <label for="pt-Torso">Torso</label><br>
-                                <input type="checkbox" name="PartType" id="pt-Arms" value="Arms">
-                                <label for="pt-Arms">Arms</label><br>
-                                <input type="checkbox" name="PartType" id="pt-Legs" value="Legs">
-                                <label for="pt-Legs">Legs</label><br>
+                        <h3>Body</h3>
+                        <div id="Body/BodyExtras">
+                            <input type="checkbox" name="PartType" id="pt-Torso" value="Torso">
+                            <label for="pt-Torso">Torso</label><br>
+                            <input type="checkbox" name="PartType" id="pt-Arms" value="Arms">
+                            <label for="pt-Arms">Arms</label><br>
+                            <input type="checkbox" name="PartType" id="pt-Legs" value="Legs">
+                            <label for="pt-Legs">Legs</label><br>
 
-                                <h3>Body Extras</h3>
-                                <input type="checkbox" name="PartType" id="pt-Shins" value="Shins">
-                                <label for="pt-Shins">Shins</label><br>
-                                <input type="checkbox" name="PartType" id="pt-Thighs" value="Thighs">
-                                <label for="pt-Thighs">Thighs</label><br>
-                                <input type="checkbox" name="PartType" id="pt-TorsoDeco" value="TorsoDeco">
-                                <label for="pt-TorsoDeco">TorsoDeco</label><br>
-                                <input type="checkbox" name="PartType" id="pt-LeftArm" value="LeftArm">
-                                <label for="pt-LeftArm">LeftArm</label><br>
-                                <input type="checkbox" name="PartType" id="pt-RightArm" value="RightArm">
-                                <label for="pt-RightArm">RightArm</label><br>
-                                <input type="checkbox" name="PartType" id="pt-LeftForeArm" value="LeftForeArm">
-                                <label for="pt-LeftForeArm">LeftForeArm</label><br>
-                                <input type="checkbox" name="PartType" id="pt-RightForeArm" value="RightForeArm">
-                                <label for="pt-RightForeArm">RightForeArm</label><br>
-                                <input type="checkbox" name="PartType" id="pt-LeftArmDeco" value="LeftArmDeco">
-                                <label for="pt-LeftArmDeco">LeftArmDeco</label><br>
-                                <input type="checkbox" name="PartType" id="pt-RightArmDeco" value="RightArmDeco">
-                                <label for="pt-RightArmDeco">RightArmDeco</label><br>
-                            </div>
+                            <h3>Body Extras</h3>
+                            <input type="checkbox" name="PartType" id="pt-Shins" value="Shins">
+                            <label for="pt-Shins">Shins</label><br>
+                            <input type="checkbox" name="PartType" id="pt-Thighs" value="Thighs">
+                            <label for="pt-Thighs">Thighs</label><br>
+                            <input type="checkbox" name="PartType" id="pt-TorsoDeco" value="TorsoDeco">
+                            <label for="pt-TorsoDeco">TorsoDeco</label><br>
+                            <input type="checkbox" name="PartType" id="pt-LeftArm" value="LeftArm">
+                            <label for="pt-LeftArm">LeftArm</label><br>
+                            <input type="checkbox" name="PartType" id="pt-RightArm" value="RightArm">
+                            <label for="pt-RightArm">RightArm</label><br>
+                            <input type="checkbox" name="PartType" id="pt-LeftForeArm" value="LeftForeArm">
+                            <label for="pt-LeftForeArm">LeftForeArm</label><br>
+                            <input type="checkbox" name="PartType" id="pt-RightForeArm" value="RightForeArm">
+                            <label for="pt-RightForeArm">RightForeArm</label><br>
+                            <input type="checkbox" name="PartType" id="pt-LeftArmDeco" value="LeftArmDeco">
+                            <label for="pt-LeftArmDeco">LeftArmDeco</label><br>
+                            <input type="checkbox" name="PartType" id="pt-RightArmDeco" value="RightArmDeco">
+                            <label for="pt-RightArmDeco">RightArmDeco</label><br>
                         </div>
                     </div>
                 </div>
-                <br>
+                
 
-                <div class="grid-item">
+                <div class="grid-item" id="textproperties-section">
+                    <h2>Special Properties</h2>
+
                     <label for="Language">Language (For Voice only)</label><br>
                     <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Default is &#34;english&#34;'">
-                </div>
 
-                <br>
+                    <br>
+                    <br>
 
-                <div class="grid-item">
                     <label for="DLCName">DLCName</label><br>
                     <input type="text" id="DLCName" value="" placeholder="Default is the project name, no spaces"
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Default is the project name, no spaces'">
-                </div>
 
-                <br>
+                    <br>
+                    <br>
 
-                <div class="grid-item">
                     <label for="TemplateName">TemplateName</label><br>
-                    <input type="text" id="TemplateName" value="" placeholder="Character/Mod name, no spaces"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Character/Mod name, no spaces'">
-                </div>
+                    <input type="text" id="TemplateName" value="" placeholder="Mod name, no spaces"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'">
 
-                <br>
+                    <br>
+                    <br>
 
-                <div class="grid-item">
                     <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label><br>
                     <input type="text" id="ArchetypeName-upk" value="">
-                </div>
 
-                <br>
+                    <br>
+                    <br>
 
-                <div class="grid-item">
                     <label for="ArchetypeName-folder">ArchetypeName (Archetype Folder
                         Name)</label><br>
                     <input type="text" id="ArchetypeName-folder" value="" placeholder="&#34;Archetypes&#34; is standard"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = '&#34;Archetypes&#34; is standard'">
-                </div>
-                <br>
+                    <br>
+                    <br>
 
-                <div class="grid-item">
-                    <label for="ArchetypeName-customname">ArchetypeName (Custom name appended to all
-                        parts)</label><br>
+                    <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label><br>
                     <input type="text" id="ArchetypeName-customname" value=""
-                        placeholder="Ex. &#34;TINT&#34; = TorsoTINT" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Ex. &#34;TINT&#34; = TorsoTINT'">
-                </div>
-                <br>
+                        placeholder="Ex. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Ex. &#34;TINT&#34; = ARC_TorsoTINT_M'">
+                    <br>
+                    <br>
 
-                <div class="grid-item">
-                    <label for="DisplayName-LineEnding">DisplayName ending (Added to the end of every DisplayName)</label><br>
+                    <label for="DisplayName-LineEnding">DisplayName line ending</label><br>
                     <input type="text" id="DisplayName-LineEnding" value=""
                         placeholder="Ex. &#34;(WOTC)&#34; = Soldier Legs (WOTC)" onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Ex. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
-                </div>
-                <br>
+                    <br>
+                    <br>
 
 
-                <div class="grid-item">
                     <label for="ArchetypeAppendType">Arc append type</label><br>
 
                     <select name="ArchetypeAppendType" id="ArchetypeAppendType">
@@ -194,18 +185,14 @@
 
                     </select>
 
-                </div>
-                <br>
+                    <br>
 
-                <div class="grid-item">
-                        <h3>Gender</h3>
-                        <input type="checkbox" id="GenderM" value="eGender_Male">
-                        <label for="GenderM">Male</label><br>
-                        <input type="checkbox" id="GenderF" value="eGender_Female">
-                        <label for="GenderF">Female</label><br>
-                </div>
+                    <h3>Gender</h3>
+                    <input type="checkbox" id="GenderM" value="eGender_Male">
+                    <label for="GenderM">Male</label><br>
+                    <input type="checkbox" id="GenderF" value="eGender_Female">
+                    <label for="GenderF">Female</label><br>
 
-                <div class="grid-item">
                     <h3>bCanUseOnCivilian (False is default)</h3>
                     <select id="bCivilian">
                         <option value="true">True</option>
@@ -231,23 +218,23 @@
                     </select>
                 </div>
 
-                <div class="grid-item">
+                <div class="grid-item" id="armortemplates-section">
                     <h2>Armor Templates</h2>
 
                     <input type="button" value="Select All" onclick="SelectAllATs()">
                     <input type="button" value="Deselect All" onclick="DeselectAllATs()">
                     <br>
 
-                    <label>Soldier</label>
+                    <label for="at-SoldierOnly">Soldier</label>
                     <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly" onclick="SoldierATsCheck()"><br>
 
-                    <label>Reaper</label>
+                    <label for="at-ReaperOnly">Reaper</label>
                     <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly" onclick="ReaperATsCheck()"> <br>
 
-                    <label>Templar</label>
+                    <label for="at-TemplarOnly">Templar</label>
                     <input type="checkbox" id="at-TemplarOnly" value="at-templaronly" onclick="TemplarATsCheck()"><br>
 
-                    <label>Skirmisher</label>
+                    <label for="at-SkirmisherOnly">Skirmisher</label>
                     <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
                         onclick="SkirmisherATsCheck()"><br>
 
@@ -317,8 +304,8 @@
 
             </div>
 
-            <div class="properties-container">
-                <h2 id="XComContentHeader">XCOMGame</h2>
+            <div id="XComGame" class="single-element">
+                <h2 id="fileheader">XCOMGame</h2>
                 <h3>DisplayName</h3>
                 <select id="DisplayName">
                     <option value="CommentName" selected="selected">Comment Name (Ex. DisplayName = "Soldier
@@ -327,13 +314,15 @@
                     <option value="Blank">Leave Blank</option>
                 </select>
             </div>
-
+            <br>
             <button type="button" id="btnGenerate" onclick="GenerateFiles()">Generate Files</button>
 
 
     </div>
     </form>
-    <footer>This site was made by <a href="https://www.instagram.com/cjrcodes/"> @cjrcodes</a>, to contribute or leave feedback, visit my <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator">Github</a> </footer> 
+    <br>
+    <footer>Made by <a href="https://www.instagram.com/cjrcodes/"> @cjrcodes</a>, to contribute or leave feedback,
+        visit my <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator">Github</a>. To support, visit my <a href="https://paypal.me/cjrcodes">PayPal</a>.</footer>
 
     </div>
 
