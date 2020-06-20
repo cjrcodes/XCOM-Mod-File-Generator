@@ -1,3 +1,8 @@
+document.body.style.webkitTransform =  'scale(1)';
+document.body.style.msTransform =   'scale(100)';
+document.body.style.transform = 'scale(1)';
+document.body.style.zoom = screen.logicalXDPI / screen.deviceXDPI;
+
 class ArmorTemplate {
     constructor(atName, characterTemplate, atAbbreviation) {
         this.atName = atName;
@@ -15,6 +20,7 @@ var PropertiesText = [];
 var SelectionProperties = [];
 var ArmorsEnabled = [];
 
+//All armor types created with the ArmorTemplate class, meant to get and display all relevant armor template data
 var KevlarArmor = new ArmorTemplate("KevlarArmor", "Soldier", "KV");
 var LightPlatedArmor = new ArmorTemplate("LightPlatedArmor", "Solider", "LPL");
 var MediumPlatedArmor = new ArmorTemplate("MediumPlatedArmor", "Solider", "MPL");
@@ -109,7 +115,6 @@ function ResetArrays() {
     PropertiesText = [];
     SelectionProperties = [];
     ArmorsEnabled = [];
-
 }
 
 //Select all Part Types
