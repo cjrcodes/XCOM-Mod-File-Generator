@@ -8,8 +8,8 @@ This project is designed to generate the XComContent and XComGame files for XCOM
 
 Technologies Used:
 
-* HTML
-* CSS/SASS
-* JavaScript
+* HTML (Page Structure)
+* CSS/SASS (Page Styling)
+* JavaScript (Processing Form Data, Generating Mod Files)
 
 
