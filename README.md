@@ -1,4 +1,4 @@
-#XCOM Mod File Generator
+
 
 ![XCOM Mod File Generator Logo](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/master/images/xcomheaderimg.jpg)
 
