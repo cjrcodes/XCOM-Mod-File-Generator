@@ -19,7 +19,7 @@ XComContent file properties:
 
         +BodyPartTemplateConfig=(PartType="", DLCName="",TemplateName="", ArchetypeName="", Gender=, bVeteran=, ArmorTemplate="", CharacterTemplate="")
 
-    PartType: (Check List) (Split by different template configs) (13 part types, head, voice, and head props only need 1 line, thus 11 need different armor types)
+    PartType: (Check List) (Split by different template configs) (17 part types total, head, voice, and head props only need 1 line, thus 12 need different armor types)
         (Head)
             - Head
             Default Head part
@@ -37,7 +37,7 @@ XComContent file properties:
             Basic Voice part
                 +BodyPartTemplateConfig=(PartType="Voice", Language="", Gender=, TemplateName="", ArchetypeName="")
 
-        (Head Props)
+        (Head Props) (3)
             - Helmets
             - FacePropsUpper
             - FacePropsLower
@@ -51,11 +51,13 @@ XComContent file properties:
             Blank Head Prop part
                 +BodyPartTemplateConfig=(PartType="", DLCName="", TemplateName="", ArchetypeName="", Gender=, bCanUseOnCivilian=, bVeteran=, bAnyArmor=)
 
-        (Body)
+        (Body/Body Extras) (12)
             - Torso
             - Arms
             - Legs
+            - Thighs
             - Shins
+            - TorsoDeco
             - LeftArm
             - RightArm
             - LeftForearm
@@ -139,7 +141,7 @@ XComGame file properties:
 
 Number of templates generated:
     - # of enabled PartTypes * # of enabled ArmorTemplates * # of enabled genders
-    - 10 * 16 * 2 = 320 maximum
+    - (12 * 16 * 2) + 5 = 389 maximum
     - Head = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
     - Voice = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
     - Head Props = 1 minimum (No genders, 1 gender), 2 maximum (Both genders)
