@@ -475,7 +475,7 @@ function ReportFormValues() {
         }
 
     }
-
+    console.log(document.getElementById("race"));
 }
 
 function HasArmorTemplate(pt) {
@@ -563,10 +563,12 @@ function GenerateFiles() {
     var arcNameCustomName = document.getElementById("ArchetypeName-customname").value;
     var arcAppendType = document.getElementById("ArchetypeAppendType").value;
     var useOnCivilian = document.getElementById("bCivilian").value;
+    var raceSelected = document.getElementById("race").value;
     var useOnVeteran = document.getElementById("bVeteran").value;
     var useAnyArmor = document.getElementById("bAnyArmor").value;
     var displayNameType = document.getElementById("DisplayName").value;
     var displayNameLineEnding = document.getElementById("DisplayName-LineEnding").value;
+    
 
     var i;
     var j;
@@ -618,7 +620,7 @@ function GenerateFiles() {
             if (PartTypesEnabled[i] == "Head") {
 
                 XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + "\n";
-                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", Race=eRace_Caucasian)\n\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_, bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", Race=eRace_" + raceSelected + ")\n\n";
 
                 XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
                 XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";
@@ -757,7 +759,7 @@ function GenerateFiles() {
             if (PartTypesEnabled[i] == "Head") {
 
                 XComContent += ";" + commentName + " " + PartTypesEnabled[i] + " " + arcNameCustomName + " " +  GenderLabel +"\n";
-                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName +"\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", Race=eRace_Caucasian)\n\n";
+                XComContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName +"\", Gender=" + GendersEnabled[j] + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", Race=eRace_" + raceSelected + ")\n\n";
 
                 XComGame += "[" + templateName + "_" + PartTypesEnabled[i] + arcNameCustomName + GenderTag + " X2BodyPartTemplate]\n";
                 XComGame += "DisplayName=\"" + DisplayName + "\"\n\n";

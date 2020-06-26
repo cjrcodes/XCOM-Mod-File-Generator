@@ -42,8 +42,8 @@
                 <h2 id="fileheader">XCOMContent</h2>
 
                 <label for="CommentName">Comment/DisplayName</label><br>
-                <input type="text" id="CommentName" value="" placeholder="Ex. &#34;Soldier&#34; = Soldier Legs"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ex. &#34;Soldier&#34; = Soldier Legs'">
+                <input type="text" id="CommentName" value="" placeholder="E.g. &#34;Soldier&#34; = Soldier Legs"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'">
             </div>
             <div class="properties-container">
 
@@ -163,15 +163,15 @@
 
                     <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label><br>
                     <input type="text" id="ArchetypeName-customname" value=""
-                        placeholder="Ex. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Ex. &#34;TINT&#34; = ARC_TorsoTINT_M'">
+                        placeholder="E.g. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'">
                     <br>
                     <br>
 
                     <label for="DisplayName-LineEnding">DisplayName line ending</label><br>
                     <input type="text" id="DisplayName-LineEnding" value=""
-                        placeholder="Ex. &#34;(WOTC)&#34; = Soldier Legs (WOTC)" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Ex. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
+                        placeholder="E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
                     <br>
                     <br>
 
@@ -179,9 +179,9 @@
                     <label for="ArchetypeAppendType">Arc append type</label><br>
 
                     <select name="ArchetypeAppendType" id="ArchetypeAppendType">
-                        <option value="before">Before (Ex. ARC_TINTTORSO_M)</option>
-                        <option value="after" selected="selected">After (Ex. ARC_TORSOTINT_M)</option>
-                        <option value="custom">Custom (Ex. UPKName.Archetypes.TINT)</option>
+                        <option value="before">Before (e.g. ARC_TINTTORSO_M)</option>
+                        <option value="after" selected="selected">After (e.g. ARC_TORSOTINT_M)</option>
+                        <option value="custom">Custom (e.g. UPKName.Archetypes.TINT)</option>
 
                     </select>
 
@@ -193,12 +193,20 @@
                     <input type="checkbox" id="GenderF" value="eGender_Female">
                     <label for="GenderF">Female</label><br>
 
+                    <h3>Race (For Head only)</h3>
+                    <select id="race">
+                        <option value="Caucasian" selected="selected">Caucasian</option>
+                        <option value="African" >African</option>
+                        <option value="Asian">Asian</option>
+                        <option value="Hispanic" >Hispanic</option>
+                        <option value="">None</option>
+                    </select>
+
                     <h3>bCanUseOnCivilian (False is default)</h3>
                     <select id="bCivilian">
                         <option value="true">True</option>
                         <option value="false" selected="selected">False</option>
                         <option value="">None</option>
-
                     </select>
 
                     <h3>bVeteran (False is default)</h3>
@@ -206,7 +214,6 @@
                         <option value="true">True</option>
                         <option value="false" selected="selected">False</option>
                         <option value="">None</option>
-
                     </select>
 
                     <h3>bAnyArmor (True is default, For Head Props only)</h3>
@@ -214,7 +221,6 @@
                         <option value="true" selected="selected">True</option>
                         <option value="false">False</option>
                         <option value="">None</option>
-
                     </select>
                 </div>
 
