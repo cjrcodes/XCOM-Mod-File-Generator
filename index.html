@@ -47,7 +47,7 @@
                     <input type="button" value="Deselect All" onclick="DeselectAllPTs()">
                     <br>
 
-                    <div class="quick-select">
+                    <div class="quick-select-container">
                         <label id="quick-select-label" for="">Quick Select</label>
 
                         <br>
@@ -238,7 +238,7 @@
                     <input type="button" value="Deselect All" onclick="DeselectAllATs()">
                     <br>
 
-                    <div class="quick-select">
+                    <div class="quick-select-container">
                         <label id="quick-select-label" for="">Quick Select</label>
                         <br>
                         <label for="at-SoldierOnly">Soldier</label>
@@ -256,6 +256,7 @@
                         <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
                             onclick="SkirmisherATsCheck()"><br>
                     </div>
+                    
                     <h3>Soldier</h3>
                     <input type="checkbox" id="at-KevlarArmor" value="KevlarArmor">
                     <label for="at-KevlarArmor">KevlarArmor</label><br>
@@ -273,7 +274,6 @@
                     <label for="at-HeavyPoweredArmor">HeavyPoweredArmor</label><br>
 
                     <h3>Reaper</h3>
-
                     <input type="checkbox" id="at-ReaperArmor" value="ReaperArmor">
                     <label for="at-ReaperArmor">ReaperArmor</label><br>
                     <input type="checkbox" id="at-PlatedReaperArmor" value="PlatedReaperArmor">
@@ -316,9 +316,10 @@
     </div>
     </form>
     <br>
-    <footer><a href="https://www.instagram.com/cjrcodes/"> @cjrcodes</a>. To contribute or leave feedback,
-        visit my <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator">Github</a>. To support, visit my <a
-            href="https://paypal.me/cjrcodes">PayPal</a>.</footer>
+    <footer>
+        <a href="https://www.instagram.com/cjrcodes/"><img class=footer-icon src="images/instagramIcon.png" alt=""></a>
+        <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon src="images/githubIcon.png" alt=""></a>
+        <a href="https://paypal.me/cjrcodes"><img class=footer-icon src="images/paypalIcon.png" alt=""></a></footer>
 
     </div>
 

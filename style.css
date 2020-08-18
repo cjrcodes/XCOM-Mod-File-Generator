@@ -31,9 +31,6 @@ body {
   }
 }
 
-/*
-.main {}
-*/
 #header-title img {
   display: block;
   margin-left: auto;
@@ -101,7 +98,7 @@ h3 {
   font-family: 'Source Sans Pro';
 }
 
-.quick-select {
+.quick-select-container {
   border-style: solid;
   border-radius: 20px;
   padding: 10px;
@@ -122,8 +119,8 @@ h3 {
   display: -ms-grid;
   display: grid;
   justify-items: center;
-  -ms-grid-columns: (minmax(240px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  -ms-grid-columns: (minmax(265px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
 }
 
 input[type=text] {
@@ -181,15 +178,27 @@ button {
 }
 
 footer {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1px auto 20px auto;
   text-align: center;
-  padding: 10px;
   font-family: 'Maven Pro', sans-serif;
 }
 
 footer a {
   color: #00e1ff;
+}
+
+.footer-icon {
+  padding: 20px;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.footer-icon:hover {
+  opacity: 70%;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=style.css.map */
