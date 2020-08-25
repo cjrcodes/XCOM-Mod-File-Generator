@@ -1,6 +1,6 @@
 body {
-  background: -webkit-gradient(linear, right top, left top, from(#002a43), color-stop(#00595d), color-stop(#007d88), to(#005789));
-  background: linear-gradient(270deg, #002a43, #00595d, #007d88, #005789);
+  background: -webkit-gradient(linear, right top, left top, from(#000000), color-stop(#0083cf), color-stop(#003f88), to(#0084d1));
+  background: linear-gradient(270deg, #000000, #0083cf, #003f88, #0084d1);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
@@ -37,8 +37,8 @@ body {
   margin-right: auto;
   max-width: 100%;
   /* The element to apply the animation to */
-  -webkit-box-shadow: inset 0 0 50px #00e1ff;
-  box-shadow: inset 0 0 50px #008caf;
+  -webkit-box-shadow: inset 0 0 50px #00b7ff;
+  box-shadow: inset 0 0 50px #0069af;
   border-radius: 50px;
   -webkit-animation-name: example;
           animation-name: example;
@@ -48,8 +48,8 @@ body {
           animation-direction: alternate;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  -webkit-box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #51f1ff, 0em 2em 1em rgba(0, 0, 0, 0.3);
-          box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #51f1ff, 0em 2em 1em rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #51abff, 0em 2em 1em rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #51abff, 0em 2em 1em rgba(0, 0, 0, 0.3);
 }
 
 @-webkit-keyframes example {
@@ -57,7 +57,7 @@ body {
     background-color: black;
   }
   to {
-    background-color: #00d9ff;
+    background-color: #008cff;
   }
 }
 
@@ -66,7 +66,7 @@ body {
     background-color: black;
   }
   to {
-    background-color: #00d9ff;
+    background-color: #008cff;
   }
 }
 
@@ -103,6 +103,7 @@ h3 {
   border-radius: 20px;
   padding: 10px;
   margin: auto;
+  width: 130px;
 }
 
 .properties-container {
@@ -121,6 +122,10 @@ h3 {
   justify-items: center;
   -ms-grid-columns: (minmax(265px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+}
+
+.grid-item {
+  width: 250px;
 }
 
 input[type=text] {

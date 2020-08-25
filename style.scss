@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(270deg, #002a43, #00595d, #007d88, #005789);
+    background: linear-gradient(270deg, #000000, #0083cf, #003f88, #0084d1);
     background-size: 600% 600%;
 
     -webkit-animation: AnimationName 30s ease infinite;
@@ -79,15 +79,15 @@ body {
         }
 
         to {
-            background-color: rgb(0, 217, 255);
+            background-color: rgb(0, 140, 255);
         }
     }
 
     /* The element to apply the animation to */
 
-    -moz-box-shadow: inset 0 0 50px #00ffea;
-    -webkit-box-shadow: inset 0 0 50px #00e1ff;
-    box-shadow: inset 0 0 50px #008caf;
+    -moz-box-shadow: inset 0 0 50px #00c3ff;
+    -webkit-box-shadow: inset 0 0 50px #00b7ff;
+    box-shadow: inset 0 0 50px #0069af;
 
     border-radius: 50px;
     animation-name: example;
@@ -97,7 +97,7 @@ body {
 
     box-shadow:
         inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-        0 0 0 2px rgb(81, 241, 255),
+        0 0 0 2px rgb(81, 171, 255),
         0em 2em 1em rgba(0, 0, 0, 0.3);
 }
 
@@ -135,6 +135,7 @@ h3 {
     border-radius: 20px;
     padding: 10px;
     margin:auto;
+    width: 130px;
 }
 
 .properties-container {
@@ -160,6 +161,9 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
 }
 
+.grid-item{
+    width:250px;
+}
 input[type=text] {
     text-align: center;
     width: 230px;
