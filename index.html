@@ -43,14 +43,11 @@
                 <div class="grid-item" id="part-types-section">
 
                     <h2>Part types</h2>
-                    <input type="button" id="pt-SelectAll" value="Select All" onclick="SelectAllPTs()">
-                    <input type="button" value="Deselect All" onclick="DeselectAllPTs()">
-                    <br>
-
+                        <button type="button" class="grouped-button" id="btn-SelectAllPTs" onclick="SelectAllPTs()">Select All</button>
+                        <button type="button" class="grouped-button" id="btn-DeselectAllPTs" onclick="DeselectAllPTs()">Deselect All</button>
                     <div class="quick-select-container">
                         <label id="quick-select-label" for="">Quick Select</label>
 
-                        <br>
                         <label for="pt-DefaultSetting">Standard</label>
                         <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
                             onchange="DefaultPTsCheck()"><br>
@@ -72,7 +69,7 @@
                     <h3>Head</h3>
                     <input type="checkbox" name="PartType" id="pt-Head" value="Head">
                     <label for="pt-Head">Head</label><br>
-
+                    
                     <h3>Voice</h3>
 
                     <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
@@ -233,10 +230,9 @@
 
                 <div class="grid-item" id="armor-templates-section">
                     <h2>Armor Templates</h2>
+                    <button type="button" id="btn-SelectAllPTs" onclick="SelectAllATs()">Select All</button>
+                    <button type="button" id="btn-DeselectAllPTs" onclick="DeselectAllATs()">Deselect All</button>
 
-                    <input type="button" value="Select All" onclick="SelectAllATs()">
-                    <input type="button" value="Deselect All" onclick="DeselectAllATs()">
-                    <br>
 
                     <div class="quick-select-container">
                         <label id="quick-select-label" for="">Quick Select</label>
@@ -256,7 +252,7 @@
                         <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
                             onclick="SkirmisherATsCheck()"><br>
                     </div>
-                    
+
                     <h3>Soldier</h3>
                     <input type="checkbox" id="at-KevlarArmor" value="KevlarArmor">
                     <label for="at-KevlarArmor">KevlarArmor</label><br>
@@ -310,16 +306,28 @@
                 </select>
             </div>
             <br>
-            <button type="button" id="btnGenerate" onclick="GenerateFiles()">Generate Files</button>
+            <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
 
 
     </div>
+    
     </form>
-    <br>
     <footer>
-        <a href="https://www.instagram.com/cjrcodes/"><img class=footer-icon src="images/instagramIcon.png" alt=""></a>
-        <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon src="images/githubIcon.png" alt=""></a>
-        <a href="https://paypal.me/cjrcodes"><img class=footer-icon src="images/paypalIcon.png" alt=""></a></footer>
+        <div class="tooltip">
+            <a href="https://www.instagram.com/cjrcodes/"><img class=footer-icon src="images/instagramIcon.png"
+                    alt="images/favicon.png"></a> <span class="tooltiptext">Follow</span></div>
+        <div class="tooltip">
+
+            <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon
+                    src="images/githubIcon.png" alt="images/favicon.png"></a><span class="tooltiptext">Contribute</span>
+        </div>
+
+        <div class="tooltip">
+
+            <a href="https://cash.app/cayfabedevelopment"><img class=footer-icon src="images/CashAppIcon.png"
+                    alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
+    </footer>
+
 
     </div>
 

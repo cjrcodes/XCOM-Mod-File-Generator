@@ -529,6 +529,9 @@ function GetArmorTemplate(armorTemplate) {
     return "";
 }
 
+
+
+
 function GenerateFiles() {
     console.clear();
     console.log("   Generate Files Reached");
