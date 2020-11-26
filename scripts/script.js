@@ -22,12 +22,12 @@ var ArmorsEnabled = [];
 
 //All armor types created with the ArmorTemplate class, meant to get and display all relevant armor template data
 var KevlarArmor = new ArmorTemplate("KevlarArmor", "Soldier", "KV");
-var LightPlatedArmor = new ArmorTemplate("LightPlatedArmor", "Solider", "LPL");
-var MediumPlatedArmor = new ArmorTemplate("MediumPlatedArmor", "Solider", "MPL");
-var HeavyPlatedArmor = new ArmorTemplate("HeavyPlatedArmor", "Solider", "HPL");
-var LightPoweredArmor = new ArmorTemplate("LightPoweredArmor", "Solider", "LPO");
-var MediumPoweredArmor = new ArmorTemplate("MediumPoweredArmor", "Solider", "MPO");
-var HeavyPoweredArmor = new ArmorTemplate("HeavyPoweredArmor", "Solider", "HPO");
+var LightPlatedArmor = new ArmorTemplate("LightPlatedArmor", "Soldier", "LPL");
+var MediumPlatedArmor = new ArmorTemplate("MediumPlatedArmor", "Soldier", "MPL");
+var HeavyPlatedArmor = new ArmorTemplate("HeavyPlatedArmor", "Soldier", "HPL");
+var LightPoweredArmor = new ArmorTemplate("LightPoweredArmor", "Soldier", "LPO");
+var MediumPoweredArmor = new ArmorTemplate("MediumPoweredArmor", "Soldier", "MPO");
+var HeavyPoweredArmor = new ArmorTemplate("HeavyPoweredArmor", "Soldier", "HPO");
 
 var ReaperArmor = new ArmorTemplate("ReaperArmor", "Reaper", "RA");
 var PlatedReaperArmor = new ArmorTemplate("PlatedReaperArmor", "Reaper", "PLR");
