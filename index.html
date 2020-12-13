@@ -17,6 +17,8 @@
 
     <!--XCOM Favicon by Lilapp on pixilart.com-->
     <link rel="icon" type="image/png" href="images/favicon.png">
+
+    
 </head>
 
 <body>
@@ -28,6 +30,10 @@
 
     <div class="main">
         <form onsubmit="GenerateFiles()">
+
+           
+        
+           
             <div class="properties-container">
                 <h2 id="properties-container-title">XCOMContent</h2>
                 <div id="properties-container-main">
@@ -41,11 +47,15 @@
                         <button type="button" class="grouped-button" id="btn-DeselectAllPTs"
                             onclick="DeselectAllPTs()">Deselect All</button>
                         <div class="quick-select-container">
-                            <label id="quick-select-label" for="">Quick Select</label>
+                            <h3 id="quick-select-label" for="">Quick Select</h3>
 
                             <label for="pt-DefaultSetting">Standard</label>
                             <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
                                 onchange="DefaultPTsCheck()"><br>
+
+                                <label for="pt-HairSetting">Hair</label>
+                                <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
+                                    onchange="DefaultPTsCheck()"><br>
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
@@ -70,16 +80,72 @@
                         <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
                         <label for="pt-Voice">Voice</label><br>
 
+                        <h3>Hair</h3>
+                        <div class="multiselect">
+                            <div class="selectBox" onclick="showHairCheckboxes()">
+                              <select>
+                                <option>Select Hair Parts</option>
+                              </select>
+                              <div class="overSelect"></div>
+                            </div>
+                            <div id="hair-checkboxes" class="checkboxes">
+                              <label for="pt-Hair">
+                                <input type="checkbox" name="PartType" id="pt-Hair" value="Hair"/>Hair</label>
+                              <label for="pt-Beards">
+                                <input type="checkbox" name="PartType" id="pt-Beards" value="Beards"/>Beards</label>
+                             
+                            </div>
+                          </div>
+
+                        <!--<div id="dropdown-list" class="dropdown-check-list" tabindex="100" >
+                            <span class="anchor">Select Hair Parts</span>
+                            <ul id="items" class="items" onclick="expandDropdown(this)">
+                                <input type="checkbox" name="PartType" id="pt-Hair" value="Hair">
+                                <label for="pt-Hair">Hair</label><br>
+                                <input type="checkbox" name="PartType" id="pt-Beards" value="Beards">
+                                <label for="pt-Beards">Beards</label><br>
+                            </ul>
+                        </div>-->
+
+                        
+                        <script type="text/javascript">
+        
+                            
+                                </script>
 
                         <h3>Head props</h3>
                         <div id="HeadProps">
-                            <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
-                            <label for="pt-Helmets">Helmets</label><br>
-                            <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper">
-                            <label for="pt-FacePropsUpper">FacePropsUpper</label><br>
-                            <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower">
-                            <label for="pt-FacePropsLower">FacePropsLower</label><br>
+                            <!---->
+                            <div class="multiselect">
+                                <div class="selectBox"  onclick="showHeadPropsCheckboxes()">
+                                  <select>
+                                    <option>Select Head Props</option>
+                                  </select>
+                                  <div class="overSelect"></div>
+                                </div>
+                                <div id="headprops-checkboxes" class="checkboxes">
+                                  <label for="pt-Helmets">
+                                    <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets"/>Helmets</label>
+                                  <label for="pt-FacePropsUpper">
+                                    <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper"/>FacePropsUpper</label>
+                                  <label for="pt-FacePropsLower">
+                                    <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower"/>FacePropsLower</label>
+                                </div>
+                              </div>
+                           <!-- <div id="list2" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Head Prop Parts</span>
+                                <ul id="headprops-items" class="items" onclick="expandDropdown(this)">
+                                    <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
+                                    <label for="pt-Helmets">Helmets</label><br>
+                                    <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper">
+                                    <label for="pt-FacePropsUpper">FacePropsUpper</label><br>
+                                    <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower">
+                                    <label for="pt-FacePropsLower">FacePropsLower</label><br>
+                                </ul>
+                            </div>-->
                         </div>
+
+                        
 
                         <h3>Body</h3>
                         <div id="Body/BodyExtras">
@@ -111,60 +177,69 @@
                             <label for="pt-RightArmDeco">RightArmDeco</label><br>
                         </div>
                     </div>
-                    
+
 
 
                     <div class="flex-item" id="text-properties-section">
                         <h2>Text Properties</h2>
 
-                        
-                        <label class="textlabel" for="CommentName">Comment/DisplayName</label>
+                        <div class="textselect-input-container">
+                            <label for="CommentName">Comment/DisplayName</label>
 
-                        <input type="text" id="CommentName" value="" placeholder="E.g. &#34;Soldier&#34; = Soldier Legs"
-                            onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on">
+                            <input type="text" id="CommentName" value=""
+                                placeholder="E.g. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on">
 
 
+                            <label for="Language">Language (For Voice only)</label>
+                            <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Default is &#34;english&#34;'">
 
-                        <label for="Language">Language (For Voice only)</label><br>
-                        <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Default is &#34;english&#34;'">
 
-                        <label for="DLCName">DLCName</label><br>
-                        <input type="text" id="DLCName" value="" placeholder="Project name, no spaces"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'">
+                            <label for="DLCName">DLCName</label>
+                            <input type="text" id="DLCName" value="" placeholder="Project name, no spaces"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'">
 
-                        <label for="TemplateName">TemplateName</label><br>
-                        <input type="text" id="TemplateName" value="" placeholder="Mod name, no spaces"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'">
 
-                        <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label><br>
-                        <input type="text" id="ArchetypeName-upk" value="">
+                            <label for="TemplateName">TemplateName</label>
+                            <input type="text" id="TemplateName" value="" placeholder="Mod name, no spaces"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'">
 
-                        <label for="ArchetypeName-folder">ArchetypeName (Folder
-                            Name)</label><br>
-                        <input type="text" id="ArchetypeName-folder" value=""
-                            placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = '&#34;Archetypes&#34; is standard'">
 
-                        <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label><br>
-                        <input type="text" id="ArchetypeName-customname" value=""
-                            placeholder="E.g. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'">
+                            <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label>
+                            <input type="text" id="ArchetypeName-upk" value="">
 
-                        <label for="DisplayName-LineEnding">DisplayName line ending</label><br>
-                        <input type="text" id="DisplayName-LineEnding" value=""
-                            placeholder="E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)" onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
 
-                        <label for="ArchetypeAppendType">Arc append type</label><br>
+                            <label for="ArchetypeName-folder">ArchetypeName (Folder
+                                Name)</label>
+                            <input type="text" id="ArchetypeName-folder" value=""
+                                placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = '&#34;Archetypes&#34; is standard'">
 
-                        <select name="ArchetypeAppendType" id="ArchetypeAppendType">
-                            <option value="before">Before (E.g. ARC_TINTTORSO_M)</option>
-                            <option value="after" selected="selected">After (E.g. ARC_TORSOTINT_M)</option>
-                            <option value="custom">Custom (E.g. UPKName.Archetypes.TINT)</option>
-                        </select>
+
+                            <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label>
+                            <input type="text" id="ArchetypeName-customname" value=""
+                                placeholder="E.g. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'">
+
+
+                            <label for="DisplayName-LineEnding">DisplayName line ending</label>
+                            <input type="text" id="DisplayName-LineEnding" value=""
+                                placeholder="E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
+
+                            <label for="ArchetypeAppendType">Arc append type</label>
+
+                            <select name="ArchetypeAppendType" id="ArchetypeAppendType">
+                                <option value="before">Before (E.g. ARC_TINTTORSO_M)</option>
+                                <option value="after" selected="selected">After (E.g. ARC_TORSOTINT_M)</option>
+                                <option value="custom">Custom (E.g. UPKName.Archetypes.TINT)</option>
+                            </select>
+                        </div>
                     </div>
+
 
                     <div class="flex-item" id="special-properties-section">
                         <h2>Special Properties</h2>
@@ -175,35 +250,37 @@
                         <input type="checkbox" id="GenderF" value="eGender_Female">
                         <label for="GenderF">Female</label><br>
 
-                        <h3>Race <br>(For Head only)</h3>
-                        <select id="race">
-                            <option value="Caucasian" selected="selected">Caucasian</option>
-                            <option value="African">African</option>
-                            <option value="Asian">Asian</option>
-                            <option value="Hispanic">Hispanic</option>
-                            <option value="">None</option>
-                        </select>
+                        <div class="textselect-input-container">
+                            <h3>Race <br>(For Head only)</h3>
+                            <select id="race">
+                                <option value="Caucasian" selected="selected">Caucasian</option>
+                                <option value="African">African</option>
+                                <option value="Asian">Asian</option>
+                                <option value="Hispanic">Hispanic</option>
+                                <option value="">None</option>
+                            </select>
 
-                        <h3>bCanUseOnCivilian <br>(False by default)</h3>
-                        <select id="bCivilian">
-                            <option value="true">True</option>
-                            <option value="false" selected="selected">False</option>
-                            <option value="">None</option>
-                        </select>
+                            <h3>bCanUseOnCivilian <br>(False by default)</h3>
+                            <select id="bCivilian">
+                                <option value="true">True</option>
+                                <option value="false" selected="selected">False</option>
+                                <option value="">None</option>
+                            </select>
 
-                        <h3>bVeteran <br>(False by default)</h3>
-                        <select id="bVeteran">
-                            <option value="true">True</option>
-                            <option value="false" selected="selected">False</option>
-                            <option value="">None</option>
-                        </select>
+                            <h3>bVeteran <br>(False by default)</h3>
+                            <select id="bVeteran">
+                                <option value="true">True</option>
+                                <option value="false" selected="selected">False</option>
+                                <option value="">None</option>
+                            </select>
 
-                        <h3>bAnyArmor <br>(True by default,<br>For Head Props only)</h3>
-                        <select id="bAnyArmor">
-                            <option value="true" selected="selected">True</option>
-                            <option value="false">False</option>
-                            <option value="">None</option>
-                        </select>
+                            <h3>bAnyArmor <br>(True by default,<br>For Head Props only)</h3>
+                            <select id="bAnyArmor">
+                                <option value="true" selected="selected">True</option>
+                                <option value="false">False</option>
+                                <option value="">None</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="flex-item" id="armor-templates-section">
@@ -276,19 +353,19 @@
             </div>
 
             <div class="properties-container">
-            <h2 id="properties-container-title">XCOMGame</h2>
-            <div id="properties-container-main">
-                <div class="flex-item">
-                    <h3>DisplayName</h3>
-                    <select id="DisplayName">
-                        <option value="CommentName" selected="selected">Comment Name (E.g. DisplayName = "Soldier
-                            Legs")</option>
-                        <option value="TemplateName">Template Name (E.g. DisplayName = "Soldier_Legs_KV")</option>
-                        <option value="Blank">Leave Blank</option>
-                    </select>
+                <h2 id="properties-container-title">XCOMGame</h2>
+                <div id="properties-container-main">
+                    <div class="flex-item">
+                        <h3>DisplayName</h3>
+                        <select id="DisplayName">
+                            <option value="CommentName" selected="selected">Comment Name (E.g. DisplayName = "Soldier
+                                Legs")</option>
+                            <option value="TemplateName">Template Name (E.g. DisplayName = "Soldier_Legs_KV")</option>
+                            <option value="Blank">Leave Blank</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
             <br>
             <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
     </div>
@@ -309,6 +386,8 @@
                     alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
     </footer>
     </div>
+
+    
 
 </body>
 
