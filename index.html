@@ -18,7 +18,7 @@
     <!--XCOM Favicon by Lilapp on pixilart.com-->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    
+
 </head>
 
 <body>
@@ -31,9 +31,9 @@
     <div class="main">
         <form onsubmit="GenerateFiles()">
 
-           
-        
-           
+
+
+
             <div class="properties-container">
                 <h2 id="properties-container-title">XCOMContent</h2>
                 <div id="properties-container-main">
@@ -53,9 +53,9 @@
                             <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
                                 onchange="DefaultPTsCheck()"><br>
 
-                                <label for="pt-HairSetting">Hair</label>
-                                <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
-                                    onchange="DefaultPTsCheck()"><br>
+                            <label for="pt-HairSetting">Hair</label>
+                            <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
+                                onchange="DefaultPTsCheck()"><br>
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
@@ -71,31 +71,48 @@
                         </div>
 
 
-                        <h3>Head</h3>
-                        <input type="checkbox" name="PartType" id="pt-Head" value="Head">
+                        <h3>Head/Voice</h3>
+
+                        <div class="multiselect">
+                            <div class="selectBox" onclick="showHeadCheckboxes()">
+                                <select>
+                                    <option>Select Head Parts</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="head-checkboxes" class="checkboxes">
+                                <label for="pt-Head">
+                                    <input type="checkbox" name="PartType" id="pt-Head" value="Head" />Head</label>
+                                <label for="pt-Voice">
+                                    <input type="checkbox" name="PartType" id="pt-Voice"
+                                        value="Voice" />Voice</label>
+
+                            </div>
+                        </div>
+                       <!-- <input type="checkbox" name="PartType" id="pt-Head" value="Head">
                         <label for="pt-Head">Head</label><br>
 
-                        <h3>Voice</h3>
 
                         <input type="checkbox" name="PartType" id="pt-Voice" value="Voice">
-                        <label for="pt-Voice">Voice</label><br>
+                        <label for="pt-Voice">Voice</label><br>-->
 
                         <h3>Hair</h3>
                         <div class="multiselect">
                             <div class="selectBox" onclick="showHairCheckboxes()">
-                              <select>
-                                <option>Select Hair Parts</option>
-                              </select>
-                              <div class="overSelect"></div>
+                                <select>
+                                    <option>Select Hair Parts</option>
+                                </select>
+                                <div class="overSelect"></div>
                             </div>
                             <div id="hair-checkboxes" class="checkboxes">
-                              <label for="pt-Hair">
-                                <input type="checkbox" name="PartType" id="pt-Hair" value="Hair"/>Hair</label>
-                              <label for="pt-Beards">
-                                <input type="checkbox" name="PartType" id="pt-Beards" value="Beards"/>Beards</label>
-                             
+                                <label for="pt-Hair">
+                                    <input type="checkbox" name="PartType" id="pt-Hair" value="Hair" />Hair</label>
+                                <label for="pt-Beards">
+                                    <input type="checkbox" name="PartType" id="pt-Beards"
+                                        value="Beards" />Beards</label>
+
                             </div>
-                          </div>
+                        </div>
 
                         <!--<div id="dropdown-list" class="dropdown-check-list" tabindex="100" >
                             <span class="anchor">Select Hair Parts</span>
@@ -107,32 +124,35 @@
                             </ul>
                         </div>-->
 
-                        
+
                         <script type="text/javascript">
-        
-                            
-                                </script>
+
+
+                        </script>
 
                         <h3>Head props</h3>
                         <div id="HeadProps">
                             <!---->
                             <div class="multiselect">
-                                <div class="selectBox"  onclick="showHeadPropsCheckboxes()">
-                                  <select>
-                                    <option>Select Head Props</option>
-                                  </select>
-                                  <div class="overSelect"></div>
+                                <div class="selectBox" onclick="showHeadPropsCheckboxes()">
+                                    <select>
+                                        <option>Select Head Props</option>
+                                    </select>
+                                    <div class="overSelect"></div>
                                 </div>
                                 <div id="headprops-checkboxes" class="checkboxes">
-                                  <label for="pt-Helmets">
-                                    <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets"/>Helmets</label>
-                                  <label for="pt-FacePropsUpper">
-                                    <input type="checkbox" name="PartType" id="pt-FacePropsUpper" value="FacePropsUpper"/>FacePropsUpper</label>
-                                  <label for="pt-FacePropsLower">
-                                    <input type="checkbox" name="PartType" id="pt-FacePropsLower" value="FacePropsLower"/>FacePropsLower</label>
+                                    <label for="pt-Helmets">
+                                        <input type="checkbox" name="PartType" id="pt-Helmets"
+                                            value="Helmets" />Helmets</label>
+                                    <label for="pt-FacePropsUpper">
+                                        <input type="checkbox" name="PartType" id="pt-FacePropsUpper"
+                                            value="FacePropsUpper" />FacePropsUpper</label>
+                                    <label for="pt-FacePropsLower">
+                                        <input type="checkbox" name="PartType" id="pt-FacePropsLower"
+                                            value="FacePropsLower" />FacePropsLower</label>
                                 </div>
-                              </div>
-                           <!-- <div id="list2" class="dropdown-check-list" tabindex="100">
+                            </div>
+                            <!-- <div id="list2" class="dropdown-check-list" tabindex="100">
                                 <span class="anchor">Select Head Prop Parts</span>
                                 <ul id="headprops-items" class="items" onclick="expandDropdown(this)">
                                     <input type="checkbox" name="PartType" id="pt-Helmets" value="Helmets">
@@ -145,36 +165,90 @@
                             </div>-->
                         </div>
 
-                        
+
 
                         <h3>Body</h3>
                         <div id="Body/BodyExtras">
-                            <input type="checkbox" name="PartType" id="pt-Torso" value="Torso">
+                            <div class="multiselect">
+                                <div class="selectBox" onclick="showBodyCheckboxes()">
+                                    <select>
+                                        <option>Select Body Parts</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="body-checkboxes" class="checkboxes">
+                                    <label for="pt-Torso">
+                                        <input type="checkbox" name="PartType" id="pt-Torso"
+                                            value="Torso" />Torso</label>
+                                    <label for="pt-Arms">
+                                        <input type="checkbox" name="PartType" id="pt-Arms" value="Arms" />Arms</label>
+                                    <label for="pt-Legs">
+                                        <input type="checkbox" name="PartType" id="pt-Legs" value="Legs" />Legs</label>
+
+                                </div>
+                            </div>
+                            <!--<input type="checkbox" name="PartType" id="pt-Torso" value="Torso">
                             <label for="pt-Torso">Torso</label><br>
                             <input type="checkbox" name="PartType" id="pt-Arms" value="Arms">
                             <label for="pt-Arms">Arms</label><br>
                             <input type="checkbox" name="PartType" id="pt-Legs" value="Legs">
-                            <label for="pt-Legs">Legs</label><br>
+                            <label for="pt-Legs">Legs</label><br>-->
 
                             <h3>Body Extras</h3>
-                            <input type="checkbox" name="PartType" id="pt-Shins" value="Shins">
-                            <label for="pt-Shins">Shins</label><br>
-                            <input type="checkbox" name="PartType" id="pt-Thighs" value="Thighs">
-                            <label for="pt-Thighs">Thighs</label><br>
-                            <input type="checkbox" name="PartType" id="pt-TorsoDeco" value="TorsoDeco">
-                            <label for="pt-TorsoDeco">TorsoDeco</label><br>
-                            <input type="checkbox" name="PartType" id="pt-LeftArm" value="LeftArm">
-                            <label for="pt-LeftArm">LeftArm</label><br>
-                            <input type="checkbox" name="PartType" id="pt-RightArm" value="RightArm">
-                            <label for="pt-RightArm">RightArm</label><br>
-                            <input type="checkbox" name="PartType" id="pt-LeftForeArm" value="LeftForeArm">
-                            <label for="pt-LeftForeArm">LeftForeArm</label><br>
-                            <input type="checkbox" name="PartType" id="pt-RightForeArm" value="RightForeArm">
-                            <label for="pt-RightForeArm">RightForeArm</label><br>
-                            <input type="checkbox" name="PartType" id="pt-LeftArmDeco" value="LeftArmDeco">
-                            <label for="pt-LeftArmDeco">LeftArmDeco</label><br>
-                            <input type="checkbox" name="PartType" id="pt-RightArmDeco" value="RightArmDeco">
-                            <label for="pt-RightArmDeco">RightArmDeco</label><br>
+                            <div class="multiselect">
+                                <div class="selectBox" onclick="showBodyExtrasCheckboxes()">
+                                    <select>
+                                        <option>Select Body Extras Parts</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="bodyextras-checkboxes" class="checkboxes">
+                                    <label for="pt-Shins">
+                                        <input type="checkbox" name="PartType" id="pt-Shins"
+                                            value="Shins" />Shins</label>
+                                    <label for="pt-Thighs">
+                                        <input type="checkbox" name="PartType" id="pt-Thighs"
+                                            value="Thighs" />Thighs</label>
+                                    <label for="pt-TorsoDeco">
+                                        <input type="checkbox" name="PartType" id="pt-TorsoDeco"
+                                            value="TorsoDeco" />TorsoDeco</label>
+                                    <label for="pt-LeftArm">
+                                        <input type="checkbox" name="PartType" id="pt-LeftArm"
+                                            value="LeftArm" />LeftArm</label>
+                                    <label for="pt-RightArm">
+                                        <input type="checkbox" name="PartType" id="pt-RightArm"
+                                            value="RightArm" />RightArm</label>
+                                    <label for="pt-LeftForeArm">
+                                        <input type="checkbox" name="PartType" id="pt-LeftForeArm"
+                                            value="LeftForeArm" />LeftForeArm</label>
+
+                                    <label for="pt-LeftArmDeco">
+                                        <input type="checkbox" name="PartType" id="pt-LeftArmDeco"
+                                            value="RightForeArm" />LeftArmDeco</label>
+
+                                    <label for="pt-RightArmDeco">
+                                        <input type="checkbox" name="PartType" id="pt-RightArmDeco"
+                                            value="RightArmDeco" />RightArmDeco</label>
+                                </div>
+                            </div>
+                            <!--<input type="checkbox" name="PartType" id="pt-Shins" value="Shins">
+                                <label for="pt-Shins">Shins</label><br>
+                                <input type="checkbox" name="PartType" id="pt-Thighs" value="Thighs">
+                                <label for="pt-Thighs">Thighs</label><br>
+                                <input type="checkbox" name="PartType" id="pt-TorsoDeco" value="TorsoDeco">
+                                <label for="pt-TorsoDeco">TorsoDeco</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftArm" value="LeftArm">
+                                <label for="pt-LeftArm">LeftArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightArm" value="RightArm">
+                                <label for="pt-RightArm">RightArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftForeArm" value="LeftForeArm">
+                                <label for="pt-LeftForeArm">LeftForeArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightForeArm" value="RightForeArm">
+                                <label for="pt-RightForeArm">RightForeArm</label><br>
+                                <input type="checkbox" name="PartType" id="pt-LeftArmDeco" value="LeftArmDeco">
+                                <label for="pt-LeftArmDeco">LeftArmDeco</label><br>
+                                <input type="checkbox" name="PartType" id="pt-RightArmDeco" value="RightArmDeco">
+                                <label for="pt-RightArmDeco">RightArmDeco</label><br>-->
                         </div>
                     </div>
 
@@ -286,7 +360,8 @@
                     <div class="flex-item" id="armor-templates-section">
                         <h2>Armor Templates</h2>
                         <button type="button" id="btn-SelectAllPTs" onclick="SelectAllATs()">Select All</button>
-                        <button type="button" id="btn-DeselectAllPTs" onclick="DeselectAllATs()">Deselect All</button>
+                        <button type="button" id="btn-DeselectAllPTs" onclick="DeselectAllATs()">Deselect
+                            All</button>
 
 
                         <div class="quick-select-container">
@@ -310,7 +385,41 @@
                         </div>
 
                         <h3>Soldier</h3>
-                        <input type="checkbox" id="at-KevlarArmor" value="KevlarArmor">
+                        <div class="multiselect">
+                            <div class="selectBox" onclick="showSoldierCheckboxes()">
+                                <select>
+                                    <option>Select Soldier Templates</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="soldier-checkboxes" class="checkboxes">
+                                <label for="at-KevlarArmor">
+                                    <input type="checkbox"  id="at-KevlarArmor"
+                                        value="KevlarArmor" />KevlarArmor</label>
+                                <label for="at-LightPlatedArmor">
+                                    <input type="checkbox"  id="at-LightPlatedArmor"
+                                        value="LightPlatedArmor" />LightPlatedArmor</label>
+                                <label for="at-MediumPlatedArmor">
+                                    <input type="checkbox"  id="at-MediumPlatedArmor"
+                                        value="MediumPlatedArmor" />MediumPlatedArmor</label>
+                                <label for="at-HeavyPlatedArmor">
+                                    <input type="checkbox"  id="at-HeavyPlatedArmor"
+                                        value="HeavyPlatedArmor" />HeavyPlatedArmor</label>
+                                <label for="at-LightPoweredArmor">
+                                    <input type="checkbox"  id="at-LightPoweredArmor"
+                                        value="LightPoweredArmor" />LightPoweredArmor</label>
+                                <label for="at-MediumPoweredArmor">
+                                    <input type="checkbox"  id="at-MediumPoweredArmor"
+                                        value="MediumPoweredArmor" />MediumPoweredArmor</label>
+
+                                <label for="at-HeavyPoweredArmor">
+                                    <input type="checkbox"  id="at-HeavyPoweredArmor"
+                                        value="HeavyPoweredArmor" />HeavyPoweredArmor</label>
+
+
+                            </div>
+                        </div>
+                        <!-- <input type="checkbox" id="at-KevlarArmor" value="KevlarArmor">
                         <label for="at-KevlarArmor">KevlarArmor</label><br>
                         <input type="checkbox" id="at-LightPlatedArmor" value="LightPlatedArmor">
                         <label for="at-LightPlatedArmor">LightPlatedArmor</label><br>
@@ -323,71 +432,137 @@
                         <input type="checkbox" id="at-MediumPoweredArmor" value="MediumPoweredArmor">
                         <label for="at-MediumPoweredArmor">MediumPoweredArmor</label><br>
                         <input type="checkbox" id="at-HeavyPoweredArmor" value="HeavyPoweredArmor">
-                        <label for="at-HeavyPoweredArmor">HeavyPoweredArmor</label><br>
+                        <label for="at-HeavyPoweredArmor">HeavyPoweredArmor</label><br>-->
 
                         <h3>Reaper</h3>
-                        <input type="checkbox" id="at-ReaperArmor" value="ReaperArmor">
+                        <div class="multiselect">
+                            <div class="selectBox" onclick="showReaperCheckboxes()">
+                                <select>
+                                    <option>Select Reaper Templates</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="reaper-checkboxes" class="checkboxes">
+                                <label for="at-ReaperArmor">
+                                    <input type="checkbox"  id="at-ReaperArmor"
+                                        value="ReaperArmor" />ReaperArmor</label>
+                                <label for="at-PlatedReaperArmor">
+                                    <input type="checkbox"  id="at-PlatedReaperArmor"
+                                        value="PlatedReaperArmor" />PlatedReaperArmor</label>
+                                <label for="at-PoweredReaperArmor">
+                                    <input type="checkbox"  id="at-PoweredReaperArmor"
+                                        value="PoweredReaperArmor" />PoweredReaperArmor</label>
+
+
+
+                            </div>
+                            <!--<input type="checkbox" id="at-ReaperArmor" value="ReaperArmor">
                         <label for="at-ReaperArmor">ReaperArmor</label><br>
                         <input type="checkbox" id="at-PlatedReaperArmor" value="PlatedReaperArmor">
                         <label for="at-PlatedReaperArmor">PlatedReaperArmor</label><br>
                         <input type="checkbox" id="at-PoweredReaperArmor" value="PoweredReaperArmor">
-                        <label for="at-PoweredReaperArmor">PoweredReaperArmor</label><br>
+                        <label for="at-PoweredReaperArmor">PoweredReaperArmor</label><br>-->
 
-                        <h3>Templar</h3>
-                        <input type="checkbox" id="at-TemplarArmor" value="TemplarArmor">
+                            <h3>Templar</h3>
+                            <div class="multiselect">
+                                <div class="selectBox" onclick="showTemplarCheckboxes()">
+                                    <select>
+                                        <option>Select Templar Templates</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="templar-checkboxes" class="checkboxes">
+                                    <label for="at-TemplarArmor">
+                                        <input type="checkbox"  id="at-TemplarArmor"
+                                            value="TemplarArmor" />TemplarArmor</label>
+                                    <label for="at-PlatedTemplarArmor">
+                                        <input type="checkbox"  id="at-PlatedTemplarArmor"
+                                            value="PlatedTemplarArmor" />PlatedTemplarArmor</label>
+                                    <label for="at-PoweredTemplarArmor">
+                                        <input type="checkbox"  id="at-PoweredTemplarArmor"
+                                            value="PoweredTemplarArmor" />PoweredTemplarArmor</label>
+
+                                </div>
+
+                            </div>
+                            <!--<input type="checkbox" id="at-TemplarArmor" value="TemplarArmor">
                         <label for="at-TemplarArmor">TemplarArmor</label><br>
                         <input type="checkbox" id="at-PlatedTemplarArmor" value="PlatedTemplarArmor">
                         <label for="at-PlatedTemplarArmor">PlatedTemplarArmor</label><br>
                         <input type="checkbox" id="at-PoweredTemplarArmor" value="PoweredTemplarArmor">
                         <label for="at-PoweredTemplarArmor">PoweredTemplarArmor</label><br>
+                        -->
+                            <h3>Skirmisher</h3>
+                            <div class="multiselect">
+                                <div class="selectBox" onclick="showSkirmisherCheckboxes()">
+                                    <select>
+                                        <option>Select Skirmisher Templates</option>
+                                    </select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="skirmisher-checkboxes" class="checkboxes">
+                                    <label for="at-SkirmisherArmor">
+                                        <input type="checkbox"  id="at-SkirmisherArmor"
+                                            value="TemplarArmor" />SkirmisherArmor</label>
+                                    <label for="at-PlatedSkirmisherArmor">
+                                        <input type="checkbox"  id="at-PlatedSkirmisherArmor"
+                                            value="PlatedSkirmisherArmor" />PlatedSkirmisherArmor</label>
+                                    <label for="at-PoweredSkirmisherArmor">
+                                        <input type="checkbox"  id="at-PoweredSkirmisherArmor"
+                                            value="PoweredSkirmisherArmor" />PoweredSkirmisherArmor</label>
 
-                        <h3>Skirmisher</h3>
-                        <input type="checkbox" id="at-SkirmisherArmor" value="SkirmisherArmor">
-                        <label for="at-SkirmisherArmor">SkirmisherArmor</label><br>
-                        <input type="checkbox" id="at-PlatedSkirmisherArmor" value="PlatedSkirmisherArmor">
-                        <label for="at-PlatedSkirmisherArmor">PlatedSkirmisherArmor</label><br>
-                        <input type="checkbox" id="at-PoweredSkirmisherArmor" value="PoweredSkirmisherArmor">
-                        <label for="at-PoweredSkirmisherArmor">PoweredSkirmisherArmor</label>
+                                </div>
+
+                            </div>
+                            <!--<input type="checkbox" id="at-SkirmisherArmor" value="SkirmisherArmor">
+                            <label for="at-SkirmisherArmor">SkirmisherArmor</label><br>
+                            <input type="checkbox" id="at-PlatedSkirmisherArmor" value="PlatedSkirmisherArmor">
+                            <label for="at-PlatedSkirmisherArmor">PlatedSkirmisherArmor</label><br>
+                            <input type="checkbox" id="at-PoweredSkirmisherArmor" value="PoweredSkirmisherArmor">
+                            <label for="at-PoweredSkirmisherArmor">PoweredSkirmisherArmor</label>-->
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="properties-container">
-                <h2 id="properties-container-title">XCOMGame</h2>
-                <div id="properties-container-main">
-                    <div class="flex-item">
-                        <h3>DisplayName</h3>
-                        <select id="DisplayName">
-                            <option value="CommentName" selected="selected">Comment Name (E.g. DisplayName = "Soldier
-                                Legs")</option>
-                            <option value="TemplateName">Template Name (E.g. DisplayName = "Soldier_Legs_KV")</option>
-                            <option value="Blank">Leave Blank</option>
-                        </select>
+                <div class="properties-container">
+                    <h2 id="properties-container-title">XCOMGame</h2>
+                    <div id="properties-container-main">
+                        <div class="flex-item">
+                            <h3>DisplayName</h3>
+                            <select id="DisplayName">
+                                <option value="CommentName" selected="selected">Comment Name (E.g. DisplayName =
+                                    "Soldier
+                                    Legs")</option>
+                                <option value="TemplateName">Template Name (E.g. DisplayName = "Soldier_Legs_KV")
+                                </option>
+                                <option value="Blank">Leave Blank</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                <br>
+                <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
             </div>
-            <br>
-            <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
-    </div>
-    </form>
-    <footer>
-        <div class="tooltip">
-            <a href="https://www.instagram.com/cjrcodes/"><img class=footer-icon src="images/instagramIcon.png"
-                    alt="images/favicon.png"></a> <span class="tooltiptext">Follow</span></div>
-        <div class="tooltip">
+        </form>
+        <footer>
+            <div class="tooltip">
+                <a href="https://www.instagram.com/cjrcodes/"><img class=footer-icon src="images/instagramIcon.png"
+                        alt="images/favicon.png"></a> <span class="tooltiptext">Follow</span></div>
+            <div class="tooltip">
 
-            <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon
-                    src="images/githubIcon.png" alt="images/favicon.png"></a><span class="tooltiptext">Contribute</span>
-        </div>
+                <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon
+                        src="images/githubIcon.png" alt="images/favicon.png"></a><span
+                    class="tooltiptext">Contribute</span>
+            </div>
 
-        <div class="tooltip">
+            <div class="tooltip">
 
-            <a href="https://cash.app/cayfabedevelopment"><img class=footer-icon src="images/CashAppIcon.png"
-                    alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
-    </footer>
+                <a href="https://cash.app/cayfabedevelopment"><img class=footer-icon src="images/CashAppIcon.png"
+                        alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
+        </footer>
     </div>
 
-    
+
 
 </body>
 

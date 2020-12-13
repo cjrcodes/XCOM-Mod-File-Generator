@@ -135,6 +135,83 @@ function showHeadPropsCheckboxes() {
     }
   }
 
+  function showBodyCheckboxes() {
+    var checkboxes = document.getElementById("body-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showBodyExtrasCheckboxes() {
+    var checkboxes = document.getElementById("bodyextras-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showSoldierCheckboxes() {
+    var checkboxes = document.getElementById("soldier-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showReaperCheckboxes() {
+    var checkboxes = document.getElementById("reaper-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showTemplarCheckboxes() {
+    var checkboxes = document.getElementById("templar-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showSkirmisherCheckboxes() {
+    var checkboxes = document.getElementById("skirmisher-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  function showHeadCheckboxes() {
+    var checkboxes = document.getElementById("head-checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
 function expandDropdown(element) {
     console.log("Dropdown clicked");
 
