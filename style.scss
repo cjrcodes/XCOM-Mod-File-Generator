@@ -131,7 +131,7 @@ h3 {
 
 .quick-select-container {
 
-    #quick-select-label{
+    #quick-select-label {
         text-align: center;
         padding: 0px;
         margin: auto;
@@ -146,11 +146,10 @@ h3 {
     border-color: $border-color;
 
     text-align: right;
- 
-    box-shadow:
-        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-        0 0 0 2px $border-color,
-        0em 1em 1em rgba(0, 0, 0, 0.3);
+
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px $border-color,
+    0em 1em 1em rgba(0, 0, 0, 0.3);
 }
 
 .properties-container {
@@ -223,7 +222,7 @@ input[type=text] {
         0em 1em 1em rgba(0, 0, 0, 0.507);
 }
 
-.flex-item{
+.flex-item {
     width: 275px;
     text-align: center;
     margin-left: auto;
@@ -374,15 +373,17 @@ footer {
 
 .dropdown-check-list {
     display: inline-block;
-  }
-  .dropdown-check-list .anchor {
+}
+
+.dropdown-check-list .anchor {
     position: relative;
     cursor: pointer;
     display: inline-block;
     padding: 5px 50px 5px 10px;
     border: 1px solid #ccc;
-  }
-  .dropdown-check-list .anchor:after {
+}
+
+.dropdown-check-list .anchor:after {
     position: absolute;
     content: "";
     border-left: 2px solid black;
@@ -396,13 +397,15 @@ footer {
     -webkit-transform: rotate(-135deg);
     transform: rotate(-135deg);
 
-  }
-  .dropdown-check-list .anchor:active:after {
+}
+
+.dropdown-check-list .anchor:active:after {
     right: 8px;
     top: 21%;
 
-  }
-  .dropdown-check-list ul.items {
+}
+
+.dropdown-check-list ul.items {
     padding: 2px;
     display: none;
     margin: 0;
@@ -410,43 +413,48 @@ footer {
     border-top: none;
     text-align: center;
 
-  }
-  .dropdown-check-list ul.items li {
-    list-style: none;
-  }
+}
 
-  .multiselect {
+.dropdown-check-list ul.items li {
+    list-style: none;
+}
+
+.multiselect {
     width: 220px;
     margin-left: auto;
     margin-right: auto;
-  }
-  
-  .selectBox {
+}
+
+.selectBox {
     position: relative;
-  }
-  
-  .selectBox select {
+}
+
+.selectBox select {
     width: 100%;
     font-weight: bold;
-  }
-  
-  .overSelect {
+}
+
+.overSelect {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-  }
-  
-  .checkboxes {
+}
+
+.checkboxes {
     display: none;
     border: 1px #dadada solid;
-  }
-  
-  .checkboxes label {
+}
+
+.checkboxes label {
     display: block;
-  }
-  
-  .checkboxes label:hover {
+}
+
+.checkboxes label:hover {
     background-color: #1e90ff;
-  }
+}
+
+#DisplayName {
+    margin-left: -40px;
+}

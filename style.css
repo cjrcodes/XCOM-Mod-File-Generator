@@ -383,4 +383,8 @@ footer a {
 .checkboxes label:hover {
   background-color: #1e90ff;
 }
+
+#DisplayName {
+  margin-left: -40px;
+}
 /*# sourceMappingURL=style.css.map */
