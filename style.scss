@@ -1,5 +1,7 @@
+$border-color: #009ce4;
+
 body {
-    background: linear-gradient(270deg, #002a43, #00595d, #007d88, #005789);
+    background: linear-gradient(270deg, #000000, #0083cf, #003f88, #0084d1);
     background-size: 600% 600%;
 
     -webkit-animation: AnimationName 30s ease infinite;
@@ -66,7 +68,6 @@ body {
     }
 }
 
-#main {}
 
 #header-title img {
     display: block;
@@ -74,23 +75,21 @@ body {
     margin-right: auto;
     max-width: 100%;
 
-
-
     @keyframes example {
         from {
-            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.493);
         }
 
         to {
-            background-color: rgb(0, 217, 255);
+            background-color: rgba(0, 140, 255, 0.493);
         }
     }
 
     /* The element to apply the animation to */
 
-    -moz-box-shadow: inset 0 0 50px #00ffea;
-    -webkit-box-shadow: inset 0 0 50px #00e1ff;
-    box-shadow: inset 0 0 50px #008caf;
+    -moz-box-shadow: inset 0 0 50px #00c3ff;
+    -webkit-box-shadow: inset 0 0 50px #00b7ff;
+    box-shadow: inset 0 0 50px #0069af;
 
     border-radius: 50px;
     animation-name: example;
@@ -98,101 +97,151 @@ body {
     animation-direction: alternate;
     animation-iteration-count: infinite;
 
-
-}
-
-label {
-    font-size: medium;
-    font-family: 'Teko', sans-serif;
-}
-
-#fileheader {
-    font-family: 'Work Sans', sans-serif;
-
-
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(81, 171, 255),
+    0em 2em 1em rgba(0, 0, 0, 0.3);
 }
 
 h2 {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'IBM Plex Sans';
 }
 
 h3 {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Source Sans Pro';
+}
+
+#quick-select-label {
+    font-family: 'Source Sans Pro';
+}
+
+#part-types-section,
+#special-properties-section,
+#armor-templates-section {
+    label {
+        font-family: 'Poppins';
+
+    }
+
 
 }
 
+#text-properties-section {
+    font-family: 'Source Sans Pro';
+}
+
+.quick-select-container {
+
+    #quick-select-label {
+        text-align: center;
+        padding: 0px;
+        margin: auto;
+        margin-bottom: 5px;
+    }
+
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+    width: 130px;
+    border-color: $border-color;
+
+    text-align: right;
+
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px $border-color,
+    0em 1em 1em rgba(0, 0, 0, 0.3);
+}
+
 .properties-container {
-   
-    background-color: rgba(0, 0, 0, 0.5);
+
+    #properties-container-title {
+        font-family: 'Titillium Web';
+        text-align: center;
+    }
+
+    #properties-container-main {
+        padding: 20px;
+        box-shadow:
+            inset 0 -3em 3em rgba(0, 0, 0, 0.205),
+            0 0 0 2px $border-color,
+            0em 2em 1em rgba(0, 0, 0, 0.3);
+
+        background-color: rgba(0, 174, 255, 0.3);
+
+
+        text-align: center;
+        width: auto;
+        max-width: 75%;
+
+        margin: auto;
+        border-radius: 5px;
+        padding: 10px;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+    }
+
+}
+
+.properties-container-small {
+    padding: 20px;
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0 0 0 2px $border-color,
+        0em 2em 1em rgba(0, 0, 0, 0.3);
+
+    background-color: rgba(0, 174, 255, 0.3);
+
 
     text-align: center;
     min-width: 50%;
-    max-width: 60%;
+    max-width: 75%;
 
     margin: auto;
     border-radius: 5px;
     padding: 10px;
 
-    #properties-label {}
-
-    #parttypes-form {}
-
-
-
-    .grid-item {}
-
-
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 input[type=text] {
     text-align: center;
     width: 230px;
-
-}
-@media (max-width: 799px) {
-    .properties-container {
-        display: grid;
-        justify-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-  }
-
-@media (min-width: 800px) and (max-width: 1250px) {
-    .properties-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        .grid-item{
-            min-width: 200px;
-            max-width: 280px;
-            flex-basis: auto; /* default value */
-            flex-grow: 1;
-        }
-    }
-  }
-
-  @media (min-width: 1251px) {
-    .properties-container {
-        display: grid;
-        justify-items: center;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-  }
-
-input[type=checkbox] {}
-
-input[type=button] {
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 5px;
-    margin-bottom: 20px;
+    border-color: $border-color;
+
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0),
+        0 0 0 2px rgba(255, 255, 255, 0.233),
+        0em 1em 1em rgba(0, 0, 0, 0.507);
 }
 
-.single-element {
+.flex-item {
+    width: 275px;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    padding: 10px;
+}
+
+.textselect-input-container {
+
+    label,
+    h3 {
+        font-family: 'Source Sans Pro';
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    input,
+    select {
+        margin-bottom: 15px;
+    }
 }
 
 /*Center placeholder text for all browsers*/
@@ -216,26 +265,196 @@ input[type=button] {
 
 select {
     text-align: center;
+    border-radius: 5px;
+    border-color: $border-color;
+
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(255, 255, 255, 0.466),
+        0em 1em 1em rgba(0, 0, 0, 0.479);
 }
 
 button {
-    display: block;
+    background-color: #0178c7;
+    color: white;
+
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
+    margin-bottom: 20px;
+    font-family: 'Titillium Web';
+    border-color: $border-color;
+
+    box-shadow:
+        inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(255, 255, 255, 0),
+        0em .5em 1em rgba(0, 0, 0, 0.3);
+}
+
+#btn-Generate {
+    display: flex;
+    padding: 1px 10px;
+    font-size: 20px;
 
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: $border-color;
+    color: #fff;
+    text-align: center;
+    width: 120px;
+    bottom: 95%;
+    left: 50%;
+    margin-left: -60px;
+    border-radius: 5px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+
+    border-color: white transparent transparent transparent;
+}
 
 footer {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+    margin: 30px auto 20px auto;
     text-align: center;
-    padding: 10px;
     font-family: 'Maven Pro', sans-serif;
 
+
     a {
-        color: #00e1ff;
+        color: $border-color;
     }
+
+
+}
+
+.footer-icon {
+    padding: 20px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    transition: all .2s ease-in-out;
+
+}
+
+.footer-icon:hover {
+    opacity: 70%;
+    transform: scale(1.1);
+}
+
+.dropdown-check-list {
+    display: inline-block;
+}
+
+.dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+}
+
+.dropdown-check-list .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+
+}
+
+.dropdown-check-list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+
+}
+
+.dropdown-check-list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    text-align: center;
+
+}
+
+.dropdown-check-list ul.items li {
+    list-style: none;
+}
+
+.multiselect {
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.selectBox {
+    position: relative;
+}
+
+.selectBox select {
+    width: 100%;
+    font-weight: bold;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+}
+
+.checkboxes label {
+    display: block;
+}
+
+.checkboxes label:hover {
+    background-color: #1e90ff;
+}
+
+#DisplayName {
+    margin-left: -40px;
 }
