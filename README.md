@@ -10,8 +10,8 @@ This project is designed to generate the XComContent and XComGame files for XCOM
 
 This project serves the XCOM modding community, so if you have any ideas or contributions, please share!
 
-![XCOM Modding Discord]https://discord.gg/QS6V6gb7K8
-![XCOM Modding Reddit]https://www.reddit.com/r/xcom2mods/
+[XCOM Modding Discord]https://discord.gg/QS6V6gb7K8
+[XCOM Modding Reddit]https://www.reddit.com/r/xcom2mods/
 
 How to use:
 
