@@ -11,7 +11,7 @@
 
     <!--Main script for data processing and file saver for generating files-->
     <script src="scripts/FileSaver.js" type="module" async></script>
-    <script src="scripts/script.js" async></script>
+    <script src="scripts/main.js" async></script>
 
     <title>XCOM Mod File Generator</title>
 
@@ -42,32 +42,32 @@
 
                         <h2>Part types</h2>
                         <button type="button" class="grouped-button" id="btn-SelectAllPTs"
-                            onclick="SelectAllPTs()">Select
+                            onclick="selectAllPTs()">Select
                             All</button>
                         <button type="button" class="grouped-button" id="btn-DeselectAllPTs"
-                            onclick="DeselectAllPTs()">Deselect All</button>
+                            onclick="deselectAllPTs()">Deselect All</button>
                         <div class="quick-select-container">
                             <h3 id="quick-select-label" for="">Quick Select</h3>
 
                             <label for="pt-DefaultSetting">Standard</label>
                             <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
-                                onchange="DefaultPTsCheck()"><br>
+                                onchange="defaultPTsCheck()"><br>
 
                             <label for="pt-HairSetting">Hair</label>
                             <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
-                                onchange="DefaultPTsCheck()"><br>
+                                onchange="defaultPTsCheck()"><br>
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
-                                onchange="HeadPropsPTsCheck()"> <br>
+                                onchange="headPropsPTsCheck()"> <br>
 
                             <label for="pt-BodyOnlySetting">Body</label>
                             <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly"
-                                onchange="BodyPTsCheck()"><br>
+                                onchange="bodyPTsCheck()"><br>
 
                             <label for="pt-BodyExtrasOnlySetting">Body Extras</label>
                             <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
-                                onchange="BodyExtrasPTsCheck()"><br>
+                                onchange="bodyExtrasPTsCheck()"><br>
                         </div>
 
 
@@ -540,7 +540,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
+                <button type="button" id="btn-Generate" onclick="generateFiles()">Generate Files</button>
             </div>
         </form>
         <footer>
