@@ -1,4 +1,4 @@
-import * as ArmorTemplate from '../ArmorTemplate';
+import * as ArmorTemplate from './ArmorTemplate';
 
 document.body.style.webkitTransform = 'scale(1)';
 document.body.style.msTransform = 'scale(100)';
