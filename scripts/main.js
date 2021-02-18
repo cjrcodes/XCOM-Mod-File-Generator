@@ -1,4 +1,4 @@
-import * as ArmorTemplate from './ArmorTemplate';
+import * as ArmorTemplate from './ArmorTemplate.js';
 
 document.body.style.webkitTransform = 'scale(1)';
 document.body.style.msTransform = 'scale(100)';
@@ -14,28 +14,7 @@ let propertiesText = [];
 let selectionProperties = [];
 let armorsEnabled = [];
 
-//All armor types created with the ArmorTemplate class, meant to get and display all relevant armor template data
-let kevlarArmor = new ArmorTemplate("KevlarArmor", "Soldier", "KV");
-let lightPlatedArmor = new ArmorTemplate("LightPlatedArmor", "Soldier", "LPL");
-let mediumPlatedArmor = new ArmorTemplate("MediumPlatedArmor", "Soldier", "MPL");
-let heavyPlatedArmor = new ArmorTemplate("HeavyPlatedArmor", "Soldier", "HPL");
-let lightPoweredArmor = new ArmorTemplate("LightPoweredArmor", "Soldier", "LPO");
-let mediumPoweredArmor = new ArmorTemplate("MediumPoweredArmor", "Soldier", "MPO");
-let heavyPoweredArmor = new ArmorTemplate("HeavyPoweredArmor", "Soldier", "HPO");
 
-let reaperArmor = new ArmorTemplate("ReaperArmor", "Reaper", "RA");
-let platedReaperArmor = new ArmorTemplate("PlatedReaperArmor", "Reaper", "PLR");
-let poweredReaperArmor = new ArmorTemplate("PoweredReaperArmor", "Reaper", "POR");
-
-let templarArmor = new ArmorTemplate("TemplarArmor", "Templar", "TA");
-let platedTemplarArmor = new ArmorTemplate("PlatedTemplarArmor", "Templar", "PLT");
-let poweredTemplarArmor = new ArmorTemplate("PoweredTemplarArmor", "Templar", "POT");
-
-let skirmisherArmor = new ArmorTemplate("SkirmisherArmor", "Skirmisher", "SA");
-let platedSkirmisherArmor = new ArmorTemplate("PlatedSkirmisherArmor", "Skirmisher", "PLS");
-let poweredSkirmisherArmor = new ArmorTemplate("PoweredSkirmisherArmor", "Skirmisher", "POS");
-
-let ArmorTemplates = [kevlarArmor, lightPlatedArmor, mediumPlatedArmor, heavyPlatedArmor, lightPoweredArmor, mediumPoweredArmor, heavyPoweredArmor, reaperArmor, platedReaperArmor, poweredReaperArmor, templarArmor, platedTemplarArmor, poweredTemplarArmor, skirmisherArmor, platedSkirmisherArmor, poweredSkirmisherArmor];
 
 //Head Template Config
 let headTC = "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"\",TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_None, bCanUseOnCivilian=, bVeteran=)";
@@ -655,12 +634,12 @@ function GetArmorTemplate(armorTemplate) {
 
 
 
-function GenerateFiles() {
+function generateFiles() {
     console.clear();
     console.log("   Generate Files Reached");
     ResetArrays();
 
-    console.log("CommentName");
+    /*console.log("CommentName");
     console.log(document.getElementById("CommentName").value);
 
     console.log("partTypesEnabled");
@@ -676,7 +655,7 @@ function GenerateFiles() {
     console.log(selectionProperties);
 
     console.log("armorsEnabled");
-    console.log(armorsEnabled);
+    console.log(armorsEnabled);*/
     let XComContent = xcomContentHeader;
     let XComGame = xcomGameHeader;
     ReportFormValues();
