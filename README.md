@@ -17,7 +17,7 @@ This project serves the XCOM modding community, so if you have any ideas or cont
 How to use:
 
 1. Select the part types you would like to generate body part template configuration lines for
-2. Fill in the text properties (primarily the details you've filled in for your mod, 
+2. Fill in the text properties (primarily the details you've filled in for your mod) 
 3. Select special properties
 4. Select Armor Templates, if applicable
 5. Click the generate files button and save/copy and paste the files to your project. Done!
