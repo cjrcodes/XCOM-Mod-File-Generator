@@ -89,96 +89,8 @@ let genderSelect = ["GenderM", "GenderF"];
 
 var expanded = false;
 
-function showHairCheckboxes() {
-    var checkboxes = document.getElementById("hair-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showHeadPropsCheckboxes() {
-    var checkboxes = document.getElementById("headprops-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showBodyCheckboxes() {
-    var checkboxes = document.getElementById("body-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showBodyExtrasCheckboxes() {
-    var checkboxes = document.getElementById("bodyextras-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showSoldierCheckboxes() {
-    var checkboxes = document.getElementById("soldier-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showReaperCheckboxes() {
-    var checkboxes = document.getElementById("reaper-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showTemplarCheckboxes() {
-    var checkboxes = document.getElementById("templar-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showSkirmisherCheckboxes() {
-    var checkboxes = document.getElementById("skirmisher-checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-function showHeadCheckboxes() {
-    var checkboxes = document.getElementById("head-checkboxes");
+function showCheckboxes(docId) {
+    var checkboxes = docId;
     if (!expanded) {
         checkboxes.style.display = "block";
         expanded = true;
@@ -203,11 +115,11 @@ function expandDropdown(element) {
         }
 
 
-    }
+    };
 
     items.onblur = function (evt) {
         items.classList.remove('visible');
-    }
+    };
 
 }
 
