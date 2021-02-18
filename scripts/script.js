@@ -56,7 +56,7 @@ let headPropTC = "+BodyPartTemplateConfig=(PartType=\"\", DLCName=\"\", Template
 //Body Template Config
 let bodyTC = "+BodyPartTemplateConfig=(PartType=\"\", DLCName=\"\", TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_None, bCanUseOnCivilian=, bVeteran=, CharacterTemplate=, ArmorTemplate=)";
 
-let hairTC = "+BodyPartTemplateConfig=(PartType=\"\", DLCName=\"\", TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_None, bCanUseOnCivilian=)"
+let hairTC = "+BodyPartTemplateConfig=(PartType=\"\", DLCName=\"\", TemplateName=\"\", ArchetypeName=\"\", Gender=eGender_None, bCanUseOnCivilian=)";
 
 //Part Types
 
@@ -231,11 +231,11 @@ function expandDropdown(element) {
         }
 
 
-    }
+    };
 
     items.onblur = function (evt) {
         items.classList.remove('visible');
-    }
+    };
 
 }
 
@@ -506,7 +506,7 @@ function ReportFormValues() {
             continue;
         } else {
             for (j = 0; j < ptCollection[i].length; j++) {
-                console.log(ptCollection[i][j])
+                console.log(ptCollection[i][j]);
                 console.log("(" + indexCounter + ")" + ptCollection[i][j] + ": " + document.getElementById(ptCollection[i][j]).checked);
                 valuesArray[indexCounter] = document.getElementById(ptCollection[i][j]).checked;
                 indexCounter++;
