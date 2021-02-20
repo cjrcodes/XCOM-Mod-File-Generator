@@ -6,7 +6,7 @@ class ArmorTemplate {
     }
 }
 
-//All armor types created with the ArmorTemplate class, meant to get and display all relevant armor template data
+//All armor template presets created with the ArmorTemplate class, meant to get and display all relevant armor template data
 let kevlarArmor = new ArmorTemplate("KevlarArmor", "Soldier", "KV");
 let lightPlatedArmor = new ArmorTemplate("LightPlatedArmor", "Soldier", "LPL");
 let mediumPlatedArmor = new ArmorTemplate("MediumPlatedArmor", "Soldier", "MPL");

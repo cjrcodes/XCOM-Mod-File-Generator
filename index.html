@@ -11,13 +11,15 @@
 
     <!--Main script for data processing and file saver for generating files-->
     <script src="scripts/FileSaver.js" type="module" async></script>
-    <script src="scripts/main.js" async></script>
+    <script src="scripts/main.js" async>
+        document.body.style.msTransform = 'scale(100)';
+        document.body.style.transform = 'scale(1)';
+    </script>
 
     <title>XCOM Mod File Generator</title>
 
     <!--XCOM Favicon by Lilapp on pixilart.com-->
     <link rel="icon" type="image/png" href="images/favicon.png">
-
 
 </head>
 
@@ -29,10 +31,7 @@
     </header>
 
     <div class="main">
-        <form onsubmit="GenerateFiles()">
-
-
-
+        <form onsubmit="generateFiles()">
 
             <div class="properties-container">
                 <h2 id="properties-container-title">XCOMContent</h2>
@@ -51,11 +50,11 @@
 
                             <label for="pt-DefaultSetting">Standard</label>
                             <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
-                                onchange="DefaultPTsCheck()"><br>
+                                onchange="defaultPTsCheck()"><br>
 
                             <label for="pt-HairSetting">Hair</label>
                             <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
-                                onchange="DefaultPTsCheck()"><br>
+                                onchange="selectCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes').getElementsByTagName('input'))"><br>
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
@@ -69,7 +68,6 @@
                             <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
                                 onchange="BodyExtrasPTsCheck()"><br>
                         </div>
-
 
                         <h3>Head/Voice</h3>
 
@@ -113,19 +111,7 @@
                             </div>
                         </div>
 
-                        <!--<div id="dropdown-list" class="dropdown-check-list" tabindex="100" >
-                            <span class="anchor">Select Hair Parts</span>
-                            <ul id="items" class="items" onclick="expandDropdown(this)">
-                                <input type="checkbox" name="PartType" id="pt-Hair" value="Hair">
-                                <label for="pt-Hair">Hair</label><br>
-                                <input type="checkbox" name="PartType" id="pt-Beards" value="Beards">
-                                <label for="pt-Beards">Beards</label><br>
-                            </ul>
-                        </div>-->
-
-
                         <script type="text/javascript">
-
 
                         </script>
 
@@ -133,7 +119,8 @@
                         <div id="HeadProps">
                             <!---->
                             <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes(document.getElementById('headprops-checkboxes'))">
+                                <div class="selectBox"
+                                    onclick="showCheckboxes(document.getElementById('headprops-checkboxes'))">
                                     <select>
                                         <option>Select Head Props</option>
                                     </select>
@@ -169,7 +156,8 @@
                         <h3>Body</h3>
                         <div id="Body/BodyExtras">
                             <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes(document.getElementById('body-checkboxes'))">
+                                <div class="selectBox"
+                                    onclick="showCheckboxes(document.getElementById('body-checkboxes'))">
                                     <select>
                                         <option>Select Body Parts</option>
                                     </select>
@@ -195,7 +183,8 @@
 
                             <h3>Body Extras</h3>
                             <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes(document.getElementById('bodyextras-checkboxes'))">
+                                <div class="selectBox"
+                                    onclick="showCheckboxes(document.getElementById('bodyextras-checkboxes'))">
                                     <select>
                                         <option>Select Body Extras Parts</option>
                                     </select>
@@ -360,7 +349,9 @@
 
                     <div class="flex-item" id="armor-templates-section">
                         <h2>Armor Templates</h2>
-                        <button type="button" id="btn-SelectAllPTs" onclick="selectAllCheckboxes(document.getElementById('armor-templates-section'))">Select All</button>
+                        <button type="button" id="btn-SelectAllPTs"
+                            onclick="selectAllCheckboxes(document.getElementById('armor-templates-section'))">Select
+                            All</button>
                         <button type="button" id="btn-DeselectAllPTs" onclick="DeselectAllATs()">Deselect All</button>
 
 
@@ -368,7 +359,8 @@
                             <label id="quick-select-label" for="">Quick Select</label>
                             <br>
                             <label for="at-SoldierOnly">Soldier</label>
-                            <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly" onclick="SoldierATsCheck()">
+                            <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly"
+                                onclick="SoldierATsCheck()">
                             <br>
 
                             <label for="at-ReaperOnly">Reaper</label>
@@ -386,7 +378,8 @@
 
                         <h3>Soldier</h3>
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('soldier-checkboxes'))">
+                            <div class="selectBox"
+                                onclick="showCheckboxes(document.getElementById('soldier-checkboxes'))">
                                 <select>
                                     <option>Select Soldier Templates</option>
                                 </select>
@@ -435,7 +428,8 @@
 
                         <h3>Reaper</h3>
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('reaper-checkboxes'))">
+                            <div class="selectBox"
+                                onclick="showCheckboxes(document.getElementById('reaper-checkboxes'))">
                                 <select>
                                     <option>Select Reaper Templates</option>
                                 </select>
@@ -443,13 +437,14 @@
                             </div>
                             <div id="reaper-checkboxes" class="checkboxes">
                                 <label for="at-ReaperArmor">
-                                    <input type="checkbox" id="at-ReaperArmor" value="ReaperArmor" class="ArmorTemplate"/>ReaperArmor</label>
+                                    <input type="checkbox" id="at-ReaperArmor" value="ReaperArmor"
+                                        class="ArmorTemplate" />ReaperArmor</label>
                                 <label for="at-PlatedReaperArmor">
-                                    <input type="checkbox" id="at-PlatedReaperArmor"
-                                        value="PlatedReaperArmor" class="ArmorTemplate"/>PlatedReaperArmor</label>
+                                    <input type="checkbox" id="at-PlatedReaperArmor" value="PlatedReaperArmor"
+                                        class="ArmorTemplate" />PlatedReaperArmor</label>
                                 <label for="at-PoweredReaperArmor">
-                                    <input type="checkbox" id="at-PoweredReaperArmor"
-                                        value="PoweredReaperArmor" class="ArmorTemplate"/>PoweredReaperArmor</label>
+                                    <input type="checkbox" id="at-PoweredReaperArmor" value="PoweredReaperArmor"
+                                        class="ArmorTemplate" />PoweredReaperArmor</label>
                             </div>
                             <!--<input type="checkbox" id="at-ReaperArmor" value="ReaperArmor">
                         <label for="at-ReaperArmor">ReaperArmor</label><br>
@@ -460,7 +455,8 @@
 
                             <h3>Templar</h3>
                             <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes(document.getElementById('templar-checkboxes'))">
+                                <div class="selectBox"
+                                    onclick="showCheckboxes(document.getElementById('templar-checkboxes'))">
                                     <select>
                                         <option>Select Templar Templates</option>
                                     </select>
@@ -489,7 +485,8 @@
                         -->
                             <h3>Skirmisher</h3>
                             <div class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes(document.getElementById('skirmisher-checkboxes'))">
+                                <div class="selectBox"
+                                    onclick="showCheckboxes(document.getElementById('skirmisher-checkboxes'))">
                                     <select>
                                         <option>Select Skirmisher Templates</option>
                                     </select>
@@ -536,7 +533,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" id="btn-Generate" onclick="GenerateFiles()">Generate Files</button>
+                <button type="button" id="btn-Generate" onclick="generateFiles()">Generate Files</button>
             </div>
         </form>
         <footer>
