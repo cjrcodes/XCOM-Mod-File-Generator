@@ -36,5 +36,5 @@ jobs:
           echo test, and deploy your project.
        
       - name: JSDoc Action
-        uses: andstor/jsdoc-action@v1.2.0
+        run: jsdoc scripts/main.js
 
