@@ -28,6 +28,10 @@ jobs:
       - name: Install JSDoc
         run: npm install --save-dev jsdoc
 
-      - name: JSDoc Action
-        run: jsdoc scripts/main.js
+      - name: Build
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./scripts
+          recurse: true
+          output_dir: ./out
 
