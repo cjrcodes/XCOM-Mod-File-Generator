@@ -6,6 +6,8 @@
  * e.g. In the main HTML (index.html), "pt-Head" can be found like this
  * 
  * <label for="pt-Head"> <input type="checkbox" name="PartType" id="pt-Head" value="Head" />Head</label>
+ * 
+ * @author Christian Rodriguez
  */
 
 //Part Type Settings

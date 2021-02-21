@@ -1,3 +1,10 @@
+/**
+ * ArmorTemplate.js, primarily for the ArmorTemplate class. 
+ * This is used to generate presets with all relevant information needed for filling parts with armor template capabilities.
+ * Presets are exported as an array.
+ * @author Christian Rodriguez
+ */
+
 class ArmorTemplate {
     constructor(armorTemplateName, characterTemplate, armorTemplateAbbreviation) {
         this.armorTemplateName = armorTemplateName;
