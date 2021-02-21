@@ -24,14 +24,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-       
-      - name: Install JSDoc
-        run: npm install --save-dev jsdoc
 
-      - name: Build
-        uses: andstor/jsdoc-action@v1
+      - name: JSDoc Action
+        uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./scripts/main.js
+          source_dir: ./scripts
           recurse: true
           output_dir: ./out
 
