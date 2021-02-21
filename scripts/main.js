@@ -24,7 +24,7 @@ let promiseStrings = import('./strings.js').then((value) => {
     return value.default;
 });
 
-//Import collections as an array from the strings file, stored in collections variable
+//Import collections as an array from the collections file, stored in collections variable
 var collections;
 var ptCollection;
 var atCollection;
@@ -47,8 +47,6 @@ let propertiesText = [];
 let selectionProperties = [];
 let armorsEnabled = [];
 
-
-
 /**
  * Expands/collapses checkbox dropdowns
  * @param  {string} docId - Document id of selected dropdown
@@ -63,7 +61,7 @@ function showCheckboxes(docId) {
 }
 
 /**
- * Reset all arrays when generateFiles method is called
+ * Reset all arrays that store all form results when generateFiles method is called
  */
 function resetArrays() {
     valuesArray = [];
@@ -93,7 +91,6 @@ function selectAllCheckboxes(buttonId, docId) {
             checkboxes[i].checked =  checkboxValue; 
     } 
 }
-
 
 /**
  * Enable default part types, special group made to select head, torso, arms, legs. 
@@ -259,7 +256,6 @@ function reportFormValues() {
                 k++;
             }
         }
-
     }
     console.log(document.getElementById("race"));
 }
@@ -282,7 +278,6 @@ function hasArmorTemplate(pt) {
         }
     }
     console.log(pt + " has ATs");
-
     return true;
 }
 
@@ -298,7 +293,6 @@ function getArmorAbbreviation(armorTemplate) {
             return armorTemplates[i].armorTemplateAbbreviation;
         }
     }
-
     return "";
 }
 
@@ -314,12 +308,11 @@ function getArmorCharacterTemplate(armorTemplate) {
             return armorTemplates[i].characterTemplate;
         }
     }
-
     return "";
 }
 
 /**
- * Generates files for 
+ * Generates files for the end user
  */
 function generateFiles() {
     console.clear();
@@ -418,7 +411,6 @@ function generateFiles() {
                 }
             }
 
-
             //Lines for Head
             if (partTypesEnabled[i] == "Head") {
 
@@ -438,7 +430,7 @@ function generateFiles() {
                 xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
             }
 
-            //Lines for Voice, gender selected
+            //Lines for Voice
             else if (partTypesEnabled[i] == "Hair" || partTypesEnabled[i] == "Beards") {
 
                 xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
@@ -449,7 +441,7 @@ function generateFiles() {
 
             }
 
-            //Lines for Head Props, gender selected
+            //Lines for Head Props
             else if (partTypesEnabled[i] == "Helmets" || partTypesEnabled[i] == "FacePropsUpper" || partTypesEnabled[i] == "FacePropsLower") {
 
                 xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
@@ -458,7 +450,7 @@ function generateFiles() {
                 xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
                 xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
             } else {
-                //Body, body extra, no armors, genders selected
+                //Body, body extra, no armors
                 if (armorsEnabled.length == 0) {
                     DisplayName = "";
 
@@ -482,7 +474,7 @@ function generateFiles() {
                     xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
 
                 } else {
-                    //Armors selected, genders selected
+                    //Armors selected
                     for (k = 0; k < armorsEnabled.length; k++) {
 
                         DisplayName = "";
