@@ -140,7 +140,8 @@ function selectCheckboxes(parentId, docId) {
 }
 
 /**
- * Reports form values to populate arrays and values to be used in the generateFiles method and final result
+ * Reports form values to populate arrays and values to be used in the generateFiles method and final result.
+ * Also prints all values to be found in the console, works as a debugger.
  */
 function reportFormValues() {
     let indexCounter = 0;
