@@ -6,6 +6,8 @@ XCOM Mod File Generator is a configuration file generator for mods for the popul
 
 [Check it out here](https://cjrcodes.github.io/XCOM-Mod-File-Generator/ "XCOM Mod File Generator")
 
+[Wiki Page](https://github.com/cjrcodes/XCOM-Mod-File-Generator/wiki)
+
 ![Project Preview](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/master/images/projectpreview.png)
 
 This project serves the XCOM modding community, so if you have any ideas or contributions, please share!
