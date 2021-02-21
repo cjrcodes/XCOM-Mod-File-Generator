@@ -74,8 +74,8 @@ function resetArrays() {
 
 /**
  * Select/deselect all checkboxes for a given section (e.g. part types, armor templates section)
- * @param {string} buttonId - string passed as 'selectall' or 'deselectall' to determine which action to take
- * @param {document.getElementById} docId - document element section to select/deselect checkboxes
+ * @param {string} buttonId - String passed as 'selectall' or 'deselectall' to determine which action to take
+ * @param {document.getElementById} docId - Document element section to select/deselect checkboxes
  */
 function selectAllCheckboxes(buttonId, docId) {
     let selector = buttonId;
@@ -261,23 +261,23 @@ function reportFormValues() {
 }
 
 /**
- * 
- * @param {*} pt 
+ * Determines if a part has an armor template. Generally, only major clothing items have armor templates (i.e. torso, arms, legs)
+ * @param {string} part - Part to be checked 
  */
-function hasArmorTemplate(pt) {
+function hasArmorTemplate(part) {
 
     let nonArmorParts = ["Head", "Voice", "Helmets", "FacePropsUpper", "FacePropsLower", "Hair", "Beards"];
     let i;
-    console.log(pt);
+    console.log(part);
 
     for (i = 0; i < nonArmorParts.length; i++) {
-        console.log("Comparing " + nonArmorParts[i] + " to " + pt);
-        if (nonArmorParts[i] == pt) {
-            console.log(pt + " does not have ATs");
+        console.log("Comparing " + nonArmorParts[i] + " to " + part);
+        if (nonArmorParts[i] == part) {
+            console.log(part + " does not have ATs");
             return false;
         }
     }
-    console.log(pt + " has ATs");
+    console.log(part + " has ATs");
     return true;
 }
 
