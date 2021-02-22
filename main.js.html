@@ -2,22 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: main.js</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>main.js - Documentation</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: main.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ArmorTemplate.html">ArmorTemplate</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#defaultPTsCheck">defaultPTsCheck</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateFiles">generateFiles</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getArchetypeName">getArchetypeName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getArmorAbbreviation">getArmorAbbreviation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getArmorCharacterTemplate">getArmorCharacterTemplate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getGenderTagAndLabel">getGenderTagAndLabel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTextAndSpecialProperties">getTextAndSpecialProperties</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#hasArmorTemplate">hasArmorTemplate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#printFormValues">printFormValues</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#reportFormValues">reportFormValues</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#resetArrays">resetArrays</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#selectAllCheckboxes">selectAllCheckboxes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#selectCheckboxes">selectCheckboxes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#setArmorTemplatesSelected">setArmorTemplatesSelected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#setGendersSelected">setGendersSelected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#setPartTypesSelected">setPartTypesSelected</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#showCheckboxes">showCheckboxes</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#xcomContentHeader">xcomContentHeader</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">main.js</h1>
+    
 
     
 
@@ -81,7 +94,7 @@ let armorsEnabled = [];
 //All text and special properties section values
 let commentName;
 let language;
-let dlcName; 
+let dlcName;
 let templateName;
 let arcNameUPK;
 let arcNameFolder;
@@ -115,12 +128,11 @@ function showCheckboxes(parentId, docId, dropdownClicked) {
     let checkboxes = docId;
 
     //Check if dropdown was selected instead of quick select button
-    if(dropdownClicked === true){
+    if (dropdownClicked === true) {
         if (checkboxes.style.display === "block") {
             checkboxes.style.display = "none";
             return;
-        } 
-        else {
+        } else {
             checkboxes.style.display = "block";
             return;
         }
@@ -128,11 +140,9 @@ function showCheckboxes(parentId, docId, dropdownClicked) {
 
     if (checkboxes.style.display === "block" &amp;&amp; selector.checked === false) {
         checkboxes.style.display = "none";
-    } 
-    else if(checkboxes.style.display === "none" &amp;&amp; selector.checked === false){
+    } else if (checkboxes.style.display === "none" &amp;&amp; selector.checked === false) {
         checkboxes.style.display = "none";
-    }
-    else {
+    } else {
         checkboxes.style.display = "block";
     }
 }
@@ -146,16 +156,14 @@ function selectCheckboxes(parentId, docId) {
     let selector = parentId;
     let checkboxes = docId;
     let i;
- 
-    for (i = 0; i &lt; checkboxes.length; i++) {
-        if((selector.checked === false &amp;&amp; checkboxes[i].checked === true) || (selector.checked === false &amp;&amp; checkboxes[i].checked === false)){
-            checkboxes[i].checked = false;
-        }
 
-        else{
+    for (i = 0; i &lt; checkboxes.length; i++) {
+        if ((selector.checked === false &amp;&amp; checkboxes[i].checked === true) || (selector.checked === false &amp;&amp; checkboxes[i].checked === false)) {
+            checkboxes[i].checked = false;
+        } else {
             checkboxes[i].checked = true;
         }
-    } 
+    }
 }
 
 /**
@@ -164,18 +172,18 @@ function selectCheckboxes(parentId, docId) {
  * @param {document.getElementById} docId - Document element section to select/deselect checkboxes
  */
 function selectAllCheckboxes(buttonId, docId) {
-    
+
     let checkboxes = docId;
     let i;
     let checkboxValue = false;
 
-    if(buttonId === 'selectall'){
+    if (buttonId === 'selectall') {
         checkboxValue = true;
     }
- 
+
     for (i = 0; i &lt; checkboxes.length; i++) {
-            checkboxes[i].checked =  checkboxValue; 
-    } 
+        checkboxes[i].checked = checkboxValue;
+    }
 }
 
 /**
@@ -206,29 +214,29 @@ function defaultPTsCheck() {
 /**
  * Get selected part types, store in partTypesEnabled array
  */
-function setPartTypesSelected(){
+function setPartTypesSelected() {
 
-let i, j;
+    let i, j;
 
-k = 0;
-for (i = 1; i &lt; ptCollection.length; i++) {
-    if (i === 3) {
-        continue;
-    } else {
-        for (j = 0; j &lt; ptCollection[i].length; j++) {
-            if (document.getElementById(ptCollection[i][j]).checked == true) {
-                partTypesEnabled[k] = document.getElementById(ptCollection[i][j]).value;
-                k++;
+    k = 0;
+    for (i = 1; i &lt; ptCollection.length; i++) {
+        if (i === 3) {
+            continue;
+        } else {
+            for (j = 0; j &lt; ptCollection[i].length; j++) {
+                if (document.getElementById(ptCollection[i][j]).checked == true) {
+                    partTypesEnabled[k] = document.getElementById(ptCollection[i][j]).value;
+                    k++;
+                }
             }
         }
     }
-}
 }
 
 /**
  * Get selected armor templates, store in armorsEnabled array
  */
-function setArmorTemplatesSelected(){
+function setArmorTemplatesSelected() {
     let i, j;
 
     k = 0;
@@ -247,18 +255,18 @@ function setArmorTemplatesSelected(){
 /**
  * Set selected genders from the form, store in gendersEnabled array
  */
-function setGendersSelected(){
+function setGendersSelected() {
 
-let j;
-let g = 0;
-for (j = 0; j &lt; genderSelect.length; j++) {
+    let j;
+    let g = 0;
+    for (j = 0; j &lt; genderSelect.length; j++) {
 
-    if (document.getElementById(genderSelect[j]).checked == true) {
-        gendersEnabled[g] = document.getElementById(genderSelect[j]).value;
-        g++;
+        if (document.getElementById(genderSelect[j]).checked == true) {
+            gendersEnabled[g] = document.getElementById(genderSelect[j]).value;
+            g++;
+        }
+
     }
-
-}
 }
 
 
@@ -327,7 +335,7 @@ function getArmorCharacterTemplate(armorTemplate) {
 /**
  * Gets all text properties and special properties on the form and stores them in their respective variable.
  */
-function getTextAndSpecialProperties(){
+function getTextAndSpecialProperties() {
     commentName = document.getElementById("CommentName").value;
     language = document.getElementById("Language").value;
     dlcName = document.getElementById("DLCName").value;
@@ -347,7 +355,7 @@ function getTextAndSpecialProperties(){
 /**
  * Print all form values in the console. Useful for debugging.
  */
-function printFormValues(){
+function printFormValues() {
     console.log("CommentName");
     console.log(document.getElementById("CommentName").value);
 
@@ -372,7 +380,7 @@ function printFormValues(){
  * Tag stored in index 0, label stored in index 1
  * @param {string} gender - Gender to have tag and label returned on
  */
-function getGenderTagAndLabel(gender){
+function getGenderTagAndLabel(gender) {
     let genderArr = [];
 
     if (gender == "eGender_Male") {
@@ -395,20 +403,20 @@ function getGenderTagAndLabel(gender){
  * @param {string} genderTag - Gender tag to be appended to string
  * (e.g. After for "Tint" will put that string after the part, "ARC_TorsoTint_M")
  */
-function getArchetypeName(arcAppendType, partType, arcNameCustomName, genderTag){
- //Archetype append type, similar to above
+function getArchetypeName(arcAppendType, partType, arcNameCustomName, genderTag) {
+    //Archetype append type, similar to above
 
- let arcString;
+    let arcString;
 
- if (arcAppendType == "after") {
-    arcString = "ARC_" + partType + arcNameCustomName + genderTag;
-} else if (arcAppendType == "before") {
-    arcString = "ARC_" + arcNameCustomName + partType + genderTag;
-} else {
-    arcString = arcNameCustomName;
-}
+    if (arcAppendType == "after") {
+        arcString = "ARC_" + partType + arcNameCustomName + genderTag;
+    } else if (arcAppendType == "before") {
+        arcString = "ARC_" + arcNameCustomName + partType + genderTag;
+    } else {
+        arcString = arcNameCustomName;
+    }
 
-return arcString;
+    return arcString;
 
 }
 
@@ -430,7 +438,6 @@ function generateFiles() {
 
     //Get the singular text and selection box values
     getTextAndSpecialProperties();
-    
 
     let i;
     let k;
@@ -449,12 +456,12 @@ function generateFiles() {
         //Loop through selected genders
         genderTag = "";
         genderLabel = "";
-        if(gendersEnabled.length >= 1){
+        if (gendersEnabled.length >= 1) {
             genderArr = getGenderTagAndLabel(gendersEnabled[j]);
             genderTag = genderArr[0];
             genderLabel = genderArr[1];
         }
-       
+
         //Loop through selected part types
         for (i = 0; i &lt; partTypesEnabled.length; i++) {
             arcName = "";
@@ -569,20 +576,20 @@ function generateFiles() {
             }
         }
         j++;
-    } while(j &lt; gendersEnabled.length);
+    } while (j &lt; gendersEnabled.length);
 
-console.log(xcomContent);
-console.log(xcomGame);
+    console.log(xcomContent);
+    console.log(xcomGame);
 
-let blob = new Blob([xcomContent], {
-    type: "text/plain;charset=utf-8"
-});
-saveAs(blob, "XComContent.ini");
+    let blob = new Blob([xcomContent], {
+        type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, "XComContent.ini");
 
-let blob2 = new Blob([xcomGame], {
-    type: "text/plain;charset=utf-8"
-});
-saveAs(blob2, "XComGame.int");
+    let blob2 = new Blob([xcomGame], {
+        type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob2, "XComGame.int");
 }</code></pre>
         </article>
     </section>
@@ -592,17 +599,13 @@ saveAs(blob2, "XComGame.int");
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArmorTemplate.html">ArmorTemplate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultPTsCheck">defaultPTsCheck</a></li><li><a href="global.html#generateFiles">generateFiles</a></li><li><a href="global.html#getArchetypeName">getArchetypeName</a></li><li><a href="global.html#getArmorAbbreviation">getArmorAbbreviation</a></li><li><a href="global.html#getArmorCharacterTemplate">getArmorCharacterTemplate</a></li><li><a href="global.html#getGenderTagAndLabel">getGenderTagAndLabel</a></li><li><a href="global.html#getTextAndSpecialProperties">getTextAndSpecialProperties</a></li><li><a href="global.html#hasArmorTemplate">hasArmorTemplate</a></li><li><a href="global.html#printFormValues">printFormValues</a></li><li><a href="global.html#reportFormValues">reportFormValues</a></li><li><a href="global.html#resetArrays">resetArrays</a></li><li><a href="global.html#selectAllCheckboxes">selectAllCheckboxes</a></li><li><a href="global.html#selectCheckboxes">selectCheckboxes</a></li><li><a href="global.html#setArmorTemplatesSelected">setArmorTemplatesSelected</a></li><li><a href="global.html#setGendersSelected">setGendersSelected</a></li><li><a href="global.html#setPartTypesSelected">setPartTypesSelected</a></li><li><a href="global.html#showCheckboxes">showCheckboxes</a></li><li><a href="global.html#xcomContentHeader">xcomContentHeader</a></li></ul>
-</nav>
-
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Feb 22 2021 09:42:12 GMT+0000 (Coordinated Universal Time)
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Mon Feb 22 2021 10:08:35 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>
