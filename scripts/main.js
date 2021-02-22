@@ -53,7 +53,7 @@ let armorsEnabled = [];
 //All text and special properties section values
 let commentName;
 let language;
-let dlcName; 
+let dlcName;
 let templateName;
 let arcNameUPK;
 let arcNameFolder;
@@ -87,12 +87,11 @@ function showCheckboxes(parentId, docId, dropdownClicked) {
     let checkboxes = docId;
 
     //Check if dropdown was selected instead of quick select button
-    if(dropdownClicked === true){
+    if (dropdownClicked === true) {
         if (checkboxes.style.display === "block") {
             checkboxes.style.display = "none";
             return;
-        } 
-        else {
+        } else {
             checkboxes.style.display = "block";
             return;
         }
@@ -100,11 +99,9 @@ function showCheckboxes(parentId, docId, dropdownClicked) {
 
     if (checkboxes.style.display === "block" && selector.checked === false) {
         checkboxes.style.display = "none";
-    } 
-    else if(checkboxes.style.display === "none" && selector.checked === false){
+    } else if (checkboxes.style.display === "none" && selector.checked === false) {
         checkboxes.style.display = "none";
-    }
-    else {
+    } else {
         checkboxes.style.display = "block";
     }
 }
@@ -118,16 +115,14 @@ function selectCheckboxes(parentId, docId) {
     let selector = parentId;
     let checkboxes = docId;
     let i;
- 
-    for (i = 0; i < checkboxes.length; i++) {
-        if((selector.checked === false && checkboxes[i].checked === true) || (selector.checked === false && checkboxes[i].checked === false)){
-            checkboxes[i].checked = false;
-        }
 
-        else{
+    for (i = 0; i < checkboxes.length; i++) {
+        if ((selector.checked === false && checkboxes[i].checked === true) || (selector.checked === false && checkboxes[i].checked === false)) {
+            checkboxes[i].checked = false;
+        } else {
             checkboxes[i].checked = true;
         }
-    } 
+    }
 }
 
 /**
@@ -136,18 +131,18 @@ function selectCheckboxes(parentId, docId) {
  * @param {document.getElementById} docId - Document element section to select/deselect checkboxes
  */
 function selectAllCheckboxes(buttonId, docId) {
-    
+
     let checkboxes = docId;
     let i;
     let checkboxValue = false;
 
-    if(buttonId === 'selectall'){
+    if (buttonId === 'selectall') {
         checkboxValue = true;
     }
- 
+
     for (i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked =  checkboxValue; 
-    } 
+        checkboxes[i].checked = checkboxValue;
+    }
 }
 
 /**
@@ -178,29 +173,29 @@ function defaultPTsCheck() {
 /**
  * Get selected part types, store in partTypesEnabled array
  */
-function setPartTypesSelected(){
+function setPartTypesSelected() {
 
-let i, j;
+    let i, j;
 
-k = 0;
-for (i = 1; i < ptCollection.length; i++) {
-    if (i === 3) {
-        continue;
-    } else {
-        for (j = 0; j < ptCollection[i].length; j++) {
-            if (document.getElementById(ptCollection[i][j]).checked == true) {
-                partTypesEnabled[k] = document.getElementById(ptCollection[i][j]).value;
-                k++;
+    k = 0;
+    for (i = 1; i < ptCollection.length; i++) {
+        if (i === 3) {
+            continue;
+        } else {
+            for (j = 0; j < ptCollection[i].length; j++) {
+                if (document.getElementById(ptCollection[i][j]).checked == true) {
+                    partTypesEnabled[k] = document.getElementById(ptCollection[i][j]).value;
+                    k++;
+                }
             }
         }
     }
-}
 }
 
 /**
  * Get selected armor templates, store in armorsEnabled array
  */
-function setArmorTemplatesSelected(){
+function setArmorTemplatesSelected() {
     let i, j;
 
     k = 0;
@@ -219,18 +214,18 @@ function setArmorTemplatesSelected(){
 /**
  * Set selected genders from the form, store in gendersEnabled array
  */
-function setGendersSelected(){
+function setGendersSelected() {
 
-let j;
-let g = 0;
-for (j = 0; j < genderSelect.length; j++) {
+    let j;
+    let g = 0;
+    for (j = 0; j < genderSelect.length; j++) {
 
-    if (document.getElementById(genderSelect[j]).checked == true) {
-        gendersEnabled[g] = document.getElementById(genderSelect[j]).value;
-        g++;
+        if (document.getElementById(genderSelect[j]).checked == true) {
+            gendersEnabled[g] = document.getElementById(genderSelect[j]).value;
+            g++;
+        }
+
     }
-
-}
 }
 
 
@@ -299,7 +294,7 @@ function getArmorCharacterTemplate(armorTemplate) {
 /**
  * Gets all text properties and special properties on the form and stores them in their respective variable.
  */
-function getTextAndSpecialProperties(){
+function getTextAndSpecialProperties() {
     commentName = document.getElementById("CommentName").value;
     language = document.getElementById("Language").value;
     dlcName = document.getElementById("DLCName").value;
@@ -319,7 +314,7 @@ function getTextAndSpecialProperties(){
 /**
  * Print all form values in the console. Useful for debugging.
  */
-function printFormValues(){
+function printFormValues() {
     console.log("CommentName");
     console.log(document.getElementById("CommentName").value);
 
@@ -344,7 +339,7 @@ function printFormValues(){
  * Tag stored in index 0, label stored in index 1
  * @param {string} gender - Gender to have tag and label returned on
  */
-function getGenderTagAndLabel(gender){
+function getGenderTagAndLabel(gender) {
     let genderArr = [];
 
     if (gender == "eGender_Male") {
@@ -367,20 +362,20 @@ function getGenderTagAndLabel(gender){
  * @param {string} genderTag - Gender tag to be appended to string
  * (e.g. After for "Tint" will put that string after the part, "ARC_TorsoTint_M")
  */
-function getArchetypeName(arcAppendType, partType, arcNameCustomName, genderTag){
- //Archetype append type, similar to above
+function getArchetypeName(arcAppendType, partType, arcNameCustomName, genderTag) {
+    //Archetype append type, similar to above
 
- let arcString;
+    let arcString;
 
- if (arcAppendType == "after") {
-    arcString = "ARC_" + partType + arcNameCustomName + genderTag;
-} else if (arcAppendType == "before") {
-    arcString = "ARC_" + arcNameCustomName + partType + genderTag;
-} else {
-    arcString = arcNameCustomName;
-}
+    if (arcAppendType == "after") {
+        arcString = "ARC_" + partType + arcNameCustomName + genderTag;
+    } else if (arcAppendType == "before") {
+        arcString = "ARC_" + arcNameCustomName + partType + genderTag;
+    } else {
+        arcString = arcNameCustomName;
+    }
 
-return arcString;
+    return arcString;
 
 }
 
@@ -402,7 +397,6 @@ function generateFiles() {
 
     //Get the singular text and selection box values
     getTextAndSpecialProperties();
-    
 
     let i;
     let k;
@@ -421,12 +415,12 @@ function generateFiles() {
         //Loop through selected genders
         genderTag = "";
         genderLabel = "";
-        if(gendersEnabled.length >= 1){
+        if (gendersEnabled.length >= 1) {
             genderArr = getGenderTagAndLabel(gendersEnabled[j]);
             genderTag = genderArr[0];
             genderLabel = genderArr[1];
         }
-       
+
         //Loop through selected part types
         for (i = 0; i < partTypesEnabled.length; i++) {
             arcName = "";
@@ -541,18 +535,18 @@ function generateFiles() {
             }
         }
         j++;
-    } while(j < gendersEnabled.length);
+    } while (j < gendersEnabled.length);
 
-console.log(xcomContent);
-console.log(xcomGame);
+    console.log(xcomContent);
+    console.log(xcomGame);
 
-let blob = new Blob([xcomContent], {
-    type: "text/plain;charset=utf-8"
-});
-saveAs(blob, "XComContent.ini");
+    let blob = new Blob([xcomContent], {
+        type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, "XComContent.ini");
 
-let blob2 = new Blob([xcomGame], {
-    type: "text/plain;charset=utf-8"
-});
-saveAs(blob2, "XComGame.int");
+    let blob2 = new Blob([xcomGame], {
+        type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob2, "XComGame.int");
 }

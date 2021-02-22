@@ -30,6 +30,8 @@ jobs:
         with:
           source_dir: ./scripts
           recurse: true
+          template: minami
+          config_file: conf.js
           output_dir: ./out
       
       - name: Deploy
