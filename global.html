@@ -231,7 +231,7 @@ Corresponds to the "Standard" quick select part type checkbox.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line99">line 99</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -319,7 +319,214 @@ Corresponds to the "Standard" quick select part type checkbox.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line318">line 318</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line390">line 390</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getArchetypeName"><span class="type-signature"></span>getArchetypeName<span class="signature">(arcAppendType, partType, arcNameCustomName, genderTag)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns an Archetype Name string depending on the selected append type from the user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arcAppendType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Setting to determine how to structure the archetype name (i.e. "after" will put the custom name after the part type)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>partType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Part type to be appended to string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>arcNameCustomName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Custom name to be appended to string</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>genderTag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Gender tag to be appended to string
+(e.g. After for "Tint" will put that string after the part, "ARC_TorsoTint_M")</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line370">line 370</a>
     </li></ul></dd>
     
 
@@ -457,7 +664,7 @@ Corresponds to the "Standard" quick select part type checkbox.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line290">line 290</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -595,7 +802,233 @@ Corresponds to the "Standard" quick select part type checkbox.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line305">line 305</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line289">line 289</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getGenderTagAndLabel"><span class="type-signature"></span>getGenderTagAndLabel<span class="signature">(gender)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets the gender tag (i.e. Male tag is "_M") and label (i.e. Male label is "Male") on the "eGender" passed
+Tag stored in index 0, label stored in index 1
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>gender</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Gender to have tag and label returned on</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line347">line 347</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getTextAndSpecialProperties"><span class="type-signature"></span>getTextAndSpecialProperties<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets all text properties and special properties on the form and stores them in their respective variable.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line302">line 302</a>
     </li></ul></dd>
     
 
@@ -732,7 +1165,7 @@ Corresponds to the "Standard" quick select part type checkbox.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line268">line 268</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line252">line 252</a>
     </li></ul></dd>
     
 
@@ -768,7 +1201,7 @@ Corresponds to the "Standard" quick select part type checkbox.
     
 
     
-    <h4 class="name" id="reportFormValues"><span class="type-signature"></span>reportFormValues<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="printFormValues"><span class="type-signature"></span>printFormValues<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -776,8 +1209,7 @@ Corresponds to the "Standard" quick select part type checkbox.
 
 
 <div class="description">
-    Reports form values to populate arrays and values to be used in the generateFiles method and final result.
-Also prints all values to be found in the console, works as a debugger.
+    Print all form values in the console. Useful for debugging.
 </div>
 
 
@@ -821,7 +1253,96 @@ Also prints all values to be found in the console, works as a debugger.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line146">line 146</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line322">line 322</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="reportFormValues"><span class="type-signature"></span>reportFormValues<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Reports form values to populate arrays (Part types, armor templates, genders selected arrays: any entry/group with the ability to have more than 1 value selected) to be used in the generateFiles method and final result.
+Bundles together part types, armor templates, and genders selected functions.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line242">line 242</a>
     </li></ul></dd>
     
 
@@ -909,7 +1430,7 @@ Also prints all values to be found in the console, works as a debugger.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line66">line 66</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -1069,7 +1590,7 @@ Also prints all values to be found in the console, works as a debugger.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line80">line 80</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -1229,7 +1750,271 @@ Also prints all values to be found in the console, works as a debugger.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line125">line 125</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setArmorTemplatesSelected"><span class="type-signature"></span>setArmorTemplatesSelected<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get selected armor templates, store in armorsEnabled array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line203">line 203</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setGendersSelected"><span class="type-signature"></span>setGendersSelected<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Set selected genders from the form, store in gendersEnabled array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line222">line 222</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setPartTypesSelected"><span class="type-signature"></span>setPartTypesSelected<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get selected part types, store in partTypesEnabled array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line181">line 181</a>
     </li></ul></dd>
     
 
@@ -1366,7 +2151,7 @@ Also prints all values to be found in the console, works as a debugger.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line54">line 54</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -1412,13 +2197,13 @@ Also prints all values to be found in the console, works as a debugger.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArmorTemplate.html">ArmorTemplate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultPTsCheck">defaultPTsCheck</a></li><li><a href="global.html#generateFiles">generateFiles</a></li><li><a href="global.html#getArmorAbbreviation">getArmorAbbreviation</a></li><li><a href="global.html#getArmorCharacterTemplate">getArmorCharacterTemplate</a></li><li><a href="global.html#hasArmorTemplate">hasArmorTemplate</a></li><li><a href="global.html#reportFormValues">reportFormValues</a></li><li><a href="global.html#resetArrays">resetArrays</a></li><li><a href="global.html#selectAllCheckboxes">selectAllCheckboxes</a></li><li><a href="global.html#selectCheckboxes">selectCheckboxes</a></li><li><a href="global.html#showCheckboxes">showCheckboxes</a></li><li><a href="global.html#xcomContentHeader">xcomContentHeader</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ArmorTemplate.html">ArmorTemplate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#defaultPTsCheck">defaultPTsCheck</a></li><li><a href="global.html#generateFiles">generateFiles</a></li><li><a href="global.html#getArchetypeName">getArchetypeName</a></li><li><a href="global.html#getArmorAbbreviation">getArmorAbbreviation</a></li><li><a href="global.html#getArmorCharacterTemplate">getArmorCharacterTemplate</a></li><li><a href="global.html#getGenderTagAndLabel">getGenderTagAndLabel</a></li><li><a href="global.html#getTextAndSpecialProperties">getTextAndSpecialProperties</a></li><li><a href="global.html#hasArmorTemplate">hasArmorTemplate</a></li><li><a href="global.html#printFormValues">printFormValues</a></li><li><a href="global.html#reportFormValues">reportFormValues</a></li><li><a href="global.html#resetArrays">resetArrays</a></li><li><a href="global.html#selectAllCheckboxes">selectAllCheckboxes</a></li><li><a href="global.html#selectCheckboxes">selectCheckboxes</a></li><li><a href="global.html#setArmorTemplatesSelected">setArmorTemplatesSelected</a></li><li><a href="global.html#setGendersSelected">setGendersSelected</a></li><li><a href="global.html#setPartTypesSelected">setPartTypesSelected</a></li><li><a href="global.html#showCheckboxes">showCheckboxes</a></li><li><a href="global.html#xcomContentHeader">xcomContentHeader</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Feb 22 2021 02:34:35 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Feb 22 2021 09:42:12 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
