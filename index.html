@@ -50,29 +50,35 @@
 
                             <label for="pt-DefaultSetting">Standard</label>
                             <input type="checkbox" id="pt-DefaultSetting" value="pt-default"
-                                onchange="defaultPTsCheck(); showCheckboxes(document.getElementById('head-checkboxes')); showCheckboxes(document.getElementById('body-checkboxes'))""><br>
+                                onchange="defaultPTsCheck(); 
+                                showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('head-checkboxes'), false); 
+                                showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('body-checkboxes'), false)"><br>
 
                             <label for="pt-HairSetting">Hair</label>
                             <input type="checkbox" id="pt-HairSetting" value="pt-haironly"
-                                onchange="selectCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('hair-checkboxes'))"><br>
+                                onchange="selectCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes').getElementsByTagName('input')); 
+                                showCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes'), false);"><br>
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('headprops-checkboxes'))"> <br>
+                            onchange="selectCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes').getElementsByTagName('input')); 
+                            showCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes'), false);"><br>
 
                             <label for="pt-BodyOnlySetting">Body</label>
                             <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('body-checkboxes'))"><br>
+                            onchange="selectCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes').getElementsByTagName('input')); 
+                            showCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes'), false)"><br>
 
                             <label for="pt-BodyExtrasOnlySetting">Body Extras</label>
                             <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('bodyextras-checkboxes'))"><br>
+                            onchange="selectCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes').getElementsByTagName('input')); 
+                            showCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes'), false)"><br>
                         </div>
 
                         <h3>Head/Voice</h3>
 
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('head-checkboxes'))">
+                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('head-checkboxes'), true);">
                                 <select>
                                     <option>Select Head Parts</option>
                                 </select>
@@ -85,12 +91,11 @@
                                     <input type="checkbox" name="PartType" id="pt-Voice" value="Voice" />Voice</label>
 
                             </div>
-                        </div>
-                       
+                        </div> 
 
                         <h3>Hair</h3>
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('hair-checkboxes'))">
+                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes'), true)">
                                 <select>
                                     <option>Select Hair Parts</option>
                                 </select>
@@ -115,7 +120,7 @@
                             <!---->
                             <div class="multiselect">
                                 <div class="selectBox"
-                                    onclick="showCheckboxes(document.getElementById('headprops-checkboxes'))">
+                                    onclick="showCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes'), true);">
                                     <select>
                                         <option>Select Head Props</option>
                                     </select>
@@ -140,7 +145,7 @@
                         <div id="Body/BodyExtras">
                             <div class="multiselect">
                                 <div class="selectBox"
-                                    onclick="showCheckboxes(document.getElementById('body-checkboxes'))">
+                                    onclick="showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('body-checkboxes'), true)">
                                     <select>
                                         <option>Select Body Parts</option>
                                     </select>
@@ -161,7 +166,7 @@
                             <h3>Body Extras</h3>
                             <div class="multiselect">
                                 <div class="selectBox"
-                                    onclick="showCheckboxes(document.getElementById('bodyextras-checkboxes'))">
+                                    onclick="showCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes'), true)">
                                     <select>
                                         <option>Select Body Extras Parts</option>
                                     </select>
@@ -197,8 +202,7 @@
                                         <input type="checkbox" name="PartType" id="pt-RightArmDeco"
                                             value="RightArmDeco" />RightArmDeco</label>
                                 </div>
-                            </div>
-                           
+                            </div>        
                         </div>
                     </div>
 
@@ -212,7 +216,7 @@
 
                             <input type="text" id="CommentName" value=""
                                 placeholder="E.g. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on">
+                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on" name="CommentName">
 
 
                             <label for="Language">Language (For Voice only)</label>
@@ -320,26 +324,26 @@
                             <br>
                             <label for="at-SoldierOnly">Soldier</label>
                             <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly"
-                            onchange="selectCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('soldier-checkboxes'))">
+                            onchange="selectCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes'), false)">
                             <br>
 
                             <label for="at-ReaperOnly">Reaper</label>
-                            <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly" onchange="selectCheckboxes(document.getElementById('at-ReaperOnly'), document.getElementById('reaper-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('reaper-checkboxes'))">
+                            <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly" onchange="selectCheckboxes(document.getElementById('at-ReaperOnly'), document.getElementById('reaper-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-ReaperOnly'),document.getElementById('reaper-checkboxes'), false)">
                             <br>
 
                             <label for="at-TemplarOnly">Templar</label>
                             <input type="checkbox" id="at-TemplarOnly" value="at-templaronly"
-                            onchange="selectCheckboxes(document.getElementById('at-TemplarOnly'), document.getElementById('templar-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('templar-checkboxes'))"><br>
+                            onchange="selectCheckboxes(document.getElementById('at-TemplarOnly'), document.getElementById('templar-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-TemplarOnly'),document.getElementById('templar-checkboxes'), false)"><br>
 
                             <label for="at-SkirmisherOnly">Skirmisher</label>
                             <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
-                            onchange="selectCheckboxes(document.getElementById('at-SkirmisherOnly'), document.getElementById('skirmisher-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('skirmisher-checkboxes'))"><br>
+                            onchange="selectCheckboxes(document.getElementById('at-SkirmisherOnly'), document.getElementById('skirmisher-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SkirmisherOnly'),document.getElementById('skirmisher-checkboxes'), false)"><br>
                         </div>
 
                         <h3>Soldier</h3>
                         <div class="multiselect">
                             <div class="selectBox"
-                                onclick="showCheckboxes(document.getElementById('soldier-checkboxes'))">
+                                onclick="showCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes'), true)">
                                 <select>
                                     <option>Select Soldier Templates</option>
                                 </select>
@@ -373,7 +377,7 @@
                         <h3>Reaper</h3>
                         <div class="multiselect">
                             <div class="selectBox"
-                                onclick="showCheckboxes(document.getElementById('reaper-checkboxes'))">
+                                onclick="showCheckboxes(document.getElementById('at-ReaperOnly'), document.getElementById('reaper-checkboxes'), true)">
                                 <select>
                                     <option>Select Reaper Templates</option>
                                 </select>
@@ -394,7 +398,7 @@
                             <h3>Templar</h3>
                             <div class="multiselect">
                                 <div class="selectBox"
-                                    onclick="showCheckboxes(document.getElementById('templar-checkboxes'))">
+                                    onclick="showCheckboxes(document.getElementById('at-TemplarOnly'),document.getElementById('templar-checkboxes'), true)">
                                     <select>
                                         <option>Select Templar Templates</option>
                                     </select>
@@ -418,7 +422,7 @@
                             <h3>Skirmisher</h3>
                             <div class="multiselect">
                                 <div class="selectBox"
-                                    onclick="showCheckboxes(document.getElementById('skirmisher-checkboxes'))">
+                                    onclick="showCheckboxes(document.getElementById('at-SkirmisherOnly'),document.getElementById('skirmisher-checkboxes'), true)">
                                     <select>
                                         <option>Select Skirmisher Templates</option>
                                     </select>
