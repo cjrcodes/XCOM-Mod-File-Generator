@@ -31,7 +31,7 @@
     </header>
 
     <div class="main">
-        <form onsubmit="generateFiles()">
+        <form onsubmit="generateFiles()" target="frame">
 
             <div class="properties-container">
                 <h2 id="properties-container-title">XCOMContent</h2>
@@ -216,47 +216,47 @@
 
                             <input type="text" id="CommentName" value=""
                                 placeholder="E.g. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on" name="CommentName">
+                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on" name="CommentName" maxlength = "100">
 
 
                             <label for="Language">Language (For Voice only)</label>
                             <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Default is &#34;english&#34;'">
+                                onblur="this.placeholder = 'Default is &#34;english&#34;'" maxlength = "100">
 
 
                             <label for="DLCName">DLCName</label>
                             <input type="text" id="DLCName" value="" placeholder="Project name, no spaces"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'">
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'" maxlength = "100">
 
 
                             <label for="TemplateName">TemplateName</label>
                             <input type="text" id="TemplateName" value="" placeholder="Mod name, no spaces"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'">
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'" maxlength = "100">
 
 
                             <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label>
-                            <input type="text" id="ArchetypeName-upk" value="">
+                            <input type="text" id="ArchetypeName-upk" value="" maxlength = "100">
 
 
                             <label for="ArchetypeName-folder">ArchetypeName (Folder
                                 Name)</label>
                             <input type="text" id="ArchetypeName-folder" value=""
                                 placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = '&#34;Archetypes&#34; is standard'">
+                                onblur="this.placeholder = '&#34;Archetypes&#34; is standard'" maxlength = "100">
 
 
                             <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label>
                             <input type="text" id="ArchetypeName-customname" value=""
                                 placeholder="E.g. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'">
+                                onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'" maxlength = "100">
 
 
                             <label for="DisplayName-LineEnding">DisplayName line ending</label>
                             <input type="text" id="DisplayName-LineEnding" value=""
                                 placeholder="E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'">
+                                onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'" maxlength = "100">
 
                             <label for="ArchetypeAppendType">Arc append type</label>
 
@@ -449,7 +449,7 @@
 
                 <div class="properties-container">
                     <h2 id="properties-container-title">XCOMGame</h2>
-                    <div id="properties-container-main">
+                    <div class="properties-container-small">
                         <div class="flex-item">
                             <h3>DisplayName</h3>
                             <select id="DisplayName">
@@ -464,7 +464,7 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" id="btn-Generate" onclick="generateFiles()">Generate Files</button>
+                <button type="submit" id="btn-Generate">Generate Files</button>
             </div>
         </form>
         <footer>
@@ -482,6 +482,7 @@
                         alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
         </footer>
     </div>
+    <iframe name="frame"></iframe>
 </body>
 
 </html>

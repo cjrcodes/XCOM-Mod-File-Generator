@@ -1,7 +1,7 @@
 /**
  * main.js, Primary file for the project. 
  * The primary function, generateFiles, will be used to generate the files given to the user.
- * @author Christian Rodriguez
+ * @author Christian Rodriguez (cjrcodes)
  */
 
 //Import armor templates presets from the ArmorTemplate file, stored as an array in the armorTemplates variable
@@ -411,8 +411,9 @@ function generateFiles() {
     xcomContent = strings[0];
     xcomGame = strings[1];
 
+    //Loop through selected genders, will run at least once if no genders are selected.
     do {
-        //Loop through selected genders
+        //Get appropriate gender tag and label, if there are any genders selected
         genderTag = "";
         genderLabel = "";
         if (gendersEnabled.length >= 1) {

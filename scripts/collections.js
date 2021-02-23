@@ -7,7 +7,7 @@
  * 
  * <label for="pt-Head"> <input type="checkbox" name="PartType" id="pt-Head" value="Head" />Head</label>
  * 
- * @author Christian Rodriguez
+ * @author Christian Rodriguez (cjrcodes)
  */
 
 //Part Type Settings
