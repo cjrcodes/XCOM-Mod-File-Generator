@@ -4,6 +4,11 @@
  * @author Christian Rodriguez (cjrcodes)
  */
 
+document.body.style.webkitTransform =  'scale(1)';
+document.body.style.msTransform =   'scale(100)';
+document.body.style.transform = 'scale(1)';
+document.body.style.zoom = screen.logicalXDPI / screen.deviceXDPI;
+
 //Import armor templates presets from the ArmorTemplate file, stored as an array in the armorTemplates variable
 var armorTemplates;
 let promiseArmorTemplate = import('./ArmorTemplate.js').then((value) => {
