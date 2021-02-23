@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * main.js, Primary file for the project. 
+ * The primary function, generateFiles, will be used to generate the files given to the user.
+ * @author Christian Rodriguez
+ */
+
+//Import armor templates presets from the ArmorTemplate file, stored as an array in the armorTemplates variable
+var armorTemplates;
+let promiseArmorTemplate = import('./ArmorTemplate.js').then((value) => {
+    armorTemplates = value.default;
+
+    return value.default;
+});
+
+//Import file headers as an array from the strings file, stored in strings variable
+var strings;
+var xcomContent;
+var xcomGame;
+
+let promiseStrings = import('./strings.js').then((value) => {
+    strings = value.default;
+    xcomContent = strings[0];
+    xcomGame = strings[1];
+    return value.default;
+});
+
+//Import collections as an array from the strings file, stored in collections variable
+var collections;
+var ptCollection;
+var atCollection;
+var textInputProperties;
+var genderSelect;
+
+let promiseCollections = import('./collections.js').then((value) => {
+    collections = value.default;
+    ptCollection = collections[0];
+    atCollection = collections[1];
+    textInputProperties = collections[2];
+    genderSelect = collections[3];
+    return value.default;
+});
+
+let valuesArray = [];
+let gendersEnabled = [];
+let partTypesEnabled = [];
+let propertiesText = [];
+let selectionProperties = [];
+let armorsEnabled = [];
+
+
+
+/**
+ * Expands/collapses checkbox dropdowns
+ * @param  {string} docId - Document id of selected dropdown
+ */
+function showCheckboxes(docId) {
+    let checkboxes = docId;
+    if (checkboxes.style.display === "block") {
+        checkboxes.style.display = "none";
+    } else {
+        checkboxes.style.display = "block";
+    }
+}
+
+/**
+ * Reset all arrays when generateFiles method is called
+ */
+function resetArrays() {
+    valuesArray = [];
+    gendersEnabled = [];
+    partTypesEnabled = [];
+    propertiesText = [];
+    selectionProperties = [];
+    armorsEnabled = [];
+}
+
+/**
+ * Select/deselect all checkboxes for a given section (e.g. part types, armor templates section)
+ * @param {string} buttonId - string passed as 'selectall' or 'deselectall' to determine which action to take
+ * @param {document.getElementById} docId - document element section to select/deselect checkboxes
+ */
+function selectAllCheckboxes(buttonId, docId) {
+    let selector = buttonId;
+    let checkboxes = docId;
+    let i;
+    let checkboxValue = false;
+
+    if(selector === 'selectall'){
+        checkboxValue = true;
+    }
+ 
+    for (i = 0; i &lt; checkboxes.length; i++) {
+            checkboxes[i].checked =  checkboxValue; 
+    } 
+}
+
+
+/**
+ * Enable default part types, special group made to select head, torso, arms, legs. 
+ * Corresponds to the "Standard" quick select part type checkbox.
+ */
+function defaultPTsCheck() {
+
+    if (document.getElementById("pt-DefaultSetting").checked == true) {
+        console.log("Default Part Types Selected");
+
+        let i;
+
+        for (i = 0; i &lt; ptCollection[1].length; i++) {
+            document.getElementById(ptCollection[1][i]).checked = true;
+        }
+    } else {
+        console.log("Default Part Types Deselected");
+
+        let i;
+
+        for (i = 0; i &lt; ptCollection[1].length; i++) {
+            document.getElementById(ptCollection[1][i]).checked = false;
+        }
+    }
+}
+
+/**
+ * Select/deselect checkboxes, made for quick select checkboxes to check their grouped checkboxes
+ * @param {document.getElementById} parentId - Document id of the quick select checkbox selected
+ * @param {document.getElementById} docId - Document id of the checkboxes to be checked
+ */
+function selectCheckboxes(parentId, docId) {
+    let selector = parentId;
+    let checkboxes = docId;
+    let i;
+ 
+    for (i = 0; i &lt; checkboxes.length; i++) {
+        if((selector.checked === false &amp;&amp; checkboxes[i].checked === true) || (selector.checked === false &amp;&amp; checkboxes[i].checked === false)){
+            checkboxes[i].checked = false;
+        }
+
+        else{
+            checkboxes[i].checked = true;
+        }
+    } 
+
+}
+
+/**
+ * Reports form values to populate arrays and values to be used in the generateFiles method and final result
+ */
+function reportFormValues() {
+    let indexCounter = 0;
+    let commentName = document.getElementById("CommentName").value;
+    console.log("(" + indexCounter + ")" + "commentName: " + commentName);
+    valuesArray[indexCounter] = document.getElementById("CommentName").value;
+    console.log("   Part Types");
+    let i;
+    let j;
+    let k = 0;
+    indexCounter++;
+
+    //Print PT collection
+    for (i = 1; i &lt; ptCollection.length; i++) {
+        if (i === 3) {
+            continue;
+        } else {
+            for (j = 0; j &lt; ptCollection[i].length; j++) {
+                console.log(ptCollection[i][j]);
+                console.log("(" + indexCounter + ")" + ptCollection[i][j] + ": " + document.getElementById(ptCollection[i][j]).checked);
+                valuesArray[indexCounter] = document.getElementById(ptCollection[i][j]).checked;
+                indexCounter++;
+                if (document.getElementById(ptCollection[i][j]).checked == true) {
+                    partTypesEnabled[k] = document.getElementById(ptCollection[i][j]).value;
+                    k++;
+                }
+            }
+        }
+    }
+
+    //Text Input Values
+
+    console.log("   Text Input Properties");
+    k = 0;
+    propertiesText[k] = document.getElementById("CommentName").value;
+    k++;
+    for (j = 0; j &lt; textInputProperties.length; j++) {
+        console.log("(" + indexCounter + ")" + textInputProperties[j] + ": " + document.getElementById(textInputProperties[j]).value);
+        valuesArray[indexCounter] = document.getElementById(textInputProperties[j]).value;
+        indexCounter++;
+
+        propertiesText[k] = document.getElementById(textInputProperties[j]).value;
+        k++;
+
+    }
+
+    let z = 0;
+
+    //Archetype Append Type
+    console.log("   Archetype Append Type");
+
+    console.log("(" + indexCounter + ")" + document.getElementById("ArchetypeAppendType").value);
+    valuesArray[indexCounter] = document.getElementById("ArchetypeAppendType").value;
+    selectionProperties[z] = document.getElementById("ArchetypeAppendType").value;
+    z++;
+    //Gender Select
+    console.log("   Gender Selection");
+    let g = 0;
+    for (j = 0; j &lt; genderSelect.length; j++) {
+        indexCounter++;
+
+        console.log("(" + indexCounter + ")" + genderSelect[j] + ": " + document.getElementById(genderSelect[j]).checked);
+        valuesArray[indexCounter] = document.getElementById(genderSelect[j]).checked;
+
+        if (document.getElementById(genderSelect[j]).checked == true) {
+            gendersEnabled[g] = document.getElementById(genderSelect[j]).value;
+            g++;
+        }
+
+    }
+
+    //Can Use On Cilvilian
+    console.log("   Can Use On Civilian");
+    indexCounter++;
+
+    console.log("(" + indexCounter + ")" + document.getElementById("bCivilian").value);
+    valuesArray[indexCounter] = document.getElementById("bCivilian").value;
+    selectionProperties[z] = document.getElementById("bCivilian").value;
+    z++;
+
+    //Veteran
+    console.log("   Veteran");
+    indexCounter++;
+
+    console.log("(" + indexCounter + ")" + document.getElementById("bVeteran").value);
+    valuesArray[indexCounter] = document.getElementById("bVeteran").value;
+
+    selectionProperties[z] = document.getElementById("bVeteran").value;
+    z++;
+    //Any Armor
+    console.log("   Any Armor");
+    indexCounter++;
+
+    console.log("(" + indexCounter + ")" + document.getElementById("bAnyArmor").value);
+    valuesArray[indexCounter] = document.getElementById("bAnyArmor").value;
+    selectionProperties[z] = document.getElementById("bAnyArmor").value;
+    z++;
+
+    selectionProperties[z] = document.getElementById("DisplayName").value;
+    //Armor Templates
+    console.log("   Armor Templates");
+    k = 0;
+    for (i = 1; i &lt; atCollection.length; i++) {
+
+        for (j = 0; j &lt; atCollection[i].length; j++) {
+            indexCounter++;
+            valuesArray[indexCounter] = document.getElementById(atCollection[i][j]).checked;
+
+            console.log("(" + indexCounter + ")" + atCollection[i][j] + ": " + document.getElementById(atCollection[i][j]).checked);
+
+            if (document.getElementById(atCollection[i][j]).checked == true) {
+                armorsEnabled[k] = document.getElementById(atCollection[i][j]).value;
+                k++;
+            }
+        }
+
+    }
+    console.log(document.getElementById("race"));
+}
+
+/**
+ * 
+ * @param {*} pt 
+ */
+function hasArmorTemplate(pt) {
+
+    let nonArmorParts = ["Head", "Voice", "Helmets", "FacePropsUpper", "FacePropsLower", "Hair", "Beards"];
+    let i;
+    console.log(pt);
+
+    for (i = 0; i &lt; nonArmorParts.length; i++) {
+        console.log("Comparing " + nonArmorParts[i] + " to " + pt);
+        if (nonArmorParts[i] == pt) {
+            console.log(pt + " does not have ATs");
+            return false;
+        }
+    }
+    console.log(pt + " has ATs");
+
+    return true;
+}
+
+/**
+ * Get armor abbreviation of an enabled armor template.
+ * (e.g. "kevlarArmor" returns "KV")
+ * @param {string} armorTemplate - Armor selected
+ */
+function getArmorAbbreviation(armorTemplate) {
+    let i;
+    for (i = 0; i &lt; armorTemplates.length; i++) {
+        if (armorTemplates[i].armorTemplateName == armorTemplate) {
+            return armorTemplates[i].armorTemplateAbbreviation;
+        }
+    }
+
+    return "";
+}
+
+/**
+ * Get armor character template of an enabled armor template.
+ * (e.g. "kevlarArmor" returns "Soldier")
+ * @param {string} armorTemplate - Armor selected
+ */
+function getArmorCharacterTemplate(armorTemplate) {
+    let i;
+    for (i = 0; i &lt; armorTemplates.length; i++) {
+        if (armorTemplates[i].armorTemplateName == armorTemplate) {
+            return armorTemplates[i].characterTemplate;
+        }
+    }
+
+    return "";
+}
+
+/**
+ * Generates files for 
+ */
+function generateFiles() {
+    console.clear();
+    console.log("   Generate Files Reached");
+    resetArrays();
+
+    console.log("CommentName");
+    console.log(document.getElementById("CommentName").value);
+
+    console.log("partTypesEnabled");
+    console.log(partTypesEnabled);
+
+    console.log("gendersEnabled");
+    console.log(gendersEnabled);
+
+    console.log("propertiesText");
+    console.log(propertiesText);
+
+    console.log("selectionProperties");
+    console.log(selectionProperties);
+
+    console.log("armorsEnabled");
+    console.log(armorsEnabled);
+  
+    reportFormValues();
+    let commentName = document.getElementById("CommentName").value;
+    let language = document.getElementById("Language").value;
+    let dlcName = document.getElementById("DLCName").value;
+    let templateName = document.getElementById("TemplateName").value;
+    let arcNameUPK = document.getElementById("ArchetypeName-upk").value;
+    let arcNameFolder = document.getElementById("ArchetypeName-folder").value;
+    let arcNameCustomName = document.getElementById("ArchetypeName-customname").value;
+    let arcAppendType = document.getElementById("ArchetypeAppendType").value;
+    let useOnCivilian = document.getElementById("bCivilian").value;
+    let raceSelected = document.getElementById("race").value;
+    let useOnVeteran = document.getElementById("bVeteran").value;
+    let useAnyArmor = document.getElementById("bAnyArmor").value;
+    let displayNameType = document.getElementById("DisplayName").value;
+    let displayNameLineEnding = document.getElementById("DisplayName-LineEnding").value;
+
+    let i;
+    let k;
+    let ArcName;
+    let DisplayName;
+
+    let genderTag;
+    let genderLabel;
+    let j = 0;
+
+    xcomContent = strings[0];
+    xcomGame = strings[1];
+
+    do {
+        //Loop through selected genders
+        genderTag = "";
+        genderLabel = "";
+        if(gendersEnabled.length >= 1){
+            if (gendersEnabled[j] == "eGender_Male") {
+                genderTag = "_M";
+                genderLabel = "Male";
+            } else {
+                genderTag = "_F";
+                genderLabel = "Female";
+            }
+        }
+       
+        //Loop through selected part types
+        for (i = 0; i &lt; partTypesEnabled.length; i++) {
+            ArcName = "";
+            DisplayName = "";
+
+            //Archetype append type, similar to above
+            if (arcAppendType == "after") {
+                ArcName = "ARC_" + partTypesEnabled[i] + arcNameCustomName + genderTag;
+            } else if (arcAppendType == "before") {
+                ArcName = "ARC_" + arcNameCustomName + partTypesEnabled[i] + genderTag;
+            } else {
+                ArcName = arcNameCustomName;
+            }
+
+            //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+            if (displayNameType == "CommentName" &amp;&amp; commentName != "" &amp;&amp; hasArmorTemplate(partTypesEnabled[i]) == false) {
+                DisplayName += commentName + " " + partTypesEnabled[i] + " " + displayNameLineEnding;
+            } else if (displayNameType == "TemplateName" &amp;&amp; hasArmorTemplate(partTypesEnabled[i]) == false) {
+
+                DisplayName += templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + displayNameLineEnding;
+            } else if (displayNameType == "Blank") {
+
+                DisplayName += "";
+            } else {
+                if (hasArmorTemplate(partTypesEnabled[i]) == false) {
+                    //console.log(partTypesEnabled[i] + " does not have an armor template.");
+                    //xcomGame += "[" + partTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+
+                    DisplayName += partTypesEnabled[i] + " " + displayNameLineEnding;
+                }
+            }
+
+
+            //Lines for Head
+            if (partTypesEnabled[i] == "Head") {
+
+                xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
+                xcomContent += "+BodyPartTemplateConfig=(PartType=\"Head\", DLCName=\"" + dlcName + "\",TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + genderLabel + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", Race=eRace_" + raceSelected + ")\n\n";
+
+                xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
+                xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+            }
+            //Lines for Voice
+            else if (partTypesEnabled[i] == "Voice") {
+
+                xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
+                xcomContent += "+BodyPartTemplateConfig=(PartType=\"Voice\", Language=\"" + language + "\", Gender=eGender_" + genderLabel + ", TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\")\n\n";
+
+                xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
+                xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+            }
+
+            //Lines for Voice, gender selected
+            else if (partTypesEnabled[i] == "Hair" || partTypesEnabled[i] == "Beards") {
+
+                xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
+                xcomContent += "+BodyPartTemplateConfig=(PartType=\"" + partTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + genderLabel + ", bCanUseOnCivilian=" + useOnCivilian + ")\n\n";
+
+                xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
+                xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+            }
+
+            //Lines for Head Props, gender selected
+            else if (partTypesEnabled[i] == "Helmets" || partTypesEnabled[i] == "FacePropsUpper" || partTypesEnabled[i] == "FacePropsLower") {
+
+                xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
+                xcomContent += "+BodyPartTemplateConfig=(PartType=\"" + partTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + genderLabel + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", bAnyArmor=" + useAnyArmor + ")\n\n";
+
+                xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
+                xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+            } else {
+                //Body, body extra, no armors, genders selected
+                if (armorsEnabled.length == 0) {
+                    DisplayName = "";
+
+                    //DisplayName type, whether to use comment name, template name, or leave blank, and these don't address parts that have armor templates (Body, Body Extras)
+                    if (displayNameType == "CommentName" &amp;&amp; commentName != "") {
+                        DisplayName = commentName + " " + partTypesEnabled[i] + " " + displayNameLineEnding;
+                    } else if (displayNameType == "TemplateName") {
+                        DisplayName = templateName + "_" + partTypesEnabled[i] + arcNameCustomName + displayNameLineEnding;
+                    } else if (displayNameType == "Blank") {
+                        DisplayName = "";
+                    } else {
+                        //console.log(partTypesEnabled[i] + " does not have an armor template.");
+                        //xcomGame += "[" + partTypesEnabled[i] + arcNameCustomName + " X2BodyPartTemplate]\n";
+                        DisplayName += partTypesEnabled[i] + " " + displayNameLineEnding;
+                    }
+
+                    xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + genderLabel + "\n";
+                    xcomContent += "+BodyPartTemplateConfig=(PartType=\"" + partTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + genderLabel + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", CharacterTemplate=\"\", ArmorTemplate=\"\")\n\n";
+
+                    xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + genderTag + " X2BodyPartTemplate]\n";
+                    xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+
+                } else {
+                    //Armors selected, genders selected
+                    for (k = 0; k &lt; armorsEnabled.length; k++) {
+
+                        DisplayName = "";
+
+                        //DisplayName behavior, similar to above
+                        if (displayNameType == "CommentName" &amp;&amp; commentName != "") {
+                            DisplayName = commentName + " " + partTypesEnabled[i] + " " + displayNameLineEnding;
+                        } else if (displayNameType == "TemplateName") {
+                            DisplayName = templateName + "_" + partTypesEnabled[i] + arcNameCustomName + "_" + getArmorAbbreviation(armorsEnabled[k]) + genderTag + displayNameLineEnding;
+                        } else if (displayNameType == "Blank") {
+                            DisplayName = "";
+                        } else {
+                            DisplayName = partTypesEnabled[i] + displayNameLineEnding;
+                        }
+
+                        xcomContent += ";" + commentName + " " + partTypesEnabled[i] + " " + arcNameCustomName + " " + getArmorAbbreviation(armorsEnabled[k]) + " " + genderLabel + "\n";
+                        xcomContent += "+BodyPartTemplateConfig=(PartType=\"" + partTypesEnabled[i] + "\", DLCName=\"" + dlcName + "\", TemplateName=\"" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + "_" + getArmorAbbreviation(armorsEnabled[k]) + genderTag + "\", ArchetypeName=\"" + arcNameUPK + "." + arcNameFolder + "." + ArcName + "\", Gender=eGender_" + genderLabel + ", bCanUseOnCivilian=" + useOnCivilian + ", bVeteran=" + useOnVeteran + ", ArmorTemplate=\"" + armorsEnabled[k] + "\", CharacterTemplate=\"" + getArmorCharacterTemplate(armorsEnabled[k]) + "\")\n\n";
+
+                        xcomGame += "[" + templateName + "_" + partTypesEnabled[i] + arcNameCustomName + "_" + getArmorAbbreviation(armorsEnabled[k]) + genderTag + " X2BodyPartTemplate]\n";
+                        xcomGame += "DisplayName=\"" + DisplayName + "\"\n\n";
+                    }
+                }
+            }
+        }
+        j++;
+    } while(j &lt; gendersEnabled.length);
+
+console.log(xcomContent);
+console.log(xcomGame);
+
+let blob = new Blob([xcomContent], {
+    type: "text/plain;charset=utf-8"
+});
+saveAs(blob, "XComContent.ini");
+
+let blob2 = new Blob([xcomGame], {
+    type: "text/plain;charset=utf-8"
+});
+saveAs(blob2, "XComGame.int");
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#defaultPTsCheck">defaultPTsCheck</a></li><li><a href="global.html#generateFiles">generateFiles</a></li><li><a href="global.html#getArmorAbbreviation">getArmorAbbreviation</a></li><li><a href="global.html#getArmorCharacterTemplate">getArmorCharacterTemplate</a></li><li><a href="global.html#hasArmorTemplate">hasArmorTemplate</a></li><li><a href="global.html#reportFormValues">reportFormValues</a></li><li><a href="global.html#resetArrays">resetArrays</a></li><li><a href="global.html#selectAllCheckboxes">selectAllCheckboxes</a></li><li><a href="global.html#selectCheckboxes">selectCheckboxes</a></li><li><a href="global.html#showCheckboxes">showCheckboxes</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sat Feb 20 2021 23:50:02 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

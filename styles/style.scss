@@ -172,10 +172,12 @@ h3 {
         text-align: center;
         width: auto;
         max-width: 75%;
+        min-width: 25%;
 
         margin: auto;
         border-radius: 5px;
         padding: 10px;
+        padding-bottom: 1em;
 
         display: flex;
         align-items: flex-start;
@@ -187,7 +189,6 @@ h3 {
 }
 
 .properties-container-small {
-    padding: 20px;
     box-shadow:
         inset 0 -3em 3em rgba(0, 0, 0, 0.1),
         0 0 0 2px $border-color,
@@ -197,17 +198,26 @@ h3 {
 
 
     text-align: center;
-    min-width: 50%;
+    
     max-width: 75%;
 
     margin: auto;
     border-radius: 5px;
-    padding: 10px;
+    width: 23em;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
 
     display: flex;
     align-content: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
+
+    #DisplayName{
+        margin: auto;
+
+    }
 }
 
 input[type=text] {
@@ -223,10 +233,12 @@ input[type=text] {
 }
 
 .flex-item {
-    width: 275px;
+    
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
 .textselect-input-container {
@@ -458,3 +470,7 @@ footer {
 #DisplayName {
     margin-left: -40px;
 }
+
+iframe{
+    display: none;
+  }

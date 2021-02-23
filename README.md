@@ -2,11 +2,13 @@
 
 ![XCOM Mod File Generator Logo](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/master/images/xcomheaderimg.jpg)
 
-XCOM Mod File Generator is a configuration file generator (XComContent and XComGame files) for mods for the popular PC game, XCOM 2. It is primarily designed for squadmates and clothing/gear parts.
+XCOM Mod File Generator is a configuration file generator for mods for the popular PC game, XCOM 2. Currently, it generates XComContent.ini and XComGame.int files. It is primarily designed for squadmates and clothing/gear parts.
 
 [Check it out here](https://cjrcodes.github.io/XCOM-Mod-File-Generator/ "XCOM Mod File Generator")
 
-![Project Preview](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/master/images/projectpreview.png)
+[Wiki Page](https://github.com/cjrcodes/XCOM-Mod-File-Generator/wiki)
+
+![Project Preview](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/Refactor-1/images/projectpreview2.png)
 
 This project serves the XCOM modding community, so if you have any ideas or contributions, please share!
 

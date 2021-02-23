@@ -1,0 +1,97 @@
+[{
+    "armorTemplateName" : "KevlarArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "KV"
+},
+
+{
+    "armorTemplateName" : "LightPlatedArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "LPL"
+},
+
+{
+    "armorTemplateName" : "MediumPlatedArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "MPL"
+},
+
+{
+    "armorTemplateName" : "HeavyPlatedArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "HPL"
+},
+
+{
+    "armorTemplateName" : "LightPoweredArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "LPO"
+},
+
+{
+    "armorTemplateName" : "MediumPoweredArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "MPO"
+},
+
+{
+    "armorTemplateName" : "HeavyPoweredArmor",
+    "characterTemplate" : "Soldier",
+    "armorTemplateAbbreviation" : "HPO"
+},
+
+{
+    "armorTemplateName" : "ReaperArmor",
+    "characterTemplate" : "Reaper",
+    "armorTemplateAbbreviation" : "RA"
+},
+
+{
+    "armorTemplateName" : "PlatedReaperArmor",
+    "characterTemplate" : "Reaper",
+    "armorTemplateAbbreviation" : "PLR"
+},
+
+{
+    "armorTemplateName" : "PoweredReaperArmor",
+    "characterTemplate" : "Reaper",
+    "armorTemplateAbbreviation" : "POR"
+},
+
+{
+    "armorTemplateName" : "TemplarArmor",
+    "characterTemplate" : "Templar",
+    "armorTemplateAbbreviation" : "TA"
+},
+
+{
+    "armorTemplateName" : "PlatedTemplarArmor",
+    "characterTemplate" : "Templar",
+    "armorTemplateAbbreviation" : "PLT"
+},
+
+{
+    "armorTemplateName" : "PoweredTemplarArmor",
+    "characterTemplate" : "Templar",
+    "armorTemplateAbbreviation" : "POT"
+},
+
+{
+    "armorTemplateName" : "SkirmisherArmor",
+    "characterTemplate" : "Skirmisher",
+    "armorTemplateAbbreviation" : "SA"
+},
+
+{
+    "armorTemplateName" : "PlatedSkirmisherArmor",
+    "characterTemplate" : "Skirmisher",
+    "armorTemplateAbbreviation" : "PLS"
+},
+
+{
+    "armorTemplateName" : "PoweredSkirmisherArmor",
+    "characterTemplate" : "Skirmisher",
+    "armorTemplateAbbreviation" : "POS"
+}
+
+]

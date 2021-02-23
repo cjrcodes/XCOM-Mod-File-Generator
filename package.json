@@ -1,0 +1,27 @@
+{
+  "name": "XCOM-Mod-File-Generator",
+  "version": "1.0.0",
+  "description": "![XCOM Mod File Generator Logo](https://github.com/cjrcodes/XCOM-Mod-File-Generator/blob/master/images/xcomheaderimg.jpg)",
+  "main": "./scripts/main.js",
+  "dependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.6",
+    "jsdoc-to-markdown": "^6.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjrcodes/XCOM-Mod-File-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjrcodes/XCOM-Mod-File-Generator/issues"
+  },
+  "homepage": "https://github.com/cjrcodes/XCOM-Mod-File-Generator#readme"
+}
