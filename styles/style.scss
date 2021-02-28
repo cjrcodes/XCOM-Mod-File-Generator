@@ -278,6 +278,8 @@ input[type=text] {
 
 select {
     text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
     border-radius: 5px;
     border-color: $border-color;
 

@@ -223,6 +223,8 @@ input[type=text] {
 
 select {
   text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
   border-radius: 5px;
   border-color: #009ce4;
   -webkit-box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(255, 255, 255, 0.466), 0em 1em 1em rgba(0, 0, 0, 0.479);
