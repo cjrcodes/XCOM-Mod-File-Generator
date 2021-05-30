@@ -1,3 +1,5 @@
+
+
 /**
  * main.js, Primary file for the project. 
  * The primary function, generateFiles, will be used to generate the files given to the user.
@@ -366,7 +368,7 @@ function getArchetypeName(arcAppendType, partType, arcNameCustomName, genderTag)
  */
 function generateFiles() {
     console.clear();
-    console.log("   Generate Files Reached");
+    console.log("\tGenerate Files Reached");
 
     //Reset all arrays for new files
     resetArrays();
