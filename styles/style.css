@@ -93,6 +93,15 @@ h3 {
   font-family: 'Source Sans Pro';
 }
 
+#header-cta {
+  position: absolute;
+  background: #51abff;
+  border-radius: 50;
+  border-style: dashed;
+  border-radius: 20px;
+  padding: 3px;
+}
+
 .quick-select-container {
   border-style: solid;
   border-radius: 20px;
