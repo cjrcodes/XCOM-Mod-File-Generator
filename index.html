@@ -9,7 +9,7 @@
     <link href="./styles/style.css" rel="stylesheet">
     <link href="./styles/fonts.css" rel="stylesheet">
 
-    
+
 
     <title>XCOM Mod File Generator</title>
 
@@ -21,29 +21,40 @@
 <body>
     <header>
         <div id="header-title">
-            <img src="images/xcomheaderimg.jpg" alt="images/xcomheaderimg.png">
+            <img src="images/xcomheaderimg.jpg" alt="XCOM Mod File Generator logo">
+        </div>
+        <div id="header-button">
+            <img class="icon" id="top-header-button" src="images/settingsIcon.png" alt="Settings icon">
+
         </div>
 
-        <div id="header-cta">
-            <h2>Welcome! Click on the logo for settings and extras.</h2>
-        </div>
+
+
+
+
     </header>
 
     <div class="main">
         <form onsubmit="generateFiles()" target="frame">
 
             <div class="properties-container">
-                <h2 id="properties-container-title">XComContent</h2>
+                <div class="sub-header">
+                    <h2 id="properties-container-title">XComContent</h2>
+                    <div id="header-button">
+                        <img class="icon" id="bottom-header-button" src="images/settingsIcon.png" alt="Settings icon" >
+                    </div>
+                </div>
                 <div id="properties-container-main">
 
                     <div class="flex-item" id="part-types-section">
 
                         <h2>Part types</h2>
-                        <button type="button" class="grouped-button" id="btn-SelectAllPTs" name = "selectall"
+                        <button type="button" class="grouped-button" id="btn-SelectAllPTs" name="selectall"
                             onclick="selectAllCheckboxes('selectall', document.getElementById('part-types-section').getElementsByTagName('input'))">Select
                             All</button>
-                        <button type="button" class="grouped-button" id="btn-DeselectAllPTs" name = "deselectall"
-                        onclick="selectAllCheckboxes('deselectall', document.getElementById('part-types-section').getElementsByTagName('input'))">Deselect All</button>
+                        <button type="button" class="grouped-button" id="btn-DeselectAllPTs" name="deselectall"
+                            onclick="selectAllCheckboxes('deselectall', document.getElementById('part-types-section').getElementsByTagName('input'))">Deselect
+                            All</button>
                         <div class="quick-select-container">
                             <h3 id="quick-select-label" for="">Quick Select</h3>
 
@@ -60,24 +71,25 @@
 
                             <label for="pt-HeadPropsSetting">Head Props</label>
                             <input type="checkbox" id="pt-HeadPropsSetting" value="pt-headpropsonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes').getElementsByTagName('input')); 
+                                onchange="selectCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes').getElementsByTagName('input')); 
                             showCheckboxes(document.getElementById('pt-HeadPropsSetting'), document.getElementById('headprops-checkboxes'), false);"><br>
 
                             <label for="pt-BodyOnlySetting">Body</label>
                             <input type="checkbox" id="pt-BodyOnlySetting" value="pt-bodyonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes').getElementsByTagName('input')); 
+                                onchange="selectCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes').getElementsByTagName('input')); 
                             showCheckboxes(document.getElementById('pt-BodyOnlySetting'), document.getElementById('body-checkboxes'), false)"><br>
 
                             <label for="pt-BodyExtrasOnlySetting">Body Extras</label>
                             <input type="checkbox" id="pt-BodyExtrasOnlySetting" value="pt-bodyextrasonly"
-                            onchange="selectCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes').getElementsByTagName('input')); 
+                                onchange="selectCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes').getElementsByTagName('input')); 
                             showCheckboxes(document.getElementById('pt-BodyExtrasOnlySetting'), document.getElementById('bodyextras-checkboxes'), false)"><br>
                         </div>
 
                         <h3>Head/Voice</h3>
 
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('head-checkboxes'), true);">
+                            <div class="selectBox"
+                                onclick="showCheckboxes(document.getElementById('pt-DefaultSetting'), document.getElementById('head-checkboxes'), true);">
                                 <select>
                                     <option>Select Head Parts</option>
                                 </select>
@@ -90,11 +102,12 @@
                                     <input type="checkbox" name="PartType" id="pt-Voice" value="Voice" />Voice</label>
 
                             </div>
-                        </div> 
+                        </div>
 
                         <h3>Hair</h3>
                         <div class="multiselect">
-                            <div class="selectBox" onclick="showCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes'), true)">
+                            <div class="selectBox"
+                                onclick="showCheckboxes(document.getElementById('pt-HairSetting'), document.getElementById('hair-checkboxes'), true)">
                                 <select>
                                     <option>Select Hair Parts</option>
                                 </select>
@@ -137,7 +150,7 @@
                                             value="FacePropsLower" />FacePropsLower</label>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <h3>Body</h3>
@@ -201,7 +214,7 @@
                                         <input type="checkbox" name="PartType" id="pt-RightArmDeco"
                                             value="RightArmDeco" />RightArmDeco</label>
                                 </div>
-                            </div>        
+                            </div>
                         </div>
                     </div>
 
@@ -215,47 +228,51 @@
 
                             <input type="text" id="CommentName" value=""
                                 placeholder="E.g. &#34;Soldier&#34; = Soldier Legs" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on" name="CommentName" maxlength = "100">
+                                onblur="this.placeholder = 'E.g. &#34;Soldier&#34; = Soldier Legs'" autocomplete="on"
+                                name="CommentName" maxlength="100">
 
 
                             <label for="Language">Language (For Voice only)</label>
                             <input type="text" id="Language" value="english" placeholder="Default is &#34;english&#34;"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Default is &#34;english&#34;'" maxlength = "100">
+                                onblur="this.placeholder = 'Default is &#34;english&#34;'" maxlength="100">
 
 
                             <label for="DLCName">DLCName</label>
                             <input type="text" id="DLCName" value="" placeholder="Project name, no spaces"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'" maxlength = "100">
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Project name, no spaces'"
+                                maxlength="100">
 
 
                             <label for="TemplateName">TemplateName</label>
                             <input type="text" id="TemplateName" value="" placeholder="Mod name, no spaces"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'" maxlength = "100">
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mod name, no spaces'"
+                                maxlength="100">
 
 
                             <label for="ArchetypeName-upk">ArchetypeName (UPK Name)</label>
-                            <input type="text" id="ArchetypeName-upk" value="" maxlength = "100">
+                            <input type="text" id="ArchetypeName-upk" value="" maxlength="100">
 
 
                             <label for="ArchetypeName-folder">ArchetypeName (Folder
                                 Name)</label>
                             <input type="text" id="ArchetypeName-folder" value=""
                                 placeholder="&#34;Archetypes&#34; is standard" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = '&#34;Archetypes&#34; is standard'" maxlength = "100">
+                                onblur="this.placeholder = '&#34;Archetypes&#34; is standard'" maxlength="100">
 
 
                             <label for="ArchetypeName-customname">ArchetypeName (Custom Name)</label>
                             <input type="text" id="ArchetypeName-customname" value=""
                                 placeholder="E.g. &#34;TINT&#34; = ARC_TorsoTINT_M" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'" maxlength = "100">
+                                onblur="this.placeholder = 'E.g. &#34;TINT&#34; = ARC_TorsoTINT_M'" maxlength="100">
 
 
                             <label for="DisplayName-LineEnding">DisplayName line ending</label>
                             <input type="text" id="DisplayName-LineEnding" value=""
                                 placeholder="E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)"
                                 onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'" maxlength = "100">
+                                onblur="this.placeholder = 'E.g. &#34;(WOTC)&#34; = Soldier Legs (WOTC)'"
+                                maxlength="100">
 
                             <label for="ArchetypeAppendType">Arc append type</label>
 
@@ -312,31 +329,34 @@
 
                     <div class="flex-item" id="armor-templates-section">
                         <h2>Armor Templates</h2>
-                        <button type="button" id="btn-SelectAllPTs" name = "selectall"
-                        onclick="selectAllCheckboxes('selectall', document.getElementById('armor-templates-section').getElementsByTagName('input'))">Select
+                        <button type="button" id="btn-SelectAllPTs" name="selectall"
+                            onclick="selectAllCheckboxes('selectall', document.getElementById('armor-templates-section').getElementsByTagName('input'))">Select
                             All</button>
-                        <button type="button" id="btn-DeselectAllPTs" onclick="selectAllCheckboxes('deselectall', document.getElementById('armor-templates-section').getElementsByTagName('input'))">Deselect All</button>
+                        <button type="button" id="btn-DeselectAllPTs"
+                            onclick="selectAllCheckboxes('deselectall', document.getElementById('armor-templates-section').getElementsByTagName('input'))">Deselect
+                            All</button>
 
 
                         <div class="quick-select-container">
                             <h3 id="quick-select-label" for="">Quick Select</h3>
-                            
+
                             <label for="at-SoldierOnly">Soldier</label>
                             <input type="checkbox" id="at-SoldierOnly" value="at-soldieronly"
-                            onchange="selectCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes'), false)">
+                                onchange="selectCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SoldierOnly'), document.getElementById('soldier-checkboxes'), false)">
                             <br>
 
                             <label for="at-ReaperOnly">Reaper</label>
-                            <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly" onchange="selectCheckboxes(document.getElementById('at-ReaperOnly'), document.getElementById('reaper-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-ReaperOnly'),document.getElementById('reaper-checkboxes'), false)">
+                            <input type="checkbox" id="at-ReaperOnly" value="at-reaperonly"
+                                onchange="selectCheckboxes(document.getElementById('at-ReaperOnly'), document.getElementById('reaper-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-ReaperOnly'),document.getElementById('reaper-checkboxes'), false)">
                             <br>
 
                             <label for="at-TemplarOnly">Templar</label>
                             <input type="checkbox" id="at-TemplarOnly" value="at-templaronly"
-                            onchange="selectCheckboxes(document.getElementById('at-TemplarOnly'), document.getElementById('templar-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-TemplarOnly'),document.getElementById('templar-checkboxes'), false)"><br>
+                                onchange="selectCheckboxes(document.getElementById('at-TemplarOnly'), document.getElementById('templar-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-TemplarOnly'),document.getElementById('templar-checkboxes'), false)"><br>
 
                             <label for="at-SkirmisherOnly">Skirmisher</label>
                             <input type="checkbox" id="at-SkirmisherOnly" value="at-skirmisheronly"
-                            onchange="selectCheckboxes(document.getElementById('at-SkirmisherOnly'), document.getElementById('skirmisher-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SkirmisherOnly'),document.getElementById('skirmisher-checkboxes'), false)"><br>
+                                onchange="selectCheckboxes(document.getElementById('at-SkirmisherOnly'), document.getElementById('skirmisher-checkboxes').getElementsByTagName('input')); showCheckboxes(document.getElementById('at-SkirmisherOnly'),document.getElementById('skirmisher-checkboxes'), false)"><br>
                         </div>
 
                         <h3>Soldier</h3>
@@ -417,7 +437,7 @@
                                 </div>
 
                             </div>
-                            
+
                             <h3>Skirmisher</h3>
                             <div class="multiselect">
                                 <div class="selectBox"
@@ -441,7 +461,7 @@
                                 </div>
 
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -468,17 +488,19 @@
         </form>
         <footer>
             <div class="tooltip">
-                <a href="https://steamcommunity.com/id/cayfabe/"><img class=footer-icon src="images/steamIcon.png"
-                        alt="images/favicon.png"></a> <span class="tooltiptext">Follow</span></div>
+                <a href="https://steamcommunity.com/id/cayfabe/"><img class=icon src="images/steamIcon.png"
+                        alt="images/favicon.png"></a> <span class="tooltiptext">Follow</span>
+            </div>
             <div class="tooltip">
-                <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=footer-icon
+                <a href="https://github.com/cjrcodes/XCOM-Mod-File-Generator"><img class=icon
                         src="images/githubIcon.png" alt="images/favicon.png"></a><span
                     class="tooltiptext">Contribute</span>
             </div>
 
             <div class="tooltip">
-                <a href="https://cash.app/cayfabedevelopment"><img class=footer-icon src="images/CashAppIcon.png"
-                        alt="images/favicon.png"></a><span class="tooltiptext">Support</span></div>
+                <a href="https://cash.app/cayfabedevelopment"><img class=icon src="images/CashAppIcon.png"
+                        alt="images/favicon.png"></a><span class="tooltiptext">Support</span>
+            </div>
         </footer>
     </div>
     <iframe name="frame"></iframe>
@@ -486,6 +508,7 @@
 
 <!--Main script for data processing and file saver for generating files-->
 <script src="scripts/FileSaver.js" type="module" async></script>
+<script src="scripts/ui.js" async></script>
 <script src="scripts/main.js" async>
     document.body.style.msTransform = 'scale(100)';
     document.body.style.transform = 'scale(1)';

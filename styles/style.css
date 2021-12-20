@@ -1,6 +1,6 @@
 body {
-  background: -webkit-gradient(linear, right top, left top, from(#000000), color-stop(#0083cf), color-stop(#003f88), to(#0084d1));
-  background: linear-gradient(270deg, #000000, #0083cf, #003f88, #0084d1);
+  background: -webkit-gradient(linear, right top, left top, from(#000000), color-stop(#972c2c), color-stop(#397ba7), color-stop(#939536), color-stop(#396685), color-stop(#956936), to(#0075b9));
+  background: linear-gradient(270deg, #000000, #972c2c, #397ba7, #939536, #396685, #956936, #0075b9);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
@@ -32,17 +32,52 @@ body {
   }
 }
 
-#header-title img {
-  display: block;
+#header-button {
   margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
+  -webkit-filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(150deg) brightness(100%) contrast(100%);
+          filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(150deg) brightness(100%) contrast(100%);
+}
+
+@media (max-width: 1100px) {
+  #top-header-button {
+    visibility: hidden;
+  }
+  #bottom-header-button {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1050px) {
+  #top-header-button {
+    visibility: visible;
+  }
+  #bottom-header-button {
+    visibility: hidden;
+  }
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+header #header-title {
+  position: absolute;
   /* The element to apply the animation to */
   -webkit-box-shadow: inset 0 0 50px #00b7ff;
   box-shadow: inset 0 0 50px #0069af;
   border-radius: 50px;
-  -webkit-animation-name: example;
-          animation-name: example;
+  -webkit-animation-name: breathingAnim;
+          animation-name: breathingAnim;
   -webkit-animation-duration: 4s;
           animation-duration: 4s;
   -webkit-animation-direction: alternate;
@@ -53,7 +88,11 @@ body {
           box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #51abff, 0em 2em 1em rgba(0, 0, 0, 0.3);
 }
 
-@-webkit-keyframes example {
+header #header-title img {
+  max-width: 100%;
+}
+
+@-webkit-keyframes breathingAnim {
   from {
     background-color: rgba(0, 0, 0, 0.493);
   }
@@ -62,44 +101,53 @@ body {
   }
 }
 
-@keyframes example {
+@keyframes breathingAnim {
   from {
     background-color: rgba(0, 0, 0, 0.493);
   }
   to {
     background-color: rgba(0, 140, 255, 0.493);
   }
+}
+
+.sub-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.sub-header #properties-container-title {
+  position: absolute;
 }
 
 h2 {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
 }
 
 h3 {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
 }
 
 #quick-select-label {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
 }
 
 #part-types-section label,
 #special-properties-section label,
 #armor-templates-section label {
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 #text-properties-section {
-  font-family: 'Source Sans Pro';
-}
-
-#header-cta {
-  position: absolute;
-  background: #51abff;
-  border-radius: 50;
-  border-style: dashed;
-  border-radius: 20px;
-  padding: 3px;
+  font-family: "Source Sans Pro";
 }
 
 .quick-select-container {
@@ -122,7 +170,7 @@ h3 {
 }
 
 .properties-container #properties-container-title {
-  font-family: 'Titillium Web';
+  font-family: "Titillium Web";
   text-align: center;
 }
 
@@ -181,7 +229,7 @@ h3 {
   margin: auto;
 }
 
-input[type=text] {
+input[type="text"] {
   text-align: center;
   width: 230px;
   border-radius: 5px;
@@ -201,7 +249,7 @@ input[type=text] {
 
 .textselect-input-container label,
 .textselect-input-container h3 {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   display: block;
   margin-bottom: 15px;
 }
@@ -247,7 +295,7 @@ button {
   margin-right: auto;
   border-radius: 5px;
   margin-bottom: 20px;
-  font-family: 'Titillium Web';
+  font-family: "Titillium Web";
   border-color: #009ce4;
   -webkit-box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(255, 255, 255, 0), 0em 0.5em 1em rgba(0, 0, 0, 0.3);
           box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(255, 255, 255, 0), 0em 0.5em 1em rgba(0, 0, 0, 0.3);
@@ -306,23 +354,22 @@ button {
 footer {
   margin: 30px auto 20px auto;
   text-align: center;
-  font-family: 'Maven Pro', sans-serif;
+  font-family: "Maven Pro", sans-serif;
 }
 
 footer a {
   color: #009ce4;
 }
 
-.footer-icon {
+.icon {
   padding: 20px;
   width: 55px;
   height: 55px;
-  text-align: center;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.footer-icon:hover {
+.icon:hover {
   opacity: 70%;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
